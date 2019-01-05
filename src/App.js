@@ -1,20 +1,20 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Searchbar from "./components/Searchbar";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
+import AjaxCall from "./components/AjaxCall";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
-//<img src={logo} className="App-logo" alt="logo" />
+
 class App extends Component {
     constructor(props){
         super(props);
 
         this.state = {
             videos: [],
-            selectedVideo : null
+            selectedVideo : null,
         };
 
     }
@@ -40,8 +40,32 @@ class App extends Component {
                         onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                         videos={this.state.videos}/>
                 </div>
-                <div className="row">
-
+                <div class="container">
+                    <nav>
+                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali"
+                               role="tab" aria-controls="nav-home" aria-selected="true">FVitali</a>
+                            <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                            <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                               role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                        </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="nav-fvitali" role="tabpanel"
+                             aria-labelledby="nav-fvitali-tab">
+                            <AjaxCall
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                videoSeleceted = {this.state.selectedVideo}
+                            />
+                        </div>
+                        <div className="tab-pane fade" id="nav-profile" role="tabpanel"
+                             aria-labelledby="nav-profile-tab">...
+                        </div>
+                        <div className="tab-pane fade" id="nav-contact" role="tabpanel"
+                             aria-labelledby="nav-contact-tab">...
+                        </div>
+                    </div>
                 </div>
             </div>
         );

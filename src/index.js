@@ -7,5 +7,5 @@ import registerServiceWorker from './registerServiceWorker';
 import AjaxCall from "./components/AjaxCall";
 
 ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<AjaxCall />, document.getElementById('speriamo'));
+//ReactDOM.render(<AjaxCall />, document.getElementById('speriamo'));
 registerServiceWorker();
