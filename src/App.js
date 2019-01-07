@@ -44,9 +44,9 @@ class App extends Component {
                 <div class="container">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="true">FVitali</a>
-                            <a className="nav-item nav-link" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="tab" aria-controls="nav-agpopularity" aria-selected="false">Absolute Global Popularity </a>
-                            <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                            <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="button" aria-controls="nav-home" aria-selected="true">FVitali</a>
+                            <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="button" aria-controls="nav-agpopularity" aria-selected="false">Absolute Global Popularity </a>
+                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="button" aria-controls="nav-contact" aria-selected="false">Contact</a>
                         </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">

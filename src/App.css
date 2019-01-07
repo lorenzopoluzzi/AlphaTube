@@ -26,3 +26,30 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+a.tab-l2pt {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: row !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  padding-top: 34px !important;
+  padding-bottom: 34px !important;
+  flex: 1 1 !important;
+  position: relative !important;
+  padding-right: 5px !important;
+  display: -webkit-box !important;
+}
+.tab-l2pt.active {
+  color: #495057 !important;
+  border-bottom-color: #495057 !important;
+  border-bottom: 2px solid !important;
+  border-top: 0 !important;
+}
+.tab-l2pt:hover {
+
+}
