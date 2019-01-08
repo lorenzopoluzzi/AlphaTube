@@ -19,6 +19,7 @@ body {
 
 .list-group-item {
     cursor: pointer;
+    margin-top: 8px;
 }
 
 .list-group-item:hover {

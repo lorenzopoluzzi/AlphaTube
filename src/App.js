@@ -32,21 +32,22 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
 
-                    <h1>Alpha Tubo</h1>
+                    <h1 id="h1-l2pt">Alpha Tubo</h1>
                 </header>
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row">
                     <VideoDetail video={this.state.selectedVideo} />
-                    <VideoList
-                        onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-                        videos={this.state.videos}/>
                 </div>
                 <div class="container">
-                    <nav>
+                    <h3 id="h3-l2pt">RECOMMENDER</h3>
+                    <nav id="spacing-nav-l2pt">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="button" aria-controls="nav-home" aria-selected="true">FVitali</a>
-                            <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="button" aria-controls="nav-agpopularity" aria-selected="false">Absolute Global Popularity </a>
-                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="button" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                            <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="button" aria-controls="nav-home" aria-selected="true"><i
+                                className="fas fa-chalkboard-teacher"></i><span id="text-l2pt-tab">FVitali</span></a>
+                            <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="button" aria-controls="nav-agpopularity" aria-selected="false"><i
+                                className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
+                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="button" aria-controls="nav-contact" aria-selected="false"><i
+                                className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
                         </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">

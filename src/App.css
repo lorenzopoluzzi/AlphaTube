@@ -1,3 +1,6 @@
+body{
+    font-family: Roboto;
+}
 .App {
   text-align: center;
 }
@@ -8,7 +11,8 @@
 }
 
 .App-header {
-  background-color: #222;
+    background: rgb(7,169,114);
+    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
   height: auto;
   padding: 20px;
   color: white;
@@ -37,19 +41,41 @@ a.tab-l2pt {
   -webkit-align-items: center !important;
   -ms-flex-align: center !important;
   align-items: center !important;
-  padding-top: 34px !important;
-  padding-bottom: 34px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
   flex: 1 1 !important;
   position: relative !important;
   padding-right: 5px !important;
   display: -webkit-box !important;
+    color: #495057 !important;
 }
 .tab-l2pt.active {
-  color: #495057 !important;
-  border-bottom-color: #495057 !important;
+  color: #078b5e !important;
+  border-bottom-color: #078b5e !important;
   border-bottom: 2px solid !important;
   border-top: 0 !important;
 }
-.tab-l2pt:hover {
+.row {
+    margin: 0 !important;
+}
+a.tab-l2pt:hover {
+    text-decoration: none;
+    color: #078b5e !important;
+}
 
+a.tab-l2pt i {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 30px;
+}
+span#text-l2pt-tab {
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Luckiest Guy' !important;
+}
+#h3-l2pt {
+    padding: 10px;
+}
+#h1-l2pt, #h3-l2pt {
+    font-family: 'Luckiest Guy' !important;
 }
