@@ -1,9 +1,13 @@
+body{
+    font-family: Roboto;
+}
 .App {
   text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
+<<<<<<< HEAD
   height: 40vmin;
 }
 
@@ -29,4 +33,76 @@
   to {
     transform: rotate(360deg);
   }
+}
+  height: 80px;
+}
+
+.App-header {
+    background: rgb(7,169,114);
+    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
+  height: auto;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+a.tab-l2pt {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: row !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  flex: 1 1 !important;
+  position: relative !important;
+  padding-right: 5px !important;
+  display: -webkit-box !important;
+    color: #495057 !important;
+}
+.tab-l2pt.active {
+  color: #078b5e !important;
+  border-bottom-color: #078b5e !important;
+  border-bottom: 2px solid !important;
+  border-top: 0 !important;
+}
+.row {
+    margin: 0 !important;
+}
+a.tab-l2pt:hover {
+    text-decoration: none;
+    color: #078b5e !important;
+}
+
+a.tab-l2pt i {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 30px;
+}
+span#text-l2pt-tab {
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Luckiest Guy' !important;
+}
+#h3-l2pt {
+    padding: 10px;
+}
+#h1-l2pt, #h3-l2pt {
+    font-family: 'Luckiest Guy' !important;
 }

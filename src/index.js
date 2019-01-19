@@ -10,3 +10,13 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+import './style/style.css'
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import AjaxCall from "./components/AjaxCall";
+
+ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<AjaxCall />, document.getElementById('speriamo'));
+registerServiceWorker();
+
