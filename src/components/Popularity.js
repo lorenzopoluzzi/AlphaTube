@@ -5,6 +5,7 @@ import VideoListItem from "./VideoListItem";
 class Popularity extends Component {
     videoItems = " ";
     porcodio;
+    globalPopularity;
     videoId = null;
 
     constructor(props) {
@@ -14,6 +15,56 @@ class Popularity extends Component {
             isLoaded: false,
             video : []
         };
+    }
+
+    componentDidMount() {
+        this.videoItems = " ";
+        this.altriRecommender = [];
+
+        axios.all([
+            axios.get('http://site1828.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1906.tw.cs.unibo.it/globpop/')
+        ]).then(res => {
+            console.log('SONO NEL GLOBALINO');
+            console.log(res);
+            this.videoIds = " ";
+            res.map((siti) => {
+                this.videoIdTemp = null;
+                this.timesWhatchedTemp = 0;
+                if(siti.data.recommended != null){
+                    siti.data.recommended.map((videoDelSito) => {
+                        if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                            this.timesWhatchedTemp = videoDelSito.timesWatched;
+                            if(!videoDelSito.videoID){
+                                this.videoIdTemp = videoDelSito.videoId;
+                            } else {
+                                this.videoIdTemp = videoDelSito.videoID;
+                            }
+                        }
+                    });
+                    console.log(this.timesWhatchedTemp);
+                    this.videoIds = this.videoIds + this.videoIdTemp + ", ";
+                }
+            });
+            console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
+            console.log(this.videoIds);
+            axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
+                .then(res => {
+                    console.log("sono dentro alla ajax call item");
+                    console.log(res);
+                    this.globalPopularity = res.data.items.map((video) => {
+                        return (
+                            <VideoListItem
+                                onVideoSelect = {this.props.onVideoSelect}
+                                key={video.etag}
+                                video={video} />
+                        );
+                    });
+                    console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
+                    console.log(this.globalPopularity);
+                    this.setState({isLoaded : true, video: res.data.items});
+                });
+        });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,8 +84,8 @@ class Popularity extends Component {
             }
 
             axios.all([
-                axios.get('http://site1849.tw.cs.unibo.it/globpop?id='+this.videoId+''),
-                axios.get('http://site1828.tw.cs.unibo.it/globpop?id='+this.videoId+'')
+                axios.get('http://site1828.tw.cs.unibo.it/globpop?id='+this.videoId+''),
+                axios.get('http://site1834.tw.cs.unibo.it/globpop?id='+this.videoId+'')
             ]).then(res => {
                 console.log('DIO BOIA SONO NEL POPULARITY DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
                 console.log(res);
@@ -75,6 +126,7 @@ class Popularity extends Component {
                     });
             });
         }
+
     }
 
     render() {
@@ -82,10 +134,19 @@ class Popularity extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div>
-                    <ul className="list-group">
-                        {this.porcodio}
-                    </ul>
+                <div className="row">
+                    <div className="col-6">
+                        <h3 id="h3-l2pt">Relative</h3>
+                        <ul className="list-group">
+                            {this.porcodio}
+                        </ul>
+                    </div>
+                    <div className="col-6">
+                        <h3 id="h3-l2pt">Absolute</h3>
+                        <ul className="list-group">
+                        {this.globalPopularity}
+                        </ul>
+                    </div>
                 </div>
 
             );
