@@ -48,7 +48,12 @@ class Popularity extends Component {
             });
             console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
             console.log(this.videoIds);
-            axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
+            axios.get('https://www.googleapis.com/youtube/v3/videos',{
+                params: {'id': this.videoIds,
+                    'part': 'snippet,statistics',
+                    'key': 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI',
+                }
+            })
                 .then(res => {
                     console.log("sono dentro alla ajax call item");
                     console.log(res);

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
+const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 class AjaxCall extends Component {
     videoItems = " ";
@@ -36,11 +37,18 @@ class AjaxCall extends Component {
                             this.videoItems = this.videoItems + video.videoID + ", ";
                         });
                         console.log(this.videoItems);
-                        axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoItems+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
+                        axios.get('https://www.googleapis.com/youtube/v3/videos', {
+                            params: {'id': this.videoItems,
+                            'part': 'snippet,statistics',
+                            'key': API_KEY,
+                        }
+                        
+                    })
                             .then(res => {
                                 console.log("sono dentro alla ajax call item");
                                 console.log(res);
                                 this.porcodio = res.data.items.map((video) => {
+                                    console.log(video);
                                     return (
                                         <VideoListItem
                                             onVideoSelect = {this.props.onVideoSelect}

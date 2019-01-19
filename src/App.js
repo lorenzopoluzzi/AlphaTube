@@ -9,6 +9,7 @@ import AjaxCall from "./components/AjaxCall";
 import Popularity from "./components/Popularity";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
+
 class App extends Component {
     constructor(props){
         super(props);
