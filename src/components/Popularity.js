@@ -13,6 +13,8 @@ class Popularity extends Component {
         super(props);
         this.state = {
             isLoaded: false,
+            isLocal: false,
+            isGlobal: true,
             video : []
         };
     }
@@ -62,7 +64,7 @@ class Popularity extends Component {
                     });
                     console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
                     console.log(this.globalPopularity);
-                    this.setState({isLoaded : true, video: res.data.items});
+                    this.setState({isLoaded : true, isLocal: false, isGlobal: true,video: res.data.items});
                 });
         });
     }
@@ -122,7 +124,7 @@ class Popularity extends Component {
                         });
                         console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
                         console.log(this.porcodio);
-                        this.setState({isLoaded : true, video: res.data.items});
+                        this.setState({isLoaded : true, isLocal: true, isGlobal: true,video: res.data.items});
                     });
             });
         }
@@ -131,7 +133,26 @@ class Popularity extends Component {
 
     render() {
         if (!this.state.isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="spinner-grow colore-l2pt-at" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>;
+        } else if(!this.state.isLocal) {
+            return (
+                <div className="row justify-content-center">
+                    <div className="col-6">
+                        <h3 id="h3-l2pt">Relative</h3>
+                        <div className="spinner-grow colore-l2pt-at" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <h3 id="h3-l2pt">Absolute</h3>
+                        <ul className="list-group">
+                        {this.globalPopularity}
+                        </ul>
+                    </div>
+                </div>
+            );
         } else {
             return (
                 <div className="row">
@@ -144,11 +165,10 @@ class Popularity extends Component {
                     <div className="col-6">
                         <h3 id="h3-l2pt">Absolute</h3>
                         <ul className="list-group">
-                        {this.globalPopularity}
+                            {this.globalPopularity}
                         </ul>
                     </div>
                 </div>
-
             );
         }
     }

@@ -57,7 +57,11 @@ class AjaxCall extends Component {
         }
     render() {
         if (!this.state.isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="d-flex justify-content-center m-5">
+                        <div className="spinner-grow colore-l2pt-at" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>;
         } else {
             return (
                 <div>

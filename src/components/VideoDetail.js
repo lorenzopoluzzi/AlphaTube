@@ -2,7 +2,11 @@ import React from 'react';
 
 const VideoDetail = ({video}) => {
     if(!video) {
-        return <div>Loading ...</div>
+        return  <div className="d-flex justify-content-center m-5">
+                    <div className="spinner-grow colore-l2pt-at" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>;
     }
     console.log(video);
     let videoId = video.id.videoId;

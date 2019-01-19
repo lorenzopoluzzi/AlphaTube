@@ -35,7 +35,7 @@ class App extends Component {
                     <h1 id="h1-l2pt">Alpha Tubo</h1>
                 </header>
                 <Searchbar onSearchTermChange={videoSearch}/>
-                <div className="row">
+                <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                 </div>
                 <div class="container">
