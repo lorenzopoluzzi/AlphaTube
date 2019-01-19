@@ -10,6 +10,7 @@ import YTSearch from "youtube-api-search";
 import axios from 'axios';
 import VideoListItem from "./components/VideoListItem";
 import ListaVitali from "./components/ListaVitali";
+import Login from "./components/Login";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 //<img src={logo} className="App-logo" alt="logo" />
 
@@ -42,8 +43,7 @@ class App extends Component {
                     <header className="App-header">
                         <h1>Alpha Tubo</h1>
                     </header>
-
-                    <ListaVitali />
+                    <ListaVitali/>
 
                 </div>
 

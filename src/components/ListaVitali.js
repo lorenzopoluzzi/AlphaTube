@@ -135,10 +135,10 @@ class ListaVitali extends Component {
             return (
 
                         <div>
-                            <button data-btn_id="btnRock" onClick= {this.eventoBottone}> ROCK </button>
-                            <button data-btn_id="btnPop" onClick= {this.eventoBottone}> POP </button>
-                            <button data-btn_id="btnJazz" onClick= {this.eventoBottone}> JAZZ </button>
-                            <button data-btn_id="btnHh" onClick= {this.eventoBottone}> HIPHOP </button>
+                            <button className="btn" data-btn_id="btnRock" onClick= {this.eventoBottone}> ROCK </button>
+                            <button className="btn" data-btn_id="btnPop" onClick= {this.eventoBottone}> POP </button>
+                            <button className="btn" data-btn_id="btnJazz" onClick= {this.eventoBottone}> JAZZ </button>
+                            <button className="btn" data-btn_id="btnHh" onClick= {this.eventoBottone}> HIPHOP </button>
 
 
 

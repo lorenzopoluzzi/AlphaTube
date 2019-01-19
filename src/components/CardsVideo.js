@@ -8,12 +8,12 @@ class CardExample extends Component {
         return (
 
 
-                    <Card style={{width: "22rem", height:"22em" }} cascade>
+                    <Card  style={{width: "22rem", height:"22em" }}  >
                         <CardImage
                             cascade
                             className="img-fluid"
                             src={this.props.value.snippet.thumbnails.high.url}
-                            style={{width:"708px",height:"472px"}}
+                            style={{width:"100%",height:"180px"}}
 
                         />
                         <Button
@@ -25,7 +25,7 @@ class CardExample extends Component {
                             <Fa icon="chevron-right" />
                         </Button>
                         <CardBody cascade>
-                            <CardTitle>{this.props.value.snippet.title}</CardTitle>
+                            <CardTitle >{this.props.value.snippet.title} </CardTitle>
 
                         </CardBody>
                         <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
@@ -57,6 +57,9 @@ class CardExample extends Component {
                             </ul>
                         </div>
                     </Card>
+
+
+
 
 
         )

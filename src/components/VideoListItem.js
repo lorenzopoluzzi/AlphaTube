@@ -9,7 +9,7 @@ const VideoListItem = ({video, onVideoSelect}) => {
     //console.log(imageUrl + 'ehila');
     return (
 
-        <div /* onClick={() => onVideoSelect(video)} */ className="grid-item" style={{padding:"0.5em",height:"23em"}} >
+        <div /* onClick={() => onVideoSelect(video)} */ className="" style={{padding:"0.5em",height:"23em"}} >
            <CardExample value = {video}/>
 
         </div>
