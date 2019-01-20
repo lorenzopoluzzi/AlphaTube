@@ -30,10 +30,6 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-
-                    <h1 id="h1-l2pt">Alpha Tubo</h1>
-                </header>
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />

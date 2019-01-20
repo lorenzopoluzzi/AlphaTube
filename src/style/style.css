@@ -1,7 +1,9 @@
 body {
     text-align: center;
 }
-
+.search-bar {
+    margin-top: 4rem !important;
+}
 .search-bar input {
     width: 75%
 }
@@ -29,7 +31,9 @@ body {
 .search-bar {
     margin: 20px;
 }
-
+#root {
+    margin-top: 45px;
+}
 .row {
     padding: 30px;
 }
@@ -39,4 +43,51 @@ body {
 }
 .colore-l2pt-at {
     color: rgb(7,169,114);
+}
+
+<!-- -->
+* {box-sizing: border-box;}
+
+#navbar {
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
+    transition: 0.7s;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Luckiest Guy' !important;
+}
+
+#navbar a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    line-height: 25px;
+    border-radius: 4px;
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+#navbar #logo {
+    transition: 0.4s;
+    float: left;
+}
+#navbar-right {
+    float: right;
+}
+
+@media screen and (max-width: 580px) {
+    #navbar {
+        padding: 20px 10px !important;
+    }
+    #navbar a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    #navbar-right {
+        float: none;
+    }
 }

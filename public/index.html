@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black%7CFredoka+One%7CLuckiest+Guy%7CRoboto%7CStaatliches" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="../src/style/style.css" rel="stylesheet">
+    <link href="../src/style/sottomenu.css" rel="stylesheet">
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -56,7 +57,17 @@
         </div>
       </div>
     </nav>
-
+    <!-- Fixed navbar -->
+    <div id="navbar">
+        <div class="container">
+            <a href="#default" id="logo">Alpha Tubo</a>
+            <div id="navbar-right">
+                <a href="#home" class="navbarA active">Home</a>
+                <a href="#contact" class="navbarA">Contact</a>
+                <a href="#about" class="navbarA">About</a>
+            </div>
+        </div>
+    </div>
     <div id="root"></div>
     <div id="speriamo"></div>
     <!--
@@ -70,10 +81,29 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script type="text/javascript">
+      $("#navbar").css("padding","10px 10px");
+      $(".navbarA").css("font-size","18px");
+      $("#logo").css("font-size","35px");
       $('#nav-tab a').on('click', function (e) {
           e.preventDefault()
           $(this).tab('show')
-      })
+      });
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+              $("#navbar").css("padding","3px 3px");
+              $(".navbarA").css("font-size","15px");
+              $("#logo").css("font-size","25px");
+          } else {
+              $("#navbar").css("padding","10px 10px");
+              $(".navbarA").css("font-size","18px");
+              $("#logo").css("font-size","35px");
+          }
+      }
+
+
   </script>
   </body>
 </html>
