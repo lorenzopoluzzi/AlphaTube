@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
+import {youtube_videoDetails}  from "../Library/Api-Youtube";
 
 class Popularity extends Component {
     videoItems = " ";
@@ -48,27 +49,23 @@ class Popularity extends Component {
             });
             console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
             console.log(this.videoIds);
-            axios.get('https://www.googleapis.com/youtube/v3/videos',{
-                params: {'id': this.videoIds,
-                    'part': 'snippet,statistics',
-                    'key': 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI',
-                }
-            })
-                .then(res => {
-                    console.log("sono dentro alla ajax call item");
-                    console.log(res);
-                    this.globalPopularity = res.data.items.map((video) => {
-                        return (
-                            <VideoListItem
-                                onVideoSelect = {this.props.onVideoSelect}
-                                key={video.etag}
-                                video={video} />
-                        );
-                    });
-                    console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
-                    console.log(this.globalPopularity);
-                    this.setState({isLoaded : true, video: res.data.items});
+            let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
+            console.log(videos);
+            videos.then(res => {
+                console.log("sono dentro alla ajax call item");
+                console.log(res);
+                this.globalPopularity = res.map((video) => {
+                    return (
+                        <VideoListItem
+                            onVideoSelect = {this.props.onVideoSelect}
+                            key={video.etag}
+                            video={video} />
+                    );
                 });
+                console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
+                console.log(this.globalPopularity);
+                this.setState({isLoaded : true, video: res});
+            });
         });
     }
 
@@ -113,11 +110,11 @@ class Popularity extends Component {
                 });
                 console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
                 console.log(this.videoIds);
-                axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
-                    .then(res => {
+                let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
+                videos.then(res => {
                         console.log("sono dentro alla ajax call item");
                         console.log(res);
-                        this.porcodio = res.data.items.map((video) => {
+                        this.porcodio = res.map((video) => {
                             return (
                                 <VideoListItem
                                     onVideoSelect = {this.props.onVideoSelect}
@@ -127,7 +124,7 @@ class Popularity extends Component {
                         });
                         console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
                         console.log(this.porcodio);
-                        this.setState({isLoaded : true, video: res.data.items});
+                        this.setState({isLoaded : true, video: res});
                     });
             });
         }

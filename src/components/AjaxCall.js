@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
-const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
+import {youtube_videoDetails}  from "../Library/Api-Youtube";
+
 
 class AjaxCall extends Component {
-    videoItems = " ";
+    videoIds = " ";
     porcodio;
     videoId = null;
     constructor(props) {
@@ -19,7 +20,7 @@ class AjaxCall extends Component {
         componentDidUpdate(prevProps, prevState, snapshot) {
             // Typical usage (don't forget to compare props):
             if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
-                this.videoItems = " ";
+                this.videoIds = " ";
                 if(this.props.videoSeleceted != null){
                     this.videoId = this.props.videoSeleceted.id.videoId;
                     if(!this.videoId) {
@@ -34,20 +35,14 @@ class AjaxCall extends Component {
                 axios.get('http://site1825.tw.cs.unibo.it/TW/globpop?id='+this.videoId+'')
                     .then(res => {
                         res.data.recommended.map((video) => {
-                            this.videoItems = this.videoItems + video.videoID + ", ";
+                            this.videoIds = this.videoIds + video.videoID + ", ";
                         });
-                        console.log(this.videoItems);
-                        axios.get('https://www.googleapis.com/youtube/v3/videos', {
-                            params: {'id': this.videoItems,
-                            'part': 'snippet,statistics',
-                            'key': API_KEY,
-                        }
-                        
-                    })
-                            .then(res => {
+                        console.log(this.videoIds);
+                        let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
+                        videos.then(res => {
                                 console.log("sono dentro alla ajax call item");
                                 console.log(res);
-                                this.porcodio = res.data.items.map((video) => {
+                                this.porcodio = res.map((video) => {
                                     console.log(video);
                                     return (
                                         <VideoListItem
@@ -58,7 +53,7 @@ class AjaxCall extends Component {
                                 });
                                 console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
                                 console.log(this.porcodio);
-                                this.setState({isLoaded : true, video: res.data.items});
+                                this.setState({isLoaded : true, video: res});
                             });
                     });
             }

@@ -39,7 +39,7 @@ class App extends Component {
                 <div className="row">
                     <VideoDetail video={this.state.selectedVideo} />
                 </div>
-                <div class="container">
+                <div className="container">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                     <nav id="spacing-nav-l2pt">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
