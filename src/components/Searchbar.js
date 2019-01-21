@@ -10,14 +10,16 @@ class Searchbar extends Component {
 
     render() {
         return (
-            <div className="search-bar">
-            <input
-                value={this.state.term}
-                onChange={event => this.onInputChange(event.target.value)} />
-            </div>
+            <span className="input input--makiko">
+					<input className="input__field input__field--makiko" type="text" id="input-16"
+                           value={this.state.term}
+                           onChange={event => this.onInputChange(event.target.value)}/>
+					<label className="input__label input__label--makiko" htmlFor="input-16">
+                        <span type="text" className="input__label-content input__label-content--makiko"> </span>
+					</label>
+            </span>
 
         );
-
     }
 
     onInputChange(term) {

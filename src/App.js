@@ -30,11 +30,12 @@ class App extends Component {
 
         return (
             <div className="App">
+
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                 </div>
-                <div class="container">
+                <div class="container" id="div-recommender">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                     <nav id="spacing-nav-l2pt">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
