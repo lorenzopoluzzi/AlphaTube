@@ -8,6 +8,12 @@ class Searchbar extends Component {
     }
 
 
+    onInputChange(term) {
+        this.setState({term});
+        this.props.onSearchTermChange(term);
+    }
+
+    
     render() {
         return (
             <div className="search-bar">
@@ -18,11 +24,6 @@ class Searchbar extends Component {
 
         );
 
-    }
-
-    onInputChange(term) {
-        this.setState({term});
-        this.props.onSearchTermChange(term);
     }
 
 }
