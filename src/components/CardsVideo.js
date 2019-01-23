@@ -4,7 +4,7 @@ import { Button, Card, CardBody, CardImage, CardTitle, CardText, Row, Col, Fa } 
 class CardExample extends Component {
     render() {
 
-        let infovideo;
+
         return (
 
 
@@ -13,19 +13,21 @@ class CardExample extends Component {
                             cascade
                             className="img-fluid"
                             src={this.props.value.snippet.thumbnails.high.url}
-                            style={{width:"100%",height:"180px"}}
+                            style={{width:"100%",height:"11em"}}
 
                         />
                         <Button
                             floating
                             tag="a"
-                            className="ml-auto mr-4 lighten-3 mdb-coalor"
+                            className="btn-floating ml-auto mr-4 lighten-3 mdb-coalor btn-card buttonabsolute"
                             action
+
+
                         >
-                            <Fa icon="chevron-right" />
+                            <Fa icon="chevron-right"  />
                         </Button>
-                        <CardBody cascade>
-                            <CardTitle >{this.props.value.snippet.title} </CardTitle>
+                        <CardBody style={{width:"100%"}} cascade>
+                            <CardTitle  >{this.props.value.snippet.title} </CardTitle>
 
                         </CardBody>
                         <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
@@ -45,7 +47,6 @@ class CardExample extends Component {
                                         <Fa icon="thumbs-up"> </Fa>
 
                                         {this.props.value.statistics.likeCount}
-
                                     </a>
                                 </li>
                                 <li className="list-inline-item">

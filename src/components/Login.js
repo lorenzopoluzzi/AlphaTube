@@ -39,7 +39,7 @@ class Login extends Component {
 
 
     }
-    /* handleSubmit = event => {
+     handleSubmit = event => {
 
          event.preventDefault();
 
@@ -50,7 +50,7 @@ class Login extends Component {
              body: data,
          });
 
-     } */
+     }
 
     render() {
         return (

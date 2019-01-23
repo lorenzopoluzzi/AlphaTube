@@ -42,6 +42,55 @@
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
   -webkit-border-radius: .25rem;
   border-radius: .25rem;
+
+}
+button.btngeneri {
+  background-color: white !important ;
+  color: black !important;
+}
+button.active {
+  background-color: #078b5e !important;
+  color: white !important;
+  border: 2px solid black  !important;
+}
+a.btn-card{
+  background-color: rgba(7, 139, 94, 0.19) !important;
+}
+a.btn-card:hover{
+  background-color: rgba(7, 139, 94) !important;
 }
 
 
+div.mdb-color.lighten-3{
+  background-color: #078b5e !important;
+
+}
+
+div.card {
+  height: 340px !important;
+  background-color: whitesmoke !important;
+  -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  -moz-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+
+}
+
+div.ripple  {
+  height: 3rem;
+}
+
+h4.card-title{
+  margin-bottom: 2px;
+}
+a.bottone{
+  border-radius: 100% !important;
+}
+
+.buttonabsolute{
+  position: absolute !important;
+  top: 27%;
+  right: 0%;
+  border-radius: 100% !important;
+  background-color: transparent !important;
+
+}
