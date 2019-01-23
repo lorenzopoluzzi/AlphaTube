@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import VisualizerInfoItem from './VisualizerInfoItem';
+import '../style/VisualizerInfo.css';
 
 const dbpediaUrl = 'http://dbpedia.org/sparql';
 
@@ -151,25 +153,17 @@ class WikiInfo extends Component {
     render() {
         return (
             <div>
-                <article class="strips__strip">
-                    <div class="strip__content">
-                        <h1 class="strip__title" data-name="Artista">Wiki Artista</h1>
-                        <div class="strip__inner-text">
-                            <img src={this.state.artista.urlImmagine} />
-                            <h2>{this.state.artista.nomeArtista}</h2>
-                            <p>{this.state.artista.wikiDescrizione}</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="strips__strip">
-                    <div class="strip__content">
-                        <h1 class="strip__title" data-name="Canzone">Wiki Canzone</h1>
-                        <div class="strip__inner-text">
-                            <h2>{this.state.canzone.nomeCanzone}</h2>
-                            <p>{this.state.canzone.wikiDescrizione}</p>
-                        </div>
-                    </div>
-                </article>
+                <VisualizerInfoItem title="Wiki Artista" content={
+                    "<img src={this.state.artista.urlImmagine} /> "+
+                    "<h2>{this.state.artista.nomeArtista}</h2>"+
+                    "<p>{this.state.artista.wikiDescrizione}</p>"
+                } />
+                <VisualizerInfoItem title="Wiki Canzone" content={
+                    "<h2>{this.state.canzone.nomeCanzone}</h2>"+
+                    "<p>{this.state.canzone.wikiDescrizione}</p>"
+                } />
+                      
+                            
             </div>
         );
     }
