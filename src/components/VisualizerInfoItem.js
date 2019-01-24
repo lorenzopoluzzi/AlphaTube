@@ -49,7 +49,6 @@ class VisualizerInfoItem extends Component {
     }
 
     render() {
-        console.log(this.state.content);
         return (
             <article className={this.state.classArticle} onClick={this.open}>
                 <div className="strip__content">

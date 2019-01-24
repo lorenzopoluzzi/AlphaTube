@@ -233,3 +233,9 @@
   .contetTitle{
     font-weight: bold;
   }
+  .wikiInfo__Icon{
+    font-size: 3.5vw;
+  }
+  .wikiInfo__Image{
+    border-radius: 10px;
+  }

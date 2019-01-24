@@ -3,6 +3,7 @@ import axios from 'axios';
 import VisualizerInfoItem from './VisualizerInfoItem';
 import '../style/VisualizerInfo.css';
 
+
 const dbpediaUrl = 'http://dbpedia.org/sparql';
 
 class WikiInfo extends Component {
@@ -26,6 +27,8 @@ class WikiInfo extends Component {
                 album: "",
                 genere: ""
             },
+            errorArtista: false,
+            errorCanzone: false,
             isLoadedArtista: false,
             isLoadedCanzone: false
         }
@@ -74,8 +77,11 @@ class WikiInfo extends Component {
             }
         })
             .then(res => {
+
+                console.log(res);
                 let artista = res.data.results.bindings[0];
-                
+
+                console.log(artista);
                 if (artista != null) {
                     this.setState({
                         artista: {
@@ -83,10 +89,15 @@ class WikiInfo extends Component {
                             wikiDescrizione: artista.text.value,
                             tipoArtista: ((artista.tipo) ? artista.tipo.value : ""),
                             urlImmagine: artista.immagine.value
-                            
-                        },isLoadedArtista: true
+
+                        },
                     });
                 }
+                this.setState({ isLoadedArtista: true, errorArtista: false });
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ isLoadedArtista: true, errorArtista: true });
             });
     }
 
@@ -144,12 +155,16 @@ class WikiInfo extends Component {
                             artista: ((canzone.nomeArtista) ? canzone.nomeArtista.value : ""),
                             album: ((canzone.nomeAlbum) ? canzone.nomeAlbum.value : ""),
                             genere: ((canzone.nomeGenere) ? canzone.nomeGenere.value : "")
-                            
+
                         },
-                        isLoadedCanzone: true
+
 
                     });
                 }
+                this.setState({ isLoadedCanzone: true, errorCanzone: false });
+            })
+            .catch(error => {
+                this.setState({ isLoadedCanzone: true, errorCanzone: true });
             });
     }
 
@@ -159,11 +174,36 @@ class WikiInfo extends Component {
             <div>
                 <VisualizerInfoItem loaded={this.state.isLoadedArtista} title="Wiki Artista" content={
                     ((this.state.isLoadedArtista) ?
-                        <div>
-                            <img src={this.state.artista.urlImmagine} />
-                            <h2 className="contetTitle">{this.state.artista.nomeArtista}</h2>
-                            <p>{this.state.artista.wikiDescrizione}</p>
-                        </div>
+                        ((!this.state.errorArtista) ?
+                            ((this.state.artista.wikiDescrizione) ?
+                                <div>
+                                    <img className="wikiInfo__Image" src={this.state.artista.urlImmagine} />
+                                    <h2 className="contetTitle">{this.state.artista.nomeArtista}</h2>
+                                    <p>{this.state.artista.wikiDescrizione}</p>
+                                    {((!this.state.artista.tipoArtista) ?
+                                        <div>
+                                            <i className="fas fa-user wikiInfo__Icon "></i>
+                                            <p>Cantante</p>
+                                        </div>
+                                        :
+                                        <div>
+                                            <i className="fas fa-users wikiInfo__Icon"></i>
+                                            <p>Band</p>
+                                        </div>
+                                    )}
+                                </div>
+                                :
+                                <div>
+                                    <i className="fas fa-exclamation-circle wikiInfo__Icon"></i>
+                                    <h2>L'artista non è stato trovato o non esiste su DBPEDIA.ORG</h2>
+                                </div>
+                            )
+                            :
+                            <div>
+                                <i className="fas fa-exclamation-circle wikiInfo__Icon"></i>
+                                <h2>I server di DBPEDIA.ORG è in manutenzione o inraggiungibile</h2>
+                            </div>
+                        )
                         :
                         <div className="spinner-grow colore-l2pt-at" role="status">
                             <span className="sr-only">Loading...</span>
@@ -172,10 +212,24 @@ class WikiInfo extends Component {
                 } />
                 <VisualizerInfoItem loaded={this.state.isLoadedCanzone} title="Wiki Canzone" content={
                     ((this.state.isLoadedCanzone) ?
-                        <div>
-                            <h2>{this.state.canzone.nomeCanzone}</h2>
-                            <p>{this.state.canzone.wikiDescrizione}</p>
-                        </div>
+                        ((!this.state.errorCanzone) ?
+                            ((this.state.canzone.wikiDescrizione) ?
+                                <div>
+                                    <h2>{this.state.canzone.nomeCanzone}</h2>
+                                    <p>{this.state.canzone.wikiDescrizione}</p>
+                                </div>
+                                :
+                                <div>
+                                    <i className="fas fa-exclamation-circle wikiInfo__Icon"></i>
+                                    <h2>La canzone non è stata trovato o non esiste su DBPEDIA.ORG</h2>
+                                </div>
+                            )
+                            :
+                            <div>
+                                <i className="fas fa-exclamation-circle wikiInfo__Icon"></i>
+                                <h2>I server di DBPEDIA.ORG è in manutenzione o inraggiungibile</h2>
+                            </div>
+                        )
                         :
                         <div className="spinner-grow colore-l2pt-at" role="status">
                             <span className="sr-only">Loading...</span>

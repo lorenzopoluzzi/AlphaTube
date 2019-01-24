@@ -8,7 +8,7 @@ const VisualizerInfo = (props) => {
     return (
         <div className="col col-4">
             <section className="strips">
-                <WikiInfo artista="Francesca Michielin" canzone="Nessun grado di separazione"/>
+                <WikiInfo artista="The Police" canzone="Nessun grado di separazione"/>
             </section>
         </div>
     );
