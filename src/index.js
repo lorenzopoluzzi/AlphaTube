@@ -7,6 +7,7 @@ import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 import AjaxCall from "./components/AjaxCall";
 
+
 ReactDOM.render(
     <Routes />,
     document.getElementById('root')

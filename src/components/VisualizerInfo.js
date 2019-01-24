@@ -1,17 +1,14 @@
 import React from 'react';
-import WikiInfo from './components/wikiInfo';
-import ReactDOM from "react-dom";
+import WikiInfo from './wikiInfo';
 
 import '../style/VisualizerInfo.css';
-import '../Js/ArticleExpand.js';
 
 const VisualizerInfo = (props) => {
 
     return (
-        <div>
+        <div className="col col-4">
             <section className="strips">
-                <WikiInfo artista="Francesca Michelin" canzone="Nessun grado di separazione"/>
-                <i className="fa fa-close strip__close"></i>
+                <WikiInfo artista="Francesca Michielin" canzone="Nessun grado di separazione"/>
             </section>
         </div>
     );

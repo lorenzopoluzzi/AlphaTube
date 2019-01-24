@@ -7,7 +7,7 @@ import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
 import AjaxCall from "./components/AjaxCall";
 import Popularity from "./components/Popularity";
-import WikiInfo from './components/wikiInfo';
+import VisualizerInfo from './components/VisualizerInfo';
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 
@@ -39,6 +39,7 @@ class App extends Component {
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row">
                     <VideoDetail video={this.state.selectedVideo} />
+                    <VisualizerInfo  />
                 </div>
                 <div className="container">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
@@ -70,7 +71,6 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
-                <WikiInfo artista="Francesca Michielin" canzone="Nessun grado di separazione" />
             </div>
            
         );

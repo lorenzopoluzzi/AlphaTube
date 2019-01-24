@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../style/VisualizerInfo.css';
 
 class VisualizerInfoItem extends Component {
@@ -7,46 +7,61 @@ class VisualizerInfoItem extends Component {
         this.state = {
             classArticle: "strips__strip",
             classContent: "strip__inner-text",
-            classClose: "fa fa-close strip__close",
+            classClose: "fas fa-times strip__close",
+            content: this.props.content,
             expanded: false
         }
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
     }
     open(e) {
+        console.log(this.props.loaded);
         e.preventDefault();
         if (!this.state.expanded) {
             this.setState({
-                classArticle: [...this.state.classArticle, " strips__strip--expanded"],
+                classArticle: "strips__strip strips__strip--expanded",
                 classContent: "strip__inner-text contentTransiction",
-                classClose: "fa fa-close strip__close strip__close--show contentTransictionX",
+                classClose: "fas fa-times strip__close strip__close--show contentTransictionX",
                 expanded: true
             });
         }
     }
 
-    close(e){
+    close(e) {
         e.preventDefault();
-        if (!this.state.expanded) {
+
+        if (this.state.expanded) {
+
             this.setState({
                 classArticle: "strips__strip",
                 classContent: "strip__inner-text contentTransictionClose ",
-                classClose: "fa fa-close strip__close strip__close--show contentTransictionXClose",
-                expanded: true
+                classClose: "fas fa-times strip__close contentTransictionXClose",
+                expanded: false
             });
-        } 
+        }
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps.content);
+        if(nextProps.content !== this.state.content){
+            this.setState({ content: nextProps.content });
+        }
+
     }
 
     render() {
-        <article className={this.state.classArticle} onClick={this.open()}>
-            <div className="strip__content">
-                <h1 className="strip__title" data-name="Artista">{this.props.title}</h1>
-                <div className={this.state.classContent}>
-                    {this.props.content}
+        console.log(this.state.content);
+        return (
+            <article className={this.state.classArticle} onClick={this.open}>
+                <div className="strip__content">
+                    <h1 className="strip__title" data-name="Artista">{this.props.title}</h1>
+                    <div className={this.state.classContent}>
+
+                        {this.state.content}
+                    </div>
                 </div>
-            </div>
-            <i className={this.state.classClose}  onClick={this.close()}></i>
-        </article>
+                <i className={this.state.classClose} onClick={this.close}></i>
+            </article>
+        );
     }
 
 }

@@ -6,21 +6,26 @@
     text-align: center;
     overflow: hidden;
     color: white;
+    position: relative;
   }
   .strips__strip {
     will-change: width, left, z-index, height;
     position: absolute;
-    width: 20%;
-    min-height: 100vh;
+    width: 33%;
+    min-height: 33vh;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .strips__strip:nth-child(1) {
+    top: 0;
     left: 0;
+    width: 100%;
   }
   .strips__strip:nth-child(2) {
-    left: 20vw;
+    top: 33vh;
+    left: 0;
+    width: 100%;
   }
   .strips__strip:nth-child(3) {
     left: 40vw;
@@ -62,19 +67,8 @@
     animation-delay: 0.5s;
   }
   @media screen and (max-width: 760px) {
-    .strips__strip {
-      min-height: 20vh;
-    }
-    .strips__strip:nth-child(1) {
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-    .strips__strip:nth-child(2) {
-      top: 20vh;
-      left: 0;
-      width: 100%;
-    }
+   
+    
     .strips__strip:nth-child(3) {
       top: 40vh;
       left: 0;
@@ -140,12 +134,9 @@
     left: 0 !important;
     z-index: 3;
     cursor: default;
+    min-height: 100vh;
   }
-  @media screen and (max-width: 760px) {
-    .strips__strip--expanded {
-      min-height: 100vh;
-    }
-  }
+
   .strips__strip--expanded .strip__content:hover:before {
     transform: skew(-30deg) scale(1) translate(0, 0);
     opacity: 0.05;
@@ -166,6 +157,7 @@
     font-size: 3.5vw;
     color: white;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    font-family: 'Luckiest Guy' !important;
   }
   @media screen and (max-width: 760px) {
     .strip__title {
@@ -181,6 +173,7 @@
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: pointer;
     transition-delay: 0.5s;
+    font-size: 2vw;
   }
   .strip__close--show {
     opacity: 1;
@@ -225,27 +218,6 @@
       transform: translate3d(0, 0, 0);
     }
   }
-  /* Demo purposes */
-  body {
-    font-family: 'Lato';
-    -webkit-font-smoothing: antialiased;
-    text-rendering: geometricPrecision;
-    line-height: 1.5;
-  }
-  h1, h2 {
-    font-weight: 300;
-  }
-  .fa {
-    font-size: 30px;
-    color: white;
-  }
-  h2 {
-    font-size: 36px;
-    margin: 0 0 16px;
-  }
-  p {
-    margin: 0 0 16px;
-  }
   .contentTransiction {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
   }
@@ -257,4 +229,7 @@
   }
   .contentTransictionXClose {
     transition: all 0.2s 0s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .contetTitle{
+    font-weight: bold;
   }

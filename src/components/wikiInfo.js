@@ -10,7 +10,6 @@ class WikiInfo extends Component {
 
     constructor(props) {
 
-
         super(props);
         this.state = {
             artista: {
@@ -26,7 +25,9 @@ class WikiInfo extends Component {
                 artista: "",
                 album: "",
                 genere: ""
-            }
+            },
+            isLoadedArtista: false,
+            isLoadedCanzone: false
         }
 
         this.getInfoWiki_Artista = this.getInfoWiki_Artista.bind(this);
@@ -74,15 +75,16 @@ class WikiInfo extends Component {
         })
             .then(res => {
                 let artista = res.data.results.bindings[0];
+                
                 if (artista != null) {
-                    console.log(artista.text.value);
                     this.setState({
                         artista: {
                             nomeArtista: this.props.artista,
                             wikiDescrizione: artista.text.value,
                             tipoArtista: ((artista.tipo) ? artista.tipo.value : ""),
                             urlImmagine: artista.immagine.value
-                        }
+                            
+                        },isLoadedArtista: true
                     });
                 }
             });
@@ -133,9 +135,7 @@ class WikiInfo extends Component {
         })
             .then(res => {
                 let canzone = res.data.results.bindings[0];
-                console.log(canzone);
                 if (canzone != null) {
-                    console.log(canzone.text.value);
                     this.setState({
                         canzone: {
                             nomeCanzone: ((canzone.titolo.value) ? canzone.titolo.value : ""),
@@ -144,26 +144,46 @@ class WikiInfo extends Component {
                             artista: ((canzone.nomeArtista) ? canzone.nomeArtista.value : ""),
                             album: ((canzone.nomeAlbum) ? canzone.nomeAlbum.value : ""),
                             genere: ((canzone.nomeGenere) ? canzone.nomeGenere.value : "")
-                        }
+                            
+                        },
+                        isLoadedCanzone: true
+
                     });
                 }
             });
     }
 
+
     render() {
         return (
             <div>
-                <VisualizerInfoItem title="Wiki Artista" content={
-                    "<img src={this.state.artista.urlImmagine} /> "+
-                    "<h2>{this.state.artista.nomeArtista}</h2>"+
-                    "<p>{this.state.artista.wikiDescrizione}</p>"
+                <VisualizerInfoItem loaded={this.state.isLoadedArtista} title="Wiki Artista" content={
+                    ((this.state.isLoadedArtista) ?
+                        <div>
+                            <img src={this.state.artista.urlImmagine} />
+                            <h2 className="contetTitle">{this.state.artista.nomeArtista}</h2>
+                            <p>{this.state.artista.wikiDescrizione}</p>
+                        </div>
+                        :
+                        <div className="spinner-grow colore-l2pt-at" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    )
                 } />
-                <VisualizerInfoItem title="Wiki Canzone" content={
-                    "<h2>{this.state.canzone.nomeCanzone}</h2>"+
-                    "<p>{this.state.canzone.wikiDescrizione}</p>"
+                <VisualizerInfoItem loaded={this.state.isLoadedCanzone} title="Wiki Canzone" content={
+                    ((this.state.isLoadedCanzone) ?
+                        <div>
+                            <h2>{this.state.canzone.nomeCanzone}</h2>
+                            <p>{this.state.canzone.wikiDescrizione}</p>
+                        </div>
+                        :
+                        <div className="spinner-grow colore-l2pt-at" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    )
                 } />
-                      
-                            
+
+
             </div>
         );
     }
