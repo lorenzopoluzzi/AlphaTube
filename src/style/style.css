@@ -45,6 +45,11 @@ body {
     color: rgb(7,169,114);
 }
 
+.badge-l2pt {
+    background-color: rgb(6, 138, 93);
+    color: white;
+}
+
 /*stile per il sottomenu*/
 * {box-sizing: border-box;}
 

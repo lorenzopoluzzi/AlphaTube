@@ -11,10 +11,8 @@ const VideoListItem = ({video, onVideoSelect, timeWinner, siteWinner}) => {
                 </div>
 
                 <div className="media-body">
-                    <div className="media-heading">{video.snippet.title}</div>
-                </div>
-                <div>
-                    <p>{siteWinner} - {timeWinner}</p>
+                    <h5 className="media-heading">{video.snippet.title}</h5>
+                    <span class="badge badge-l2pt"><i class="fas fa-globe"></i> {siteWinner} <i class="fas fa-eye"></i>{timeWinner}</span>
                 </div>
             </div>
         </li>
