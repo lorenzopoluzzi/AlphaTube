@@ -64,7 +64,7 @@
             <div class="float-md-right float-sm-none float-xs-none">
                 <a href="#div-recommender" class="navbarA active ">Recommender</a>
                 <a href="#contact" class="navbarA ">Info</a>
-                <a href="#about" class="navbarA ">Lista</a>
+                <a href="#listaVitali" class="navbarA ">Lista</a>
 
             </div>
         </div>
@@ -82,6 +82,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script type="text/javascript">
+    $( document ).ready(function() {
+      $('button').click(function(){
+        $('button').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
       $("#navbar").css("padding","15px 15px");
       $(".navbarA").css("font-size","18px");
       $("#logo").css("font-size","35px");

@@ -5,6 +5,8 @@ import VideoListItem from "./VideoListItem";
 class Popularity extends Component {
     videoItems = " ";
     porcodio;
+    myArrayTimes;
+    myArraySite;
     globalPopularity;
     videoId = null;
 
@@ -21,11 +23,18 @@ class Popularity extends Component {
 
     componentDidMount() {
         this.videoItems = " ";
+        this.nomeSito = " ";
         this.altriRecommender = [];
-
+        this.myArrayTimes = new Array();
+        this.myArrayTimesNonCicl = new Array();
+        this.myArraySite = new Array();
         axios.all([
             axios.get('http://site1828.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1906.tw.cs.unibo.it/globpop/')
+            axios.get('http://site1838.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1839.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1846.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1847.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1827.tw.cs.unibo.it/globpop/')
         ]).then(res => {
             console.log('SONO NEL GLOBALINO');
             console.log(res);
@@ -33,6 +42,12 @@ class Popularity extends Component {
             res.map((siti) => {
                 this.videoIdTemp = null;
                 this.timesWhatchedTemp = 0;
+                this.nomeSito = siti.data.site;
+                if(!this.nomeSito){
+                    this.nomeSito = siti.request.responseURL;
+                }
+                console.log("il nome sitino è: ");
+                console.log(this.nomeSito);
                 if(siti.data.recommended != null){
                     siti.data.recommended.map((videoDelSito) => {
                         if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
@@ -44,10 +59,51 @@ class Popularity extends Component {
                             }
                         }
                     });
+                    console.log("SONO NEL GLOBALETTO, QUI CI STAMPO IL SITARELLO CON IL VALORE MAGGIORE: ");
+                    console.log(this.nomeSito);
                     console.log(this.timesWhatchedTemp);
-                    this.videoIds = this.videoIds + this.videoIdTemp + ", ";
+                    this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArraySite[this.videoIdTemp] = this.nomeSito;
+                } else {
+                    siti.data.videos.map((videoDelSito) => {
+                        if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                            this.timesWhatchedTemp = videoDelSito.timesWatched;
+                            if(!videoDelSito.videoID){
+                                this.videoIdTemp = videoDelSito.videoId;
+                            } else {
+                                this.videoIdTemp = videoDelSito.videoID;
+                            }
+                        }
+                    });
+                    console.log("SONO NEL GLOBALETTO, QUI CI STAMPO IL SITARELLO CON IL VALORE MAGGIORE: ");
+                    console.log(this.nomeSito);
+                    console.log(this.timesWhatchedTemp);
+                    this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArraySite[this.videoIdTemp] = this.nomeSito;
                 }
             });
+            /* */
+            for(var tmpKeyXl in this.myArrayTimes) {
+                var tempinoMax = -1;
+                var sitinoMax = "";
+                for(var key in this.myArrayTimes){
+                    console.log("nella chiave: ");
+                    console.log(key);
+                    console.log("c'è il valore: ");
+                    console.log(this.myArrayTimes[key]);
+                    if(this.myArrayTimes[key] > tempinoMax){
+                        tempinoMax = this.myArrayTimes[key];
+                        sitinoMax = key;
+                    }
+                }
+                this.myArrayTimes[sitinoMax] = -1;
+                this.videoIds = this.videoIds + sitinoMax + ", ";
+            }
+            console.log("la minchietta dei video è la seguente, scoprila insieme a me: ");
+            console.log(this.videoIds);
+
             console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
             console.log(this.videoIds);
             axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
@@ -59,7 +115,9 @@ class Popularity extends Component {
                             <VideoListItem
                                 onVideoSelect = {this.props.onVideoSelect}
                                 key={video.etag}
-                                video={video} />
+                                video={video}
+                                timeWinner = {this.myArrayTimesNonCicl[video.id]}
+                                siteWinner = {this.myArraySite[video.id]}/>
                         );
                     });
                     console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
@@ -84,30 +142,60 @@ class Popularity extends Component {
                 }
                 console.log('video id dentro a POPULARITY 1.1:  '+this.videoId);
             }
-
+            this.myArrayTimes = new Array();
+            this.myArrayTimesNonCicl = new Array();
+            this.myArraySite = new Array();
             axios.all([
                 axios.get('http://site1828.tw.cs.unibo.it/globpop?id='+this.videoId+''),
-                axios.get('http://site1834.tw.cs.unibo.it/globpop?id='+this.videoId+'')
+                axios.get('http://site1838.tw.cs.unibo.it/globpop?id='+this.videoId+''),
+                axios.get('http://site1839.tw.cs.unibo.it/globpop?id='+this.videoId+''),
+                axios.get('http://site1846.tw.cs.unibo.it/globpop?id='+this.videoId+''),
+                axios.get('http://site1847.tw.cs.unibo.it/globpop?id='+this.videoId+''),
+                axios.get('http://site1827.tw.cs.unibo.it/globpop?id='+this.videoId+'')
             ]).then(res => {
-                console.log('DIO BOIA SONO NEL POPULARITY DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
+                console.log('DIO BOIA SONO NEL POPULARITY RELATIVE DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
                 console.log(res);
                 this.videoIds = " ";
                 res.map((siti) => {
                     this.videoIdTemp = null;
                     this.timesWhatchedTemp = 0;
-                    siti.data.recommended.map((videoDelSito) => {
-                        if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
-                            this.timesWhatchedTemp = videoDelSito.timesWatched;
-                            if(!videoDelSito.videoID){
-                                this.videoIdTemp = videoDelSito.videoId;
-                            } else {
-                                this.videoIdTemp = videoDelSito.videoID;
+                    this.nomeSito = siti.data.site;
+                    if(siti.data.recommended != null){
+                        siti.data.recommended.map((videoDelSito) => {
+                            if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                                this.timesWhatchedTemp = videoDelSito.timesWatched;
+                                if(!videoDelSito.videoID){
+                                    this.videoIdTemp = videoDelSito.videoId;
+                                } else {
+                                    this.videoIdTemp = videoDelSito.videoID;
+                                }
                             }
-                        }
-                    });
-                    console.log(this.timesWhatchedTemp);
-                    this.videoIds = this.videoIds + this.videoIdTemp + ", ";
+                        });
+                        console.log(this.timesWhatchedTemp);
+                        this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                        this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                        this.myArraySite[this.videoIdTemp] = this.nomeSito;
+                    }
                 });
+                /* */
+                for(var tmpKeyXl in this.myArrayTimes) {
+                    var tempinoMax = -1;
+                    var sitinoMax = "";
+                    for(var key in this.myArrayTimes){
+                        console.log("nella chiave: ");
+                        console.log(key);
+                        console.log("c'è il valore: ");
+                        console.log(this.myArrayTimes[key]);
+                        if(this.myArrayTimes[key] > tempinoMax){
+                            tempinoMax = this.myArrayTimes[key];
+                            sitinoMax = key;
+                        }
+                    }
+                    this.myArrayTimes[sitinoMax] = -1;
+                    this.videoIds = this.videoIds + sitinoMax + ", ";
+                }
+                console.log("la minchietta dei video è la seguente, scoprila insieme a me(RELATIVE): ");
+                console.log(this.videoIds);
                 console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
                 console.log(this.videoIds);
                 axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
@@ -119,7 +207,9 @@ class Popularity extends Component {
                                 <VideoListItem
                                     onVideoSelect = {this.props.onVideoSelect}
                                     key={video.etag}
-                                    video={video} />
+                                    video={video}
+                                    timeWinner = {this.myArrayTimesNonCicl[video.id]}
+                                    siteWinner = {this.myArraySite[video.id]}/>
                             );
                         });
                         console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");

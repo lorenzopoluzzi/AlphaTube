@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Searchbar from "./components/Searchbar";
 import VideoList from "./components/VideoList";
+import ListaVitali from "./components/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
 import AjaxCall from "./components/AjaxCall";
@@ -30,7 +31,7 @@ class App extends Component {
 
         return (
             <div className="App">
-
+                <ListaVitali/>
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />

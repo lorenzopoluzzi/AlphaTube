@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VideoListItem = ({video, onVideoSelect}) => {
+const VideoListItem = ({video, onVideoSelect, timeWinner, siteWinner}) => {
 
     const imageUrl = video.snippet.thumbnails.default.url;
     return (
@@ -12,6 +12,9 @@ const VideoListItem = ({video, onVideoSelect}) => {
 
                 <div className="media-body">
                     <div className="media-heading">{video.snippet.title}</div>
+                </div>
+                <div>
+                    <p>{siteWinner} - {timeWinner}</p>
                 </div>
             </div>
         </li>
