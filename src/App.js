@@ -11,6 +11,9 @@ import ArtistSimilarity from "./components/ArtistSimilarity";
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
+// TODO: lift-up delle proprietà condivise dai vari recommender;
+//       passare la fun handleVideoSelection direttamente alla comp VideoItem: in questo modo
+//       si evita di passarla attraverso tutte le comp che le separano. Vedi https://reactjs.org/docs/context.html
 
 class App extends Component {
     
