@@ -7,10 +7,13 @@ import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
 import AjaxCall from "./components/AjaxCall";
 import Popularity from "./components/Popularity";
+import ArtistSimilarity from "./components/ArtistSimilarity";
+
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 
 class App extends Component {
+    
     constructor(props){
         super(props);
 
@@ -24,22 +27,39 @@ class App extends Component {
     videoSearch(term) {
         YTSearch({key: API_KEY, term:term}, (videos) => {
             this.setState({ videos : videos , selectedVideo : videos[0]});
-            console.log(this.selectedVideo);
+            console.log(this.state);
         });
     }
+
+    handleVideoSelection(video){
+        this.setState({selectedVideo: video });
+    }
+
     render() {
+        
         const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
 
         return (
             <div className="App">
+                
                 <header className="App-header">
 
                     <h1 id="h1-l2pt">Alpha Tubo</h1>
                 </header>
+                
                 <Searchbar onSearchTermChange={videoSearch}/>
+                
                 <div className="row">
                     <VideoDetail video={this.state.selectedVideo} />
                 </div>
+
+                <div>
+                    <ArtistSimilarity
+                        videoSelected = {this.state.selectedVideo}
+                        onVideoSelect = {this.handleVideoSelection}
+                    />
+                </div>
+
                 <div className="container">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                     <nav id="spacing-nav-l2pt">

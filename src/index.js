@@ -11,5 +11,5 @@ ReactDOM.render(
     <Routes />,
     document.getElementById('root')
 );
-//ReactDOM.render(<AjaxCall />, document.getElementById('speriamo'));
+
 registerServiceWorker();

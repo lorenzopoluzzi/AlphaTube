@@ -26,8 +26,8 @@ class Popularity extends Component {
             axios.get('http://site1828.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1906.tw.cs.unibo.it/globpop/')
         ]).then(res => {
-            console.log('SONO NEL GLOBALINO');
-            console.log(res);
+            //console.log('SONO NEL GLOBALINO');
+            //console.log(res);
             this.videoIds = " ";
             res.map((siti) => {
                 this.videoIdTemp = null;
@@ -43,17 +43,17 @@ class Popularity extends Component {
                             }
                         }
                     });
-                    console.log(this.timesWhatchedTemp);
+                    //console.log(this.timesWhatchedTemp);
                     this.videoIds = this.videoIds + this.videoIdTemp + ", ";
                 }
             });
-            console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
-            console.log(this.videoIds);
+            //console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
+            //console.log(this.videoIds);
             let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
-            console.log(videos);
+            //console.log(videos);
             videos.then(res => {
-                console.log("sono dentro alla ajax call item");
-                console.log(res);
+                //console.log("sono dentro alla ajax call item");
+                //console.log(res);
                 this.globalPopularity = res.map((video) => {
                     return (
                         <VideoListItem
@@ -62,8 +62,8 @@ class Popularity extends Component {
                             video={video} />
                     );
                 });
-                console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
-                console.log(this.globalPopularity);
+                //console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
+                //console.log(this.globalPopularity);
                 this.setState({isLoaded : true, video: res});
             });
         });
@@ -77,20 +77,20 @@ class Popularity extends Component {
             if(this.props.videoSeleceted != null){
                 this.videoId = this.props.videoSeleceted.id.videoId;
                 if(!this.videoId) {
-                    console.log("era vuoto");
+                    //console.log("era vuoto");
                     this.videoId = this.props.videoSeleceted.id;
-                    console.log(this.props.videoSeleceted.id);
-                    console.log('video id dentro a POPULARITY 1.0:  '+this.videoId);
+                    //console.log(this.props.videoSeleceted.id);
+                    //console.log('video id dentro a POPULARITY 1.0:  '+this.videoId);
                 }
-                console.log('video id dentro a POPULARITY 1.1:  '+this.videoId);
+                //console.log('video id dentro a POPULARITY 1.1:  '+this.videoId);
             }
 
             axios.all([
                 axios.get('http://site1828.tw.cs.unibo.it/globpop?id='+this.videoId+''),
                 axios.get('http://site1834.tw.cs.unibo.it/globpop?id='+this.videoId+'')
             ]).then(res => {
-                console.log('DIO BOIA SONO NEL POPULARITY DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
-                console.log(res);
+                //console.log('DIO BOIA SONO NEL POPULARITY DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
+                //console.log(res);
                 this.videoIds = " ";
                 res.map((siti) => {
                     this.videoIdTemp = null;
@@ -105,15 +105,15 @@ class Popularity extends Component {
                             }
                         }
                     });
-                    console.log(this.timesWhatchedTemp);
+                    //console.log(this.timesWhatchedTemp);
                     this.videoIds = this.videoIds + this.videoIdTemp + ", ";
                 });
-                console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
-                console.log(this.videoIds);
+                //console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
+                //console.log(this.videoIds);
                 let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
                 videos.then(res => {
-                        console.log("sono dentro alla ajax call item");
-                        console.log(res);
+                        //console.log("sono dentro alla ajax call item");
+                        //console.log(res);
                         this.porcodio = res.map((video) => {
                             return (
                                 <VideoListItem
@@ -122,8 +122,8 @@ class Popularity extends Component {
                                     video={video} />
                             );
                         });
-                        console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
-                        console.log(this.porcodio);
+                        //console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
+                        //console.log(this.porcodio);
                         this.setState({isLoaded : true, video: res});
                     });
             });
