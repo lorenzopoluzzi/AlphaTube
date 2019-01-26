@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, Row, Col, Fa } from 'mdbreact';
+import Formatter from './Formatter';
 
 class CardExample extends Component {
     render() {
@@ -27,7 +28,7 @@ class CardExample extends Component {
                             <Fa icon="chevron-right"  />
                         </Button>
                         <CardBody style={{width:"100%"}} cascade>
-                            <CardTitle  >{this.props.value.snippet.title} </CardTitle>
+                            <CardTitle >{this.props.value.snippet.title}</CardTitle>
 
                         </CardBody>
                         <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
@@ -38,21 +39,21 @@ class CardExample extends Component {
                                 <li className="list-inline-item pr-2">
                                     <a href="#!" className="white-text">
                                         <Fa icon="eye" />
+                                      <Formatter num =  {this.props.value.statistics.viewCount} />
 
-                                        {(this.props.value.statistics.viewCount.length>=5)? (this.props.value.statistics.viewCount.slice(0,3))+'K' : (this.props.value.statistics.viewCount)}
                                     </a>
                                 </li>
                                 <li className="list-inline-item pr-2">
                                     <a href="#!" className="white-text">
                                         <Fa icon="thumbs-up"> </Fa>
 
-                                        {this.props.value.statistics.likeCount}
+                                       <Formatter num = {this.props.value.statistics.likeCount} />
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
                                     <a href="#!" className="white-text">
                                         <Fa icon="thumbs-down"> </Fa>
-                                        {this.props.value.statistics.dislikeCount}
+                                        <Formatter num = {this.props.value.statistics.dislikeCount}/>
                                     </a>
                                 </li>
                             </ul>
