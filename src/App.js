@@ -2,11 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
 import Searchbar from "./components/Searchbar";
-import VideoList from "./components/VideoList";
 import ListaVitali from "./components/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
-import AjaxCall from "./components/AjaxCall";
+import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
@@ -50,7 +49,7 @@ class App extends Component {
                     </nav>
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
-                            <AjaxCall
+                            <FVitali
                                 onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                                 videoSeleceted = {this.state.selectedVideo}
                             />

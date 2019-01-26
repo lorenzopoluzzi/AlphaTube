@@ -11,7 +11,6 @@ class Popularity extends Component {
     videoId = null;
 
     constructor(props) {
-
         super(props);
         this.state = {
             isLoaded: false,
@@ -28,6 +27,7 @@ class Popularity extends Component {
         this.myArrayTimes = new Array();
         this.myArrayTimesNonCicl = new Array();
         this.myArraySite = new Array();
+        //eseguo la chiamata a tutti i recommender pubblicati senza dare un id cosi chiamo il globale
         axios.all([
             axios.get('http://site1828.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1838.tw.cs.unibo.it/globpop/'),
@@ -36,19 +36,19 @@ class Popularity extends Component {
             axios.get('http://site1847.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1827.tw.cs.unibo.it/globpop/')
         ]).then(res => {
-            console.log('SONO NEL GLOBALINO');
-            console.log(res);
             this.videoIds = " ";
             res.map((siti) => {
                 this.videoIdTemp = null;
                 this.timesWhatchedTemp = 0;
                 this.nomeSito = siti.data.site;
+                //il nome del sito alcuni recommender non me lo tornarno e lo vado a prendere dalla request
                 if(!this.nomeSito){
                     this.nomeSito = siti.request.responseURL;
                 }
-                console.log("il nome sitino è: ");
-                console.log(this.nomeSito);
+                //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
                 if(siti.data.recommended != null){
+                    //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                    //tra i video che mi tornano
                     siti.data.recommended.map((videoDelSito) => {
                         if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
                             this.timesWhatchedTemp = videoDelSito.timesWatched;
@@ -59,13 +59,17 @@ class Popularity extends Component {
                             }
                         }
                     });
-                    console.log("SONO NEL GLOBALETTO, QUI CI STAMPO IL SITARELLO CON IL VALORE MAGGIORE: ");
-                    console.log(this.nomeSito);
-                    console.log(this.timesWhatchedTemp);
+                    //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                    //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                    //nel frontend
                     this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
                     this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
                     this.myArraySite[this.videoIdTemp] = this.nomeSito;
                 } else {
+                    //siamo nel caso in cui i video me li ritornano dentro a videos della response
+                    
+                    //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                    //tra i video che mi tornano
                     siti.data.videos.map((videoDelSito) => {
                         if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
                             this.timesWhatchedTemp = videoDelSito.timesWatched;
@@ -76,23 +80,20 @@ class Popularity extends Component {
                             }
                         }
                     });
-                    console.log("SONO NEL GLOBALETTO, QUI CI STAMPO IL SITARELLO CON IL VALORE MAGGIORE: ");
-                    console.log(this.nomeSito);
-                    console.log(this.timesWhatchedTemp);
+                    //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                    //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                    //nel frontend
                     this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
                     this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
                     this.myArraySite[this.videoIdTemp] = this.nomeSito;
                 }
             });
-            /* */
+            //doppio for che mi serve per fare l'ordinamento dei video in base al timesWhatched cosi da creare la stringa con gli id
+            //che passo a youtube per averli già tutti in ordine
             for(var tmpKeyXl in this.myArrayTimes) {
                 var tempinoMax = -1;
                 var sitinoMax = "";
                 for(var key in this.myArrayTimes){
-                    console.log("nella chiave: ");
-                    console.log(key);
-                    console.log("c'è il valore: ");
-                    console.log(this.myArrayTimes[key]);
                     if(this.myArrayTimes[key] > tempinoMax){
                         tempinoMax = this.myArrayTimes[key];
                         sitinoMax = key;
@@ -101,15 +102,9 @@ class Popularity extends Component {
                 this.myArrayTimes[sitinoMax] = -1;
                 this.videoIds = this.videoIds + sitinoMax + ", ";
             }
-            console.log("la minchietta dei video è la seguente, scoprila insieme a me: ");
-            console.log(this.videoIds);
-
-            console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
-            console.log(this.videoIds);
+            //qui ho la stringa ordinata di video id quindi la passo a youtube che mi ritorna le informazioni per i video che mi servono
             axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
                 .then(res => {
-                    console.log("sono dentro alla ajax call item");
-                    console.log(res);
                     this.globalPopularity = res.data.items.map((video) => {
                         return (
                             <VideoListItem
@@ -120,31 +115,28 @@ class Popularity extends Component {
                                 siteWinner = {this.myArraySite[video.id]}/>
                         );
                     });
-                    console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
-                    console.log(this.globalPopularity);
+                    //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
                     this.setState({isLoaded : true, isLocal: false, isGlobal: true,video: res.data.items});
                 });
         });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // Typical usage (don't forget to compare props):
+        //questo controllo serve per non far ripetere tante volte questo metodo se le props non sono state cambiate
         if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
             this.videoItems = " ";
             this.altriRecommender = [];
             if(this.props.videoSeleceted != null){
                 this.videoId = this.props.videoSeleceted.id.videoId;
+                //questo controllo è perchè se videoId non esiste vuol dire che si chiama solo id (dipende sempre da come mi torna la risposta...)
                 if(!this.videoId) {
-                    console.log("era vuoto");
                     this.videoId = this.props.videoSeleceted.id;
-                    console.log(this.props.videoSeleceted.id);
-                    console.log('video id dentro a POPULARITY 1.0:  '+this.videoId);
                 }
-                console.log('video id dentro a POPULARITY 1.1:  '+this.videoId);
             }
             this.myArrayTimes = new Array();
             this.myArrayTimesNonCicl = new Array();
             this.myArraySite = new Array();
+            //eseguo la chiamata a tutti i recommender pubblicati passando l'id del video corrente cosi chiamo il globale relativo
             axios.all([
                 axios.get('http://site1828.tw.cs.unibo.it/globpop?id='+this.videoId+''),
                 axios.get('http://site1838.tw.cs.unibo.it/globpop?id='+this.videoId+''),
@@ -153,14 +145,15 @@ class Popularity extends Component {
                 axios.get('http://site1847.tw.cs.unibo.it/globpop?id='+this.videoId+''),
                 axios.get('http://site1827.tw.cs.unibo.it/globpop?id='+this.videoId+'')
             ]).then(res => {
-                console.log('DIO BOIA SONO NEL POPULARITY RELATIVE DELLA RISPOSTA, ANDIAMO A SCOPRIRE');
-                console.log(res);
                 this.videoIds = " ";
                 res.map((siti) => {
                     this.videoIdTemp = null;
                     this.timesWhatchedTemp = 0;
                     this.nomeSito = siti.data.site;
+                    //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
                     if(siti.data.recommended != null){
+                        //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                        //tra i video che mi tornano
                         siti.data.recommended.map((videoDelSito) => {
                             if(videoDelSito.timesWatched >= this.timesWhatchedTemp) {
                                 this.timesWhatchedTemp = videoDelSito.timesWatched;
@@ -171,13 +164,16 @@ class Popularity extends Component {
                                 }
                             }
                         });
-                        console.log(this.timesWhatchedTemp);
+                        //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                        //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                        //nel frontend
                         this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
                         this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
                         this.myArraySite[this.videoIdTemp] = this.nomeSito;
                     }
                 });
-                /* */
+                //doppio for che mi serve per fare l'ordinamento dei video in base al timesWhatched cosi da creare la stringa con gli id
+                //che passo a youtube per averli già tutti in ordine
                 for(var tmpKeyXl in this.myArrayTimes) {
                     var tempinoMax = -1;
                     var sitinoMax = "";
@@ -194,10 +190,7 @@ class Popularity extends Component {
                     this.myArrayTimes[sitinoMax] = -1;
                     this.videoIds = this.videoIds + sitinoMax + ", ";
                 }
-                console.log("la minchietta dei video è la seguente, scoprila insieme a me(RELATIVE): ");
-                console.log(this.videoIds);
-                console.log('WEEEEEEEEEEEEE dovrei averti creato la stringa con gli id con maggiore times watched');
-                console.log(this.videoIds);
+                //qui ho la stringa ordinata di video id quindi la passo a youtube che mi ritorna le informazioni per i video che mi servono
                 axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoIds+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
                     .then(res => {
                         console.log("sono dentro alla ajax call item");
@@ -212,15 +205,13 @@ class Popularity extends Component {
                                     siteWinner = {this.myArraySite[video.id]}/>
                             );
                         });
-                        console.log("DIO CANE DOVREI ESSERE IN DID UPDATE");
-                        console.log(this.porcodio);
+                        //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale relativo
                         this.setState({isLoaded : true, isLocal: true, isGlobal: true,video: res.data.items});
                     });
             });
         }
 
     }
-
     render() {
         if (!this.state.isLoaded) {
             return <div className="spinner-grow colore-l2pt-at" role="status">
