@@ -64,7 +64,7 @@ class AjaxCall extends Component {
                     </div>;
         } else {
             return (
-                <div>
+                <div className="col-6 offset-md-3">
                     <ul className="list-group">
                         {this.porcodio}
                     </ul>

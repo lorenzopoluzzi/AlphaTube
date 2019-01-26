@@ -18,14 +18,21 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px;
 }
-
+.list-group-item:hover {
+    border: 1px solid rgb(6, 138, 93);
+}
 .list-group-item {
     cursor: pointer;
-    margin-top: 8px;
+    background-color: whitesmoke !important;
+    -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+    box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+    margin-top: 22px;
 }
 
-.list-group-item:hover {
-    background-color: #eee;
+img.media-object {
+    position:relative;
+    left:-32px;
+    border-radius:5px;
 }
 
 .search-bar {
@@ -46,8 +53,10 @@ body {
 }
 
 .badge-l2pt {
-    background-color: rgb(6, 138, 93);
-    color: white;
+    border:1px solid rgb(6, 138, 93);
+    position: absolute;
+    right: 8px !important;
+    bottom: 4px;
 }
 
 /*stile per il sottomenu*/
@@ -223,14 +232,13 @@ body {
     cursor: pointer;
 }
 
-.list-group-item:hover {
-    background-color: #eee;
-}
-
 .search-bar {
     margin: 20px;
 }
 
 .row {
     padding: 30px;
+}
+.fas {
+    color: rgb(7,169,114);
 }

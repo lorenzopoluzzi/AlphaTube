@@ -9,11 +9,16 @@ const VideoListItem = ({video, onVideoSelect, timeWinner, siteWinner}) => {
                 <div className="media-left">
                     <img className="media-object" src={imageUrl}/>
                 </div>
-
+                {(timeWinner ?
                 <div className="media-body">
                     <h5 className="media-heading">{video.snippet.title}</h5>
-                    <span class="badge badge-l2pt"><i class="fas fa-globe"></i> {siteWinner} <i class="fas fa-eye"></i>{timeWinner}</span>
+                    <span class="badge badge-l2pt"><i class="fas fa-globe"></i> {siteWinner}&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-eye"></i>  {timeWinner}</span>
                 </div>
+                :
+                <div className="media-body">
+                    <h5 className="media-heading">{video.snippet.title}</h5>
+                </div>
+                )}
             </div>
         </li>
     );
