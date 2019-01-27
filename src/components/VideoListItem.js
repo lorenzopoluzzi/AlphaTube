@@ -1,39 +1,28 @@
 import React from 'react';
+import '../style/videoListItem.css'
 
-import CardExample from "./CardsVideo";
+const VideoListItem = ({video, onVideoSelect, timeWinner, siteWinner}) => {
 
-
-const VideoListItem = ({video, onVideoSelect}) => {
-    //const video = props.video;
     const imageUrl = video.snippet.thumbnails.default.url;
-    //console.log(imageUrl + 'ehila');
     return (
-
-        <div /* onClick={() => onVideoSelect(video)} */ className="" style={{padding:"0.5em",height:"23em"}} >
-           <CardExample value = {video}/>
-
-        </div>
-
+        <li onClick={() => onVideoSelect(video)} className="list-group-item">
+            <div className="video-list media">
+                <div className="media-left">
+                    <img className="media-object" src={imageUrl} alt="{imageUrl}"/>
+                </div>
+                {(timeWinner ?
+                <div className="media-body">
+                    <h5 className="media-heading">{video.snippet.title}</h5>
+                    <span className="badge badge-l2pt"><i className="fas fa-globe"></i> {siteWinner}&nbsp;&nbsp;&nbsp;&nbsp; <i className="fas fa-eye"></i>  {timeWinner}</span>
+                </div>
+                :
+                <div className="media-body">
+                    <h5 className="media-heading">{video.snippet.title}</h5>
+                </div>
+                )}
+            </div>
+        </li>
     );
 };
 
 export default VideoListItem;
-
-/*
-<div className="video-list media">
-                <div className="media-left">
-                    <img className="media-object" src={imageUrl}/>
-                </div>
-
-                <div className="media-body">
-                    <div className="media-heading"><b>{video.snippet.title}</b></div>
-
-                </div>
-                <div className="media-body">
-                    <div className="media-mt-0 mb-1">
-                        {(video.snippet.description.length>150)? (video.snippet.description.slice(0,150))+'... ' : (video.snippet.description) }
-
-                    </div>
-                </div>
-            </div>
- */

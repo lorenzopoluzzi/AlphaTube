@@ -1,0 +1,81 @@
+.phone-1-01 .section-1-01.black-theme .animated.local-nav {
+    -webkit-animation: op-opacity-in .5s ease 1.4s forwards;
+    animation: op-opacity-in .5s ease 1.4s forwards;
+}
+.phone-1-01 .local-nav.black-theme {
+    background-color: transparent;
+}
+.phone-1-01 .local-nav.op-theme-container {
+     position: absolute;
+     width: 100%;
+     z-index: 10;
+}
+.phone-1-01 .local-nav {
+    position: relative;
+    margin-top: -1px;
+    min-height: 60px;
+}
+.phone-1-01 .black-theme {
+    color: #fff;
+    background-color: #000;
+}
+.phone-1-01 .local-nav .nav-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    z-index: 97;
+}
+.phone-1-01 .local-nav .nav-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    transition: background-color .5s cubic-bezier(.28,.11,.32,1);
+    transition-property: background-color,backdrop-filter,-webkit-backdrop-filter;
+}
+.phone-1-01 .local-nav .nav-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    margin: auto;
+}
+.phone-1-01 .local-nav .nav-list-container {
+    position: relative;
+}
+.container-text {
+    max-width: 1200px;
+    min-width: 300px;
+}
+.phone-1-01 .local-nav .nav-list {
+    overflow: hidden;
+    position: relative;
+    padding: 0 15px;
+    height: 60px;
+}
+
+.animated.op-ani .op-ani-lightscreen, .animated .op-ani .op-ani-lightscreen{
+    -webkit-animation: light-anim 0.5s cubic-bezier(0.55, 0.1, 0.43, 0.82) 1s forwards;
+    animation: light-anim 0.5s cubic-bezier(0.55, 0.1, 0.43, 0.82) 1s forwards;
+}
+.animated.op-ani .op-ani-bg-light, .animated.op-ani.op-ani-bg-light, .animated .op-ani .op-ani-bg-light, .animated .op-ani.op-ani-bg-light{
+    -webkit-animation: light-anim 0.5s cubic-bezier(0.55, 0.1, 0.43, 0.82) 1s forwards;
+    animation: light-anim 0.5s cubic-bezier(0.55, 0.1, 0.43, 0.82) 1s forwards;
+}
+.phone-1-01 .section-1-01 .black-theme .op-kv-bg{
+    background-color: black;
+    background-image: url('https://image01.oneplus.net/shop/201901/13/696/7018959a925b531b55a8689261965eaa.jpg');
+}
+
+@media screen and (max-width:736px){
+    .phone-1-01 .section-1-01 .black-theme .op-kv-bg{
+        background-image: url('https://image01.oneplus.net/shop/201901/13/586/871ad67ba0732f7eeee06c16fbc36d09.jpg');
+    }
+}

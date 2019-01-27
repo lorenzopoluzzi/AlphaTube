@@ -1,96 +1,93 @@
+body{
+    font-family: Roboto;
+}
 .App {
   text-align: center;
+  padding-top: 40px;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
 .App-header {
-  background-color: #222;
+    background: rgb(7,169,114);
+    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
   height: auto;
   padding: 20px;
   color: white;
 }
-
-.App-title {
-  font-size: 1.5em;
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.list-group-item {
+  cursor: pointer;
+  background-color: whitesmoke !important;
+  -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  margin-top: 22px;
+}
+.list-group-item:hover {
+  border: 1px solid rgb(6, 138, 93);
+}
+a.tab-l2pt {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: row !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  flex: 1 1 !important;
+  position: relative !important;
+  padding-right: 5px !important;
+  color: #495057 !important;
+}
+.tab-l2pt.active {
+  color: #078b5e !important;
+  border-bottom-color: #078b5e !important;
+  border-bottom: 2px solid !important;
+  border-top: 0 !important;
+}
+.row {
+    margin: 0 !important;
+}
+a.tab-l2pt:hover {
+    text-decoration: none;
+    color: #078b5e !important;
 }
 
-.App-intro {
-  font-size: large;
+a.tab-l2pt i {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 30px;
+}
+span#text-l2pt-tab {
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Luckiest Guy' !important;
+}
+#h3-l2pt {
+    padding: 10px;
+}
+#h1-l2pt, #h3-l2pt {
+    font-family: 'Luckiest Guy' !important;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.grid-container {
-  display:inline-grid;
-  vertical-align: -webkit-baseline-middle;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-
-.view-cascade {
-  margin-left: 4%;
-  margin-right: 4%;
-  margin-top: -1.25rem;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-  -webkit-border-radius: .25rem;
-  border-radius: .25rem;
-
-}
-button.btngeneri {
-  background-color: white !important ;
-  color: black !important;
-}
-button.active {
-  background-color: #078b5e !important;
-  color: white !important;
-  border: 2px solid black  !important;
-}
-a.btn-card{
-  background-color: rgba(7, 139, 94, 0.19) !important;
-}
-a.btn-card:hover{
-  background-color: rgba(7, 139, 94) !important;
-}
-
-
-div.mdb-color.lighten-3{
-  background-color: #078b5e !important;
-
-}
-
-div.card {
-  height: 340px !important;
-  background-color: whitesmoke !important;
-  -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
-  -moz-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
-  box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
-
-}
-
-div.ripple  {
-  height: 3rem;
-}
-
-h4.card-title{
-  margin-bottom: 2px;
-}
-a.bottone{
-  border-radius: 100% !important;
-}
-
 .buttonabsolute{
   position: absolute !important;
   top: 27%;
   right: 0%;
   border-radius: 100% !important;
   background-color: transparent !important;
-
+  padding: 10px 15px !important;
+  border-radius: 100% !important;
 }

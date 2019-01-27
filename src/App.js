@@ -1,69 +1,72 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 import Searchbar from "./components/Searchbar";
-import VideoList from "./components/VideoList";
+import ListaVitali from "./components/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
-import axios from 'axios';
-import VideoListItem from "./components/VideoListItem";
-import ListaVitali from "./components/ListaVitali";
-import Login from "./components/Login";
+import FVitali from "./components/FVitali";
+import Popularity from "./components/Popularity";
+import RecommenderSearch from "./components/RecommenderSearch";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
-//<img src={logo} className="App-logo" alt="logo" />
-
 
 class App extends Component {
-
-
     constructor(props){
         super(props);
         this.state = {
-            lists: [],
-            isLoaded: true,
-            completeVideoList : [],
+            videos: [],
+            selectedVideo : null,
         };
-
     }
 
-
-
-
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term:term}, (videos) => {
+            this.setState({ videos : videos , selectedVideo : videos[0]});
+        });
+    }
     render() {
-        if (!this.state.isLoaded) {
-            return <div>Loading...</div>;
-        } else {
+        const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
 
-
-            return (
-
-                <div className="App">
-                    <header className="App-header">
-                        <h1>Alpha Tubo</h1>
-                    </header>
-                    <ListaVitali/>
-
+        return (
+            <div className="App">
+                <ListaVitali/>
+                <Searchbar onSearchTermChange={videoSearch}/>
+                <div className="row justify-content-center">
+                    <VideoDetail video={this.state.selectedVideo} />
                 </div>
-
-            );
-        }
-
+                <div className="container" id="div-recommender">
+                    <h3 id="h3-l2pt">RECOMMENDER</h3>
+                    <nav id="spacing-nav-l2pt">
+                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="true"><i
+                                className="fas fa-chalkboard-teacher"></i><span id="text-l2pt-tab">FVitali</span></a>
+                            <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="tab" aria-controls="nav-agpopularity" aria-selected="false"><i
+                                className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
+                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
+                                className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                        </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
+                            <FVitali
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                videoSeleceted = {this.state.selectedVideo}
+                            />
+                        </div>
+                        <div className="tab-pane fade" id="nav-agpopularity" role="tabpanel" aria-labelledby="nav-agpopularity-tab">
+                            <Popularity
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                videoSeleceted = {this.state.selectedVideo}
+                            />
+                        </div>
+                        <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <RecommenderSearch />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
 }
-
 export default App;
-
-/*  <div>
-                        <ul className="list-group ">
-
-                            {this.state.completeVideoList.map((obj)=>{
-                                return (
-                                    <VideoListItem video = {obj}/>
-                                )
-                            })}
-
-                        </ul>
-                    </div>    */
