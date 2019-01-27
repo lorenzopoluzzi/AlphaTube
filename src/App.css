@@ -20,6 +20,16 @@ body{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.list-group-item {
+  cursor: pointer;
+  background-color: whitesmoke !important;
+  -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+  margin-top: 22px;
+}
+.list-group-item:hover {
+  border: 1px solid rgb(6, 138, 93);
+}
 a.tab-l2pt {
   -webkit-box-orient: horizontal !important;
   -webkit-box-direction: normal !important;

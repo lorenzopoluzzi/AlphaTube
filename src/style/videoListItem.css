@@ -1,0 +1,14 @@
+img.media-object {
+    position:relative;
+    left:-32px;
+    border-radius:5px;
+}
+.badge-l2pt {
+    border:1px solid rgb(6, 138, 93);
+    position: absolute;
+    right: 8px !important;
+    bottom: 4px;
+}
+.badge-l2pt .fas {
+    color: rgb(7,169,114);
+}

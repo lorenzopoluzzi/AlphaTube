@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../style/videoDetail.css'
 const VideoDetail = ({video}) => {
     if(!video) {
         return  <div className="d-flex justify-content-center m-5">
@@ -8,13 +8,9 @@ const VideoDetail = ({video}) => {
                     </div>
                 </div>;
     }
-    console.log(video);
     let videoId = video.id.videoId;
     if(!videoId) {
-        console.log("era vuoto");
         videoId = video.id;
-        console.log(video.id);
-        console.log(videoId);
     }
     const url = 'https://www.youtube.com/embed/' + videoId;
 
