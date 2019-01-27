@@ -21,7 +21,6 @@ class FVitali extends Component {
                 if(!this.videoId) {
                     this.videoId = this.props.videoSeleceted.id;
                 }
-                const url = 'https://www.youtube.com/embed/' + this.videoId;
             }
             axios.get('http://site1825.tw.cs.unibo.it/TW/globpop?id='+this.videoId+'')
                 .then(res => {

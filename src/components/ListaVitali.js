@@ -17,7 +17,6 @@ class ListaVitali extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.cacca);
         var postTemp = [];
         axios.get('http://site1825.tw.cs.unibo.it/video.json')
         .then(res => {
@@ -82,7 +81,6 @@ class ListaVitali extends Component {
             let stringID = [];
             let i = this.state.genereIDselected.length / 22  ;
             let inizioArray = 0;
-            console.log(i);
             if(i == 0){
                 stringID.push(this.state.genereIDselected.toString());
             }else{
@@ -165,15 +163,24 @@ class ListaVitali extends Component {
     render() {
         return (
             <div id="listaVitali">
-                <button className="btn btngeneri" data-btn_id="btnRock" onClick= {this.eventoBottone}> ROCK </button>
-                <button className="btn btngeneri" data-btn_id="btnPop" onClick= {this.eventoBottone}> POP </button>
-                <button className="btn btngeneri" data-btn_id="btnJazz" onClick= {this.eventoBottone}> JAZZ </button>
-                <button className="btn btngeneri" data-btn_id="btnHh" onClick= {this.eventoBottone}> HIPHOP </button>
-                <button className="btn btngeneri" data-btn_id="btnClassica" onClick= {this.eventoBottone}> CLASSICA </button>
-                <button className="btn btngeneri" data-btn_id="btnCantautori" onClick= {this.eventoBottone}> CANTAUTORI </button>
-                <button className="btn btngeneri" data-btn_id="btnIndie" onClick= {this.eventoBottone}> INDIE </button>
-                <button className="btn btngeneri" data-btn_id="btnElettro" onClick= {this.eventoBottone}> ELETTRONICA </button>
-                <button className="btn btngeneri" data-btn_id="btnAltro" onClick= {this.eventoBottone}> ALTRO </button>
+                <button className="btn btngeneri" data-btn_id="btnRock" onClick= {this.eventoBottone}>
+                    <i className="fas fa-drum"></i> ROCK </button>
+                <button className="btn btngeneri" data-btn_id="btnPop" onClick= {this.eventoBottone}>
+                    <i className="fas fa-fire"></i> POP </button>
+                <button className="btn btngeneri" data-btn_id="btnJazz" onClick= {this.eventoBottone}>
+                    <i className="far fa-moon"></i> JAZZ </button>
+                <button className="btn btngeneri" data-btn_id="btnHh" onClick= {this.eventoBottone}>
+                    <i className="fas fa-headphones"></i> HIPHOP </button>
+                <button className="btn btngeneri" data-btn_id="btnClassica" onClick= {this.eventoBottone}>
+                    <i className="fas fa-music"></i> CLASSICA </button>
+                <button className="btn btngeneri" data-btn_id="btnCantautori" onClick= {this.eventoBottone}>
+                    <i className="fas fa-microphone-alt"></i> CANTAUTORI </button>
+                <button className="btn btngeneri" data-btn_id="btnIndie" onClick= {this.eventoBottone}>
+                    <i className="fas fa-guitar"></i> INDIE </button>
+                <button className="btn btngeneri" data-btn_id="btnElettro" onClick= {this.eventoBottone}>
+                    <i className="fas fa-bolt"></i> ELETTRONICA </button>
+                <button className="btn btngeneri" data-btn_id="btnAltro" onClick= {this.eventoBottone}>
+                    <i className="fas fa-random"></i> ALTRO </button>
                 <div>
                     {this.state.isLoaded
                         ?

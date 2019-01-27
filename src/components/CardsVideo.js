@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardImage, CardTitle, CardText, Row, Col, Fa } from 'mdbreact';
+import { Button, Card, CardBody, CardImage, CardTitle, Fa } from 'mdbreact';
 import '../style/cardsVideo.css';
-
+import Formatter from "./Formatter";
 class CardVideo extends Component {
     render() {
         return (
@@ -24,28 +24,27 @@ class CardVideo extends Component {
                 <CardTitle  >{this.props.value.snippet.title} </CardTitle>
                 </CardBody>
                 <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                    <ul className="list-unstyled list-inline font-small">
+                <ul className="list-unstyled list-inline font-small">
                         <li className="list-inline-item pr-2 white-text">
-                            <Fa icon="clock-o" /> {this.props.value.snippet.publishedAt.slice(0,10)}
+                            <Fa icon="calendar-alt" /> {this.props.value.snippet.publishedAt.slice(0,10)}
                         </li>
                         <li className="list-inline-item pr-2">
-                            <a href="#!" className="white-text">
-                                <Fa icon="clock-o" />
-                                {(this.props.value.statistics.viewCount.length>=5)? (this.props.value.statistics.viewCount.slice(0,3))+'K' : (this.props.value.statistics.viewCount)}
-                            </a>
+                            <h7 className="white-text">
+                                <Fa icon="eye" />
+                                <Formatter num =  {this.props.value.statistics.viewCount} />
+                            </h7>
                         </li>
                         <li className="list-inline-item pr-2">
-                            <a href="#!" className="white-text">
+                            <h7 className="white-text">
                                 <Fa icon="thumbs-up"> </Fa>
-
-                                {this.props.value.statistics.likeCount}
-                            </a>
+                                <Formatter num = {this.props.value.statistics.likeCount} />
+                            </h7>
                         </li>
                         <li className="list-inline-item">
-                            <a href="#!" className="white-text">
+                            <h7 className="white-text">
                                 <Fa icon="thumbs-down"> </Fa>
-                                {this.props.value.statistics.dislikeCount}
-                            </a>
+                                <Formatter num = {this.props.value.statistics.dislikeCount}/>
+                            </h7>
                         </li>
                     </ul>
                 </div>
