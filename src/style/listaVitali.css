@@ -8,7 +8,7 @@
     background-color: white !important ;
     color: black !important;
   }
-  button.active {
+  .btngeneri.active {
     background-color: #078b5e !important;
     color: white !important;
     border: 2px solid black  !important;

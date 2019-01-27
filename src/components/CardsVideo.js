@@ -29,22 +29,22 @@ class CardVideo extends Component {
                             <Fa icon="calendar-alt" /> {this.props.value.snippet.publishedAt.slice(0,10)}
                         </li>
                         <li className="list-inline-item pr-2">
-                            <h7 className="white-text">
+                            <span className="white-text">
                                 <Fa icon="eye" />
                                 <Formatter num =  {this.props.value.statistics.viewCount} />
-                            </h7>
+                            </span>
                         </li>
                         <li className="list-inline-item pr-2">
-                            <h7 className="white-text">
+                            <span className="white-text">
                                 <Fa icon="thumbs-up"> </Fa>
                                 <Formatter num = {this.props.value.statistics.likeCount} />
-                            </h7>
+                            </span>
                         </li>
                         <li className="list-inline-item">
-                            <h7 className="white-text">
+                            <span className="white-text">
                                 <Fa icon="thumbs-down"> </Fa>
                                 <Formatter num = {this.props.value.statistics.dislikeCount}/>
-                            </h7>
+                            </span>
                         </li>
                     </ul>
                 </div>

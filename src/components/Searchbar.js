@@ -1,31 +1,56 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
+import '../style/searchbar.css';
 
 class Searchbar extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {term: ''};
+        this.state = { term: '' };
+        this.searchToggle = this.searchToggle.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
+    searchToggle(evt) {
+        var classContainer = this.container.classList;
+        if (!classContainer.contains('active')) {
+            classContainer.add('active');
+            evt.preventDefault();
+        }
+        else if (classContainer.contains('active')) {
+            classContainer.remove('active');
+            // clear input
+            this.inputSearch.value ='';
+        }
+    }
+
+    handleKeyPress(e){
+        if(e.key === 'Enter'){
+            if(this.inputSearch.value != ''){
+                this.setState({term : this.inputSearch.value});
+            }
+        }
+    }
 
     render() {
         return (
-            <span className="input input--makiko">
-					<input className="input__field input__field--makiko" type="text" id="input-16"
-                           value={this.state.term}
-                           onChange={event => this.onInputChange(event.target.value)}/>
-					<label className="input__label input__label--makiko" htmlFor="input-16">
-                        <span type="text" className="input__label-content input__label-content--makiko"> </span>
-					</label>
-            </span>
+            <div className="search-wrapper" ref={(node) => { this.container = node }}>
+                <div id="search-inputHolder" className="input-holder" >
+                    <input id="search-inputText" type="text" className="search-input" onKeyPress={this.handleKeyPress} ref={(nodo) => {this.inputSearch = nodo}} placeholder="Type to search" />
+                    <button id="search-button" className="search-icon" onClick={this.searchToggle}><i className="fas fa-search"></i></button>
+                </div>
+                <i className="fas fa-times search-close" onClick={this.searchToggle}></i>
+                <div className="result-container">
+                </div>
+            </div>
 
         );
+
     }
 
     onInputChange(term) {
-        this.setState({term});
+        this.setState({ term });
         this.props.onSearchTermChange(term);
     }
 
 }
+
 export default Searchbar;

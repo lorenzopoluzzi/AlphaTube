@@ -8,6 +8,7 @@ import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
+import VisualizerInfo from "./components/VisualizerInfo";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
                 <Searchbar onSearchTermChange={videoSearch}/>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
+                    <VisualizerInfo  />
                 </div>
                 <div className="container" id="div-recommender">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
