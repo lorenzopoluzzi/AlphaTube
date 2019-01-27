@@ -215,11 +215,25 @@ class WikiInfo extends Component {
                         ((!this.state.errorCanzone) ?
                             ((this.state.canzone.wikiDescrizione) ?
                                 <div>
-                                    <i className="fas fa-compact-disc wikiInfo__Icon"></i>
+                                    <i className="fas fa-music wikiInfo__Icon"></i>
                                     <h2 className="contetTitle">{this.state.canzone.nomeCanzone}</h2>
                                     <p>{this.state.canzone.wikiDescrizione}</p>
                                     <h5><i className="fas fa-calendar-day"></i> Pubblicata il {this.state.canzone.anno} </h5>
                                     <h5><i className="fas fa-microphone"></i> {this.state.canzone.artista}</h5>
+                                    {
+                                        ((this.state.canzone.album) ?
+                                            <h5><i className="fas fa-compact-disc"></i> {this.state.canzone.album}</h5>
+                                            :
+                                            null
+                                        )
+                                    }
+                                    {
+                                        ((this.state.canzone.genere) ?
+                                            <h5><i className="fas fa-drum"></i> {this.state.canzone.genere}</h5>
+                                            :
+                                            null
+                                        )
+                                    }
                                 </div>
                                 :
                                 <div>

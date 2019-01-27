@@ -1,0 +1,41 @@
+div.mdb-color.lighten-3{
+    background-color: #078b5e !important;
+}
+.font-small {
+    font-size: 0.9rem;
+}
+.white-text {
+    color: #fff !important;
+}
+.view-cascade {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: -1.25rem;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    -webkit-border-radius: .25rem;
+    border-radius: .25rem;
+}  
+a.btn-card{
+    background-color: rgba(7, 139, 94, 0.19) !important;
+}
+a.btn-card:hover{
+    background-color: rgba(7, 139, 94) !important;
+}
+div.card {
+    height: 340px !important;
+    background-color: whitesmoke !important;
+    -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+    -moz-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+    box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
+}
+h4.card-title{
+    margin-bottom: 2px;
+}
+div.card {
+    width: 22rem; 
+    height: 22em;
+}
+div.ripple  {
+    height: 3rem;
+}

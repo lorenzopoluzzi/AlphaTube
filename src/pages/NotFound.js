@@ -18,7 +18,7 @@ const NotFound = (props) => {
                              </p>
                         </div>
                         <div className="col-xs-10 offset-xs-1 col-sm-6 offset-sm-3 col-md-6 offset-md-0 col-lg-6 offset-lg-1 record-holder">
-                            <img className="NotFound_imgBreak" src={require('../LOGO_ALFATUBE_ROTTO.png')} />
+                            <img className="NotFound_imgBreak" src={require('../img/LOGO_ALFATUBE_ROTTO.png')} />
                         </div>
                     </div>
                 </div>
