@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
 import Searchbar from "./components/Searchbar";
-import ListaVitali from "./components/ListaVitali";
+import ListaVitali from "./pages/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
@@ -30,7 +30,6 @@ class App extends Component {
 
         return (
             <div className="App">
-                <ListaVitali/>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />

@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
+import { youtube_videoDetails } from "../Library/Api-Youtube";
 
 class FVitali extends Component {
     videoItems = " ";
@@ -10,34 +11,34 @@ class FVitali extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            video : []
+            video: []
         };
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
             this.videoItems = " ";
-            if(this.props.videoSeleceted != null){
+            if (this.props.videoSeleceted != null) {
                 this.videoId = this.props.videoSeleceted.id.videoId;
-                if(!this.videoId) {
+                if (!this.videoId) {
                     this.videoId = this.props.videoSeleceted.id;
                 }
             }
-            axios.get('http://site1825.tw.cs.unibo.it/TW/globpop?id='+this.videoId+'')
+            axios.get('http://site1825.tw.cs.unibo.it/TW/globpop?id=' + this.videoId + '')
                 .then(res => {
                     res.data.recommended.map((video) => {
                         this.videoItems = this.videoItems + video.videoID + ", ";
                     });
-                    axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+this.videoItems+'&key=AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI')
+                    let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics')
                         .then(res => {
-                            this.porcodio = res.data.items.map((video) => {
+                            this.porcodio = res.map((video) => {
                                 return (
                                     <VideoListItem
-                                        onVideoSelect = {this.props.onVideoSelect}
+                                        onVideoSelect={this.props.onVideoSelect}
                                         key={video.etag}
                                         video={video} />
                                 );
                             });
-                            this.setState({isLoaded : true, video: res.data.items});
+                            this.setState({ isLoaded: true, video: res });
                         });
                 });
         }
@@ -45,10 +46,10 @@ class FVitali extends Component {
     render() {
         if (!this.state.isLoaded) {
             return <div className="d-flex justify-content-center m-5">
-                        <div className="spinner-grow colore-l2pt-at" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>;
+                <div className="spinner-grow colore-l2pt-at" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>;
         } else {
             return (
                 <div className="col-6 offset-md-3">

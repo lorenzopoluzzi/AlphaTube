@@ -100,6 +100,7 @@
               $("#search-button").css("height","40px")
               $("#search-button").css("width","40px");
               $("#search-inputText").css("line-height","40px");
+              $("#search-icon").addClass("small-icon-search");
           } else {
               $("#navbar").css("padding","15px 15px");
               $(".navbarA").css("font-size","18px");
@@ -109,6 +110,7 @@
               $("#search-button").css("height","50px")
               $("#search-button").css("width","50px");
               $("#search-inputText").css("line-height","50px");
+              $("#search-icon").removeClass("small-icon-search");
           }
       }
       $("a.navbarA[href^='#']").on('click', function(e) {
