@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Searchbar from "./components/Searchbar";
 import App from './App';
 import NotFound from './pages/NotFound';
-import ListaVitali from './components/ListaVitali'
+import ListaVitali from './pages/ListaVitali';
+import SearchList from './pages/SearchList';
 
 const Routes = () => {
     return (
@@ -26,7 +27,8 @@ const Routes = () => {
                 <BrowserRouter>
                     <Switch>
                         <Route path="/" component={App} exact />
-                        <Route path="/vitali" component={ListaVitali} />
+                        <Route path="/ListaVitali" component={ListaVitali} />
+                        <Route path="/search/:search" component={SearchList} />
                         <Route component={NotFound} />
                     </Switch>
                 </BrowserRouter>
