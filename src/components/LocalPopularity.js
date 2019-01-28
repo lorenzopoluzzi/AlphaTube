@@ -3,7 +3,7 @@ import axios from 'axios';
 import VideoListItem from "./VideoListItem";
 import {youtube_videoDetails}  from "../Library/Api-Youtube";
 
-class Popularity extends Component {
+class LocalPopularity extends Component {
     videoItems = " ";
     porcodio;
     myArrayTimes;
@@ -29,66 +29,57 @@ class Popularity extends Component {
         this.myArrayTimesNonCicl = new Array();
         this.myArraySite = new Array();
         //eseguo la chiamata a tutti i recommender pubblicati senza dare un id cosi chiamo il globale
-        axios.all([
-            axios.get('http://site1828.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1838.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1839.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1846.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1847.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1827.tw.cs.unibo.it/globpop/')
-        ]).then(res => {
+        axios.get('http://site1825.tw.cs.unibo.it/TW/globpop').then(res => {
             this.videoIds = " ";
-            res.map((siti) => {
-                this.videoIdTemp = null;
-                this.timesWhatchedTemp = 0;
-                this.nomeSito = siti.data.site;
-                //il nome del sito alcuni recommender non me lo tornarno e lo vado a prendere dalla request
-                if (!this.nomeSito) {
-                    this.nomeSito = siti.request.responseURL;
-                }
-                //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
-                if (siti.data.recommended != null) {
-                    //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
-                    //tra i video che mi tornano
-                    siti.data.recommended.map((videoDelSito) => {
-                        if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
-                            this.timesWhatchedTemp = videoDelSito.timesWatched;
-                            if (!videoDelSito.videoID) {
-                                this.videoIdTemp = videoDelSito.videoId;
-                            } else {
-                                this.videoIdTemp = videoDelSito.videoID;
-                            }
+            this.videoIdTemp = null;
+            this.timesWhatchedTemp = 0;
+            this.nomeSito = res.data.site;
+            //il nome del sito alcuni recommender non me lo tornarno e lo vado a prendere dalla request
+            if (!this.nomeSito) {
+                this.nomeSito = res.request.responseURL;
+            }
+            //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
+            if (res.data.recommended != null) {
+                //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                //tra i video che mi tornano
+                res.data.recommended.map((videoDelSito) => {
+                    if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                        this.timesWhatchedTemp = videoDelSito.timesWatched;
+                        if (!videoDelSito.videoID) {
+                            this.videoIdTemp = videoDelSito.videoId;
+                        } else {
+                            this.videoIdTemp = videoDelSito.videoID;
                         }
-                    });
-                    //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
-                    //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
-                    //nel frontend
-                    this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
-                    this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
-                    this.myArraySite[this.videoIdTemp] = this.nomeSito;
-                } else {
-                    //siamo nel caso in cui i video me li ritornano dentro a videos della response
+                    }
+                });
+                //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                //nel frontend
+                this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                this.myArraySite[this.videoIdTemp] = this.nomeSito;
+            } else {
+                //siamo nel caso in cui i video me li ritornano dentro a videos della response
 
-                    //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
-                    //tra i video che mi tornano
-                    siti.data.videos.map((videoDelSito) => {
-                        if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
-                            this.timesWhatchedTemp = videoDelSito.timesWatched;
-                            if (!videoDelSito.videoID) {
-                                this.videoIdTemp = videoDelSito.videoId;
-                            } else {
-                                this.videoIdTemp = videoDelSito.videoID;
-                            }
+                //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                //tra i video che mi tornano
+                res.data.videos.map((videoDelSito) => {
+                    if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                        this.timesWhatchedTemp = videoDelSito.timesWatched;
+                        if (!videoDelSito.videoID) {
+                            this.videoIdTemp = videoDelSito.videoId;
+                        } else {
+                            this.videoIdTemp = videoDelSito.videoID;
                         }
-                    });
-                    //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
-                    //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
-                    //nel frontend
-                    this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
-                    this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
-                    this.myArraySite[this.videoIdTemp] = this.nomeSito;
-                }
-            });
+                    }
+                });
+                //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                //nel frontend
+                this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                this.myArraySite[this.videoIdTemp] = this.nomeSito;
+            }
             //doppio for che mi serve per fare l'ordinamento dei video in base al timesWhatched cosi da creare la stringa con gli id
             //che passo a youtube per averli già tutti in ordine
             for (var tmpKeyXl in this.myArrayTimes) {
@@ -138,41 +129,32 @@ class Popularity extends Component {
             this.myArrayTimesNonCicl = new Array();
             this.myArraySite = new Array();
             //eseguo la chiamata a tutti i recommender pubblicati passando l'id del video corrente cosi chiamo il globale relativo
-            axios.all([
-                axios.get('http://site1828.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                axios.get('http://site1838.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                axios.get('http://site1839.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                axios.get('http://site1846.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                axios.get('http://site1847.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                axios.get('http://site1827.tw.cs.unibo.it/globpop?id=' + this.videoId + '')
-            ]).then(res => {
+            axios.get('http://site1828.tw.cs.unibo.it/globpop?id=' + this.videoId + '').then(res => {
                 this.videoIds = " ";
-                res.map((siti) => {
-                    this.videoIdTemp = null;
-                    this.timesWhatchedTemp = 0;
-                    this.nomeSito = siti.data.site;
-                    //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
-                    if (siti.data.recommended != null) {
-                        //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
-                        //tra i video che mi tornano
-                        siti.data.recommended.map((videoDelSito) => {
-                            if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
-                                this.timesWhatchedTemp = videoDelSito.timesWatched;
-                                if (!videoDelSito.videoID) {
-                                    this.videoIdTemp = videoDelSito.videoId;
-                                } else {
-                                    this.videoIdTemp = videoDelSito.videoID;
-                                }
+                this.videoIdTemp = null;
+                this.timesWhatchedTemp = 0;
+                this.nomeSito = res.data.site;
+                //controllo se quel valore è null perchè alcuni recommender me li passano dentro a un altro valore della response...
+                if (res.data.recommended != null) {
+                    //questo for lo faccio per ogni response di ogni sito per andare a prendere il valore maggiore di times watched 
+                    //tra i video che mi tornano
+                    res.data.recommended.map((videoDelSito) => {
+                        if (videoDelSito.timesWatched >= this.timesWhatchedTemp) {
+                            this.timesWhatchedTemp = videoDelSito.timesWatched;
+                            if (!videoDelSito.videoID) {
+                                this.videoIdTemp = videoDelSito.videoId;
+                            } else {
+                                this.videoIdTemp = videoDelSito.videoID;
                             }
-                        });
-                        //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
-                        //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
-                        //nel frontend
-                        this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
-                        this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
-                        this.myArraySite[this.videoIdTemp] = this.nomeSito;
-                    }
-                });
+                        }
+                    });
+                    //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
+                    //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
+                    //nel frontend
+                    this.myArrayTimes[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArrayTimesNonCicl[this.videoIdTemp] = this.timesWhatchedTemp;
+                    this.myArraySite[this.videoIdTemp] = this.nomeSito;
+                }
                 //doppio for che mi serve per fare l'ordinamento dei video in base al timesWhatched cosi da creare la stringa con gli id
                 //che passo a youtube per averli già tutti in ordine
                 for (var tmpKeyXl in this.myArrayTimes) {
@@ -249,4 +231,4 @@ class Popularity extends Component {
         }
     }
 }
-export default Popularity;
+export default LocalPopularity;
