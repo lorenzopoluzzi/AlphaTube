@@ -57,7 +57,10 @@ class ArtistSimilarity extends Component {
  			//<VideoList video={this.arrayDiVideoRecommended} />
  			return (
  				<div>
- 					<ParseTitle selectedVideo = {this.props.selectedVideo} />
+ 					<ParseTitle 
+ 						selectedVideo = {this.props.selectedVideo}
+ 						ytApiKey = {this.props.ytApiKey} 
+ 					/>
  		 			<p> Lista video </p>
  		 		</div>
  			);

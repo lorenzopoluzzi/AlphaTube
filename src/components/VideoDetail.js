@@ -6,15 +6,15 @@ const VideoDetail = ({video}) => {
         return <div>Loading ...</div>
     }
     
-    console.log(video);
+    //console.log(video);
     
     let videoId = video.id.videoId;
     
     if(!videoId) {
-        console.log("era vuoto");
+        //console.log("era vuoto");
         videoId = video.id;
-        console.log(video.id);
-        console.log(videoId);
+        //console.log(video.id);
+        //console.log(videoId);
     }
     
     const url = 'https://www.youtube.com/embed/' + videoId;
