@@ -5,7 +5,7 @@ import ParseTitle from './ParseTitle';
 //import VideoList from './VideoList';
 
 const base_URL = "https://www.googleapis.com/youtube/v3";
-const API_KEY = 'dd7d675dfbbe4e2938f9a89ca3d1da42';
+const LFM_KEY = 'dd7d675dfbbe4e2938f9a89ca3d1da42';
 //const SECRET_KEY = 'e9f9658e7c75f492bd7e7d647cfc613e';
 
 
@@ -22,22 +22,23 @@ class ArtistSimilarity extends Component {
 
  	componentDidUpdate(){
 
- 			console.log(this.props.selectedVideo);
+ 			//console.log(this.props.selectedVideo);
 
  			const LastFM = require('last-fm');
-			const lastfm = new LastFM(API_KEY);
+			const lastfm = new LastFM(LFM_KEY);
 
 			// cerco 20 artisti simili e memorizzo i  loro nomi nell'array similarArtists[]
 			lastfm.artistSimilar({name: 'radiohead', limit: 20}, (err, data) => {
  				if (err) {
  					console.error(err);
  				}
- 				console.log(data);
+ 				//console.log(data);
 
  				this.similarArtists = data.artist.map((artist) => artist.name);
 
- 				console.log(this.similarArtists);
+ 				//console.log(this.similarArtists);
  			})
+
 
 			// 	const video = axios.get({base_URL}+"/search?part=snippet&q="+
 			// 					 this.similarArtists[0].replace(" ","+")+
@@ -51,17 +52,16 @@ class ArtistSimilarity extends Component {
 
  	render(){
 
- 		
  		if (this.props.selectedVideo != null) {
 
  			//<VideoList video={this.arrayDiVideoRecommended} />
  			return (
  				<div>
- 					<ParseTitle 
+ 					<p> Lista video simili a </p>
+ 					<ParseTitle
  						selectedVideo = {this.props.selectedVideo}
- 						ytApiKey = {this.props.ytApiKey} 
+ 						lastFmKey = {LFM_KEY}
  					/>
- 		 			<p> Lista video </p>
  		 		</div>
  			);
  		}

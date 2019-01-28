@@ -15,6 +15,7 @@ const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 //       passare la fun handleVideoSelection direttamente alla comp VideoItem: in questo modo
 //       si evita di passarla attraverso tutte le comp che le separano. Vedi https://reactjs.org/docs/context.html
 //       associare le key agli elementi dell'array video!!!
+//       fare in modo che la search non faccia una chiamata ad ogni carattere, ma solo quando l'utente smette di digitare!!
 
 class App extends Component {
     
