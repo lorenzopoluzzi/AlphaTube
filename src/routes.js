@@ -19,7 +19,6 @@ const Routes = () => {
                         <a href="#div-recommender" className="navbarA active ">Recommender</a>
                         <a href="#contact" className="navbarA ">Info</a>
                         <a href="#listaVitali" className="navbarA ">Lista</a>
-
                     </div>
                 </div>
             </div>
