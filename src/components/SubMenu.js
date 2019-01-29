@@ -20,8 +20,8 @@ const SubMenu = ({tittle, checksearch, submenu}) => {
                     ((submenu) ?
                     <div className="float-md-right float-sm-none float-xs-none">
                     {
-                        submenu.map((item) => {
-                            <a href={submenu.id} className="navbarA active ">{submenu.name}</a>
+                        submenu.map((item, index) => {
+                            return <a  key={index} href={item.id} className="navbarA">{item.name}</a>
                         }) 
                     }
                     </div>

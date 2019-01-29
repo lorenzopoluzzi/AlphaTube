@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CardItem from './CardItem';
 import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
-const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 
 class RecommenderSearch extends Component {

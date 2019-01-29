@@ -10,9 +10,25 @@ import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
+import SubMenu from "./components/SubMenu";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 class App extends Component {
+
+    sottMenu = [{
+        id: '#div-recommender',
+        name: 'Reccomender'
+    },
+    {
+        id: '#contact',
+        name: 'Info'
+    },
+    {
+        id: '#listaVitali',
+        name: 'Lista'
+    }
+    ];
+
     constructor(props){
         super(props);
         console.log(props);
@@ -32,6 +48,7 @@ class App extends Component {
 
         return (
             <div className="App">
+            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />
