@@ -1,10 +1,19 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './style/style.css'
-import App from './App';
+import './style/style.css';
+import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Routes />,
+    document.getElementById('root')
+);
 //ReactDOM.render(<AjaxCall />, document.getElementById('speriamo'));
 registerServiceWorker();
+
+
+
+
+

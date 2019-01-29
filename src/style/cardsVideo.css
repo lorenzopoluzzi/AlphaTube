@@ -17,7 +17,7 @@ div.mdb-color.lighten-3{
     border-radius: .25rem;
 }  
 a.btn-card{
-    background-color: rgba(7, 139, 94, 0.19) !important;
+    background-color: rgba(7, 139, 94, 0.53) !important;
 }
 a.btn-card:hover{
     background-color: rgba(7, 139, 94) !important;

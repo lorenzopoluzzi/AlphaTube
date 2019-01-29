@@ -8,7 +8,7 @@
     background-color: white !important ;
     color: black !important;
   }
-  button.active {
+  .btngeneri.active {
     background-color: #078b5e !important;
     color: white !important;
     border: 2px solid black  !important;
@@ -30,4 +30,8 @@
 .btn:hover, .btn:active, .btn:focus {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     outline: 0;
+}
+#listaVitali{
+  padding-top: 40px;
+  text-align: center;
 }

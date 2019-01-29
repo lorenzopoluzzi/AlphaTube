@@ -2,12 +2,14 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
 import Searchbar from "./components/Searchbar";
-import ListaVitali from "./components/ListaVitali";
+import ListaVitali from "./pages/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
 import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
-import RecommenderSearch from "./components/RecommenderSearch";
+import RecommenderRelated from "./components/RecommenderRelated";
+
+import VisualizerInfo from "./components/VisualizerInfo";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 class App extends Component {
@@ -29,10 +31,12 @@ class App extends Component {
 
         return (
             <div className="App">
-                <ListaVitali/>
-                <Searchbar onSearchTermChange={videoSearch}/>
+                <div>
+                    <ListaVitali/>
+                </div>
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
+                    <VisualizerInfo  />
                 </div>
                 <div className="container" id="div-recommender">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
@@ -44,6 +48,9 @@ class App extends Component {
                                 className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
                             <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
                                 className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-related" role="tab" aria-controls="nav-contact" aria-selected="false"><i
+                                className="fab fa-youtube"></i><span id="text-l2pt-tab">Related </span></a>
+
                         </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">
@@ -60,7 +67,14 @@ class App extends Component {
                             />
                         </div>
                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <RecommenderSearch />
+
+
+                        </div>
+                        <div className="tab-pane fade" id="nav-related" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <RecommenderRelated
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                videoSeleceted = {this.state.selectedVideo}/>
+
                         </div>
                     </div>
                 </div>

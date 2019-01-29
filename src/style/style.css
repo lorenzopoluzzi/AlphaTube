@@ -14,9 +14,6 @@ body {
 .search-bar {
     margin: 20px;
 }
-#root {
-    margin-top: 45px;
-}
 .row {
     padding: 30px;
 }
@@ -41,6 +38,7 @@ body {
     padding: 10px 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Luckiest Guy' !important;
+    margin-top: 77px;
 }
 
 #navbar a {

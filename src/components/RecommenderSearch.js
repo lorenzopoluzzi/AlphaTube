@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import VideoListItem from "./VideoListItem";
+import CardItem from './CardItem';
+import {youtube_videoDetails}  from "../Library/Api-Youtube";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
+
 
 class RecommenderSearch extends Component {
 
-    raccomandatiyt;
 
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ class RecommenderSearch extends Component {
             params: {
                 'part': 'snippet',
                 'key': API_KEY,
-                'q' : 'mhscio',
+                'q' : this.props.term,
                 'maxResults' : 10,
                 'videoEmbeddable' : true ,
                 'videoCategoryId' : 10,
@@ -30,18 +31,16 @@ class RecommenderSearch extends Component {
             }
         })
             .then(res => {
-                this.raccomandatiyt = res.data.items.map((video) => {
-                    return (
-                        <VideoListItem
-                            onVideoSelect = {this.props.onVideoSelect}
-                            key={video.etag}
-                            video={video}
-                        />
-
-                    );
+                this.videoIds = " ";
+                res.data.items.map((video) => {
+                    this.videoIds = this.videoIds + video.id.videoId + ", ";
                 });
-                this.setState({isLoaded : true, video: res.data.items});
+                console.log(this.videoIds);
+                let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
+                videos.then(res => {
+                this.setState({isLoaded : true, video: res});
             })
+        })
     }
 
     render() {
@@ -53,10 +52,14 @@ class RecommenderSearch extends Component {
             </div>;
         } else {
             return (
-                <div className="col-6 offset-md-3">
-                    <ul className="list-group">
-                        {this.raccomandatiyt}
-                    </ul>
+                <div>
+                    {
+                        this.state.video.map((obj, index) => {
+                            return (
+                                <div key={index} className="grid-container"><CardItem video={obj} /></div>
+                            )
+                        })
+                    }
                 </div>
 
             );
