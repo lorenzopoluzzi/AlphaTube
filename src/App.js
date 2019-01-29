@@ -4,6 +4,7 @@ import './App.css';
 import Searchbar from "./components/Searchbar";
 import ListaVitali from "./pages/ListaVitali";
 import VideoDetail from "./components/VideoDetail";
+import LocalPopularity from "./components/LocalPopularity";
 import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
@@ -14,6 +15,7 @@ const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 class App extends Component {
     constructor(props){
         super(props);
+        console.log(props);
         this.state = {
             videos: [],
             selectedVideo : null,
@@ -61,6 +63,9 @@ class App extends Component {
                         </div>
                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <RecommenderSearch />
+                            <LocalPopularity 
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                videoSeleceted = {this.state.selectedVideo} />
                         </div>
                     </div>
                 </div>

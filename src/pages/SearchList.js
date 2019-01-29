@@ -1,6 +1,7 @@
 import React from 'react';
 import SubMenu from '../components/SubMenu';
 import RecommenderSearch from '../components/RecommenderSearch';
+import '../style/pages.css';
 
 
 const SearchList = (props) => {
@@ -8,8 +9,8 @@ const SearchList = (props) => {
 
     return (
         <div>
-            <SubMenu tittle="Youtube Search" checksearch />
-            <div className="searchList">
+            <SubMenu tittle="Youtube Search" checksearch  />
+            <div className="searchList" >
                 <RecommenderSearch term={props.match.params.search} />
             </div>
         </div>

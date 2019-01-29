@@ -179,10 +179,6 @@ class Popularity extends Component {
                     var tempinoMax = -1;
                     var sitinoMax = "";
                     for (var key in this.myArrayTimes) {
-                        console.log("nella chiave: ");
-                        console.log(key);
-                        console.log("c'è il valore: ");
-                        console.log(this.myArrayTimes[key]);
                         if (this.myArrayTimes[key] > tempinoMax) {
                             tempinoMax = this.myArrayTimes[key];
                             sitinoMax = key;
@@ -194,8 +190,6 @@ class Popularity extends Component {
                 //qui ho la stringa ordinata di video id quindi la passo a youtube che mi ritorna le informazioni per i video che mi servono
                 let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
                 videos.then(res => {
-                        console.log("sono dentro alla ajax call item");
-                        console.log(res);
                         this.porcodio = res.map((video) => {
                             return (
                                 <VideoListItem
