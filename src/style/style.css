@@ -53,7 +53,7 @@ body {
 .navbarA {
     transition: 0.7s;
 }
-#navbar #logo {
+#navbar #tittleSubMenu {
     transition: 0.4s;
     float: left;
 }

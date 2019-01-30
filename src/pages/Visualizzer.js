@@ -41,6 +41,9 @@ class Visualizer extends Component {
             res.map((video) => {
                 this.setState({ selectedVideo: video });
             })
+            if (this.state.selectedVideo == null) {
+                this.props.history.push('/NotFoundVideo')
+            }
             this.setState({ isLoaded: true });
         })
     }
@@ -52,6 +55,9 @@ class Visualizer extends Component {
                 res.map((video) => {
                     this.setState({ selectedVideo: video });
                 })
+                if (this.state.selectedVideo == null) {
+                    this.props.history.push('/NotFoundVideo')
+                }
                 this.setState({ isLoaded: true });
             })
         }
@@ -61,10 +67,11 @@ class Visualizer extends Component {
         console.log(this.sottMenu);
         return (
             <div>
+
                 <SubMenu tittle="Visualizer" checksearch submenu={this.sottMenu} />
+
                 {
                     ((this.state.isLoaded) ?
-                        ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
                                 <div className="row justify-content-center">
                                     <VideoDetail video={this.state.selectedVideo} />
@@ -104,10 +111,7 @@ class Visualizer extends Component {
                                     </div>
                                 </div>
                             </div>
-                            :
-                            <NotFound history={this.props.history} message={"Probabilmente il video non è più disponibile o non esite."}
-                                sottMessage={"Non siamo riusciti a trovare il video che cercavi. Controlla l'indirizzo e riprova"} />
-                        )
+                            
                         :
 
                         <div>
