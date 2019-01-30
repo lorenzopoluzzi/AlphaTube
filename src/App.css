@@ -1,8 +1,10 @@
-body{
-    font-family: Roboto;
+body {
+  font-family: Roboto;
 }
+
 .App {
   text-align: center;
+  padding-top: 40px;
 }
 
 .App-logo {
@@ -11,24 +13,32 @@ body{
 }
 
 .App-header {
-    background: rgb(7,169,114);
-    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
+  background: rgb(7, 169, 114);
+  background: linear-gradient(90deg, rgba(7, 169, 114, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(7, 169, 114, 1) 100%);
   height: auto;
   padding: 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.list-group-item {
+  cursor: pointer;
+  background-color: whitesmoke !important;
+  -webkit-box-shadow: 0px 2px 20px 1px rgba(147, 147, 147, 1);
+  box-shadow: 0px 2px 20px 1px rgba(147, 147, 147, 1);
+  margin-top: 22px;
+}
+
+.list-group-item:hover {
+  border: 1px solid rgb(6, 138, 93);
 }
 
 a.tab-l2pt {
@@ -46,36 +56,64 @@ a.tab-l2pt {
   flex: 1 1 !important;
   position: relative !important;
   padding-right: 5px !important;
-  display: -webkit-box !important;
-    color: #495057 !important;
+  color: #495057 !important;
 }
+
 .tab-l2pt.active {
   color: #078b5e !important;
   border-bottom-color: #078b5e !important;
   border-bottom: 2px solid !important;
   border-top: 0 !important;
 }
+
 .row {
-    margin: 0 !important;
+  margin: 0 !important;
 }
+
 a.tab-l2pt:hover {
-    text-decoration: none;
-    color: #078b5e !important;
+  text-decoration: none;
+  color: #078b5e !important;
 }
 
 a.tab-l2pt i {
-    margin-left: 20px;
-    padding: 10px;
-    font-size: 30px;
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 30px;
 }
+
 span#text-l2pt-tab {
-    margin-left: 10px;
-    font-size: 20px;
-    font-family: 'Luckiest Guy' !important;
+  margin-left: 10px;
+  font-size: 20px;
+  font-family: 'Luckiest Guy' !important;
 }
+
 #h3-l2pt {
-    padding: 10px;
+  padding: 10px;
 }
+
 #h1-l2pt, #h3-l2pt {
-    font-family: 'Luckiest Guy' !important;
+  font-family: 'Luckiest Guy' !important;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.buttonabsolute {
+  position: absolute !important;
+  top: 27%;
+  right: 0%;
+  border-radius: 100% !important;
+  background-color: transparent !important;
+  padding: 10px 15px !important;
+  border-radius: 100% !important;
+}
+
+#rotes-container {
+  padding-top: 100px;
 }
