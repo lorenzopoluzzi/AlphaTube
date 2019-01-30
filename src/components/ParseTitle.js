@@ -11,16 +11,21 @@ import axios from 'axios';
 
 const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
 	
-	var success = 0;
+	var success;
+	var trackInfo: null ;
+	var firstPart, secondPart;
 
+	var videoTitle = selectedVideo.snippet.title
+	
 	// ripulisco la stringa titolo
-	const videoTitle = selectedVideo.snippet.title.replace(/official|original|music|video|version|live|acoustic|session|band|version|lyrics|played by|HQ/gi,"").match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-", 2);
+	videoTitle = videoTitle.replace(/official|original|music|video|version|live|acoustic|session|band|version|testo|lyrics|played by|HQ/gi,"")
+	videoTitle = videoTitle.match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-", 2);
 
-	const firstPart = videoTitle[0].trim();
+	firstPart = videoTitle[0].trim();
 
 	if (videoTitle[1]) {		// se il titolo è in formato "part1 - part2"
 		
-		const secondPart = videoTitle[1].trim();
+		secondPart = videoTitle[1].trim();
 	    console.log(firstPart, secondPart);
 		
 		// adesso devo capire quale delle due parti contiene il nome dell'artista e quale il titolo della traccia;
@@ -41,8 +46,11 @@ const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
 					else if (dataT){
 						if (dataT.result[0].artistName == name) {
 						const title = dataT.result[0].name;
-						console.log("nome: ", name, ", titolo: ", title);
+						console.log("nome:", name,", titolo:", title);
 						success = 1;
+						}
+						else {
+							success=0;
 						}
 					}
 			
@@ -50,8 +58,7 @@ const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
 			}
 		})
 
-		console.log(success);
-		if (success == 0) {		// cerco di determinare se invece la prima stringa è il titolo
+		if (!success) {		// cerco di determinare se invece la prima stringa è il titolo
 
 			lastfm.trackSearch({q: firstPart}, (err, dataT) => {
 				if (err) {
@@ -67,15 +74,15 @@ const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
 						}
 						else if (dataA) {
 							if (dataA.result[0].name == name) {
-							console.log("nome: ", name, ", titolo: ", title);
+							console.log("nome:", name,", titolo:", title);
 							success = 1;
 							}
+							else {
+								success=0;
+							}
 						}
-									
 					})
 				}
-
-
 			})
 		}
 
@@ -87,6 +94,7 @@ const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
 
 	else {					// se il titolo non è in formato "xxxx - yyyy"
 		console.log("Maremma cane!! Il titolo è in formato esteso");
+		// potrebbe essere 'nome artista "titolo canzone"'
 	}
 
 	return null;
