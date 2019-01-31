@@ -7,32 +7,23 @@ import App from './App';
 import NotFound from './pages/NotFound';
 import ListaVitali from './pages/ListaVitali';
 import SearchList from './pages/SearchList';
+import Visualizer from './pages/Visualizzer';
 
 const Routes = () => {
     return (
-        <div>
-            <div id="navbar">
-                <div className="container">
-                    <a href="#default" id="logo" className="d-none d-md-block">Alpha Tubo</a>
-                    <Searchbar />
-                    <div className="float-md-right float-sm-none float-xs-none">
-                        <a href="#div-recommender" className="navbarA active ">Recommender</a>
-                        <a href="#contact" className="navbarA ">Info</a>
-                        <a href="#listaVitali" className="navbarA ">Lista</a>
-                    </div>
-                </div>
-            </div>
-            <div id="rotes-container">
-                <BrowserRouter>
-                    <Switch>
-                        <Route path="/" component={App} exact />
-                        <Route path="/ListaVitali" component={ListaVitali} />
-                        <Route path="/search/:search" component={SearchList} />
-                        <Route component={NotFound} />
-                    </Switch>
-                </BrowserRouter>
-            </div>
-        </div >
+
+
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" component={App} exact />
+                <Route path="/ListaVitali" component={ListaVitali} />
+                <Route path="/search/:search" component={SearchList} />
+                <Route path="/video/:videoId" component={Visualizer} />
+                <Route render={(props) => <NotFound {...props} message={"Probabilmente la pagina non è più disponibile o non esite."} 
+                                sottMessage={"Non siamo riusciti a trovare la pagina che cercavi. Controlla l'indirizzo e riprova"}/>} />
+            </Switch>
+        </BrowserRouter>
+
     );
 };
 

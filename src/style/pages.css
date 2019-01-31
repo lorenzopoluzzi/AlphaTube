@@ -1,0 +1,12 @@
+.searchList{
+    padding-top: 130px; 
+}
+.contet-visualizzer{
+    padding-top: 130px; 
+}
+.hide_sotMenu{
+    display: none;
+}
+.show_sotMenu{
+    display: block;
+}
