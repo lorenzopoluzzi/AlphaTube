@@ -4,6 +4,7 @@ import LocalPopularity from "../components/LocalPopularity";
 import FVitali from "../components/FVitali";
 import Popularity from "../components/Popularity";
 import RecommenderSearch from "../components/RecommenderSearch";
+import RecommenderRelated from '../components/RecommenderRelated';
 import VisualizerInfo from "../components/VisualizerInfo";
 import NotFound from "./NotFound";
 import SubMenu from "../components/SubMenu";
@@ -43,7 +44,7 @@ class Visualizer extends Component {
                 this.setState({ selectedVideo: video });
             })
             if (this.state.selectedVideo !== null) {
-                this.setState({classSotMenu : 'show_sotMenu'});
+                this.setState({ classSotMenu: 'show_sotMenu' });
             }
             this.setState({ isLoaded: true });
         })
@@ -57,7 +58,7 @@ class Visualizer extends Component {
                     this.setState({ selectedVideo: video });
                 })
                 if (this.state.selectedVideo !== null) {
-                    this.setState({classSotMenu : 'show_sotMenu'});
+                    this.setState({ classSotMenu: 'show_sotMenu' });
                 }
                 this.setState({ isLoaded: true });
             })
@@ -69,11 +70,11 @@ class Visualizer extends Component {
         return (
             <div>
 
-                <SubMenu visibile={this.state.classSotMenu} tittle="Visualizer" checksearch submenu={this.sottMenu}  />
+                <SubMenu visibile={this.state.classSotMenu} tittle="Visualizer" checksearch submenu={this.sottMenu} />
 
                 {
                     ((this.state.isLoaded) ?
-                        ((this.state.selectedVideo !== null)?
+                        ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
                                 <div className="row justify-content-center">
                                     <VideoDetail video={this.state.selectedVideo} />
@@ -89,6 +90,8 @@ class Visualizer extends Component {
                                                 className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
                                             <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
                                                 className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-related" role="tab" aria-controls="nav-contact" aria-selected="false"><i
+                                                className="fab fa-youtube"></i><span id="text-l2pt-tab">Related </span></a>
                                         </div>
                                     </nav>
                                     <div className="tab-content" id="nav-tabContent">
@@ -109,6 +112,12 @@ class Visualizer extends Component {
                                             <LocalPopularity
                                                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
                                                 videoSeleceted={this.state.selectedVideo} />
+                                        </div>
+                                        <div className="tab-pane fade" id="nav-related" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                            <RecommenderRelated
+                                                onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                videoSeleceted={this.state.selectedVideo} />
+
                                         </div>
                                     </div>
                                 </div>

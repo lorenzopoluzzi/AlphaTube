@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CardItem from "../components/CardItem";
 import '../style/listaVitali.css'
-import {youtube_videoDetails}  from "../Library/Api-Youtube";
+import SubMenu from '../components/SubMenu';
+import { youtube_videoDetails } from "../Library/Api-Youtube";
 
 class ListaVitali extends Component {
 
@@ -10,7 +11,7 @@ class ListaVitali extends Component {
         super(props);
         this.state = {
             lists: [],
-            isLoaded: false,
+            isLoaded: true,
             completeVideoList: [],
             genereIDselected: [],
         };
@@ -70,8 +71,39 @@ class ListaVitali extends Component {
                     videoIDIndie,
                     videoIDElettro,
                     videoIDClassica,
-                    videoIDAltro
+                    videoIDAltro,
+
                 })
+
+                this.setState({
+                    genereIDselected: this.state.videoIDPop
+                });
+                this.setState({ completeVideoList: [] });
+                let stringID = [];
+                let i = this.state.genereIDselected.length / 22;
+                let inizioArray = 0;
+                if (i == 0) {
+                    stringID.push(this.state.genereIDselected.toString());
+                } else {
+                    for (var j = 0; j < i; j++) {
+                        stringID.push(this.state.genereIDselected.slice(inizioArray * 22, ((inizioArray * 22) + 22)));
+                        inizioArray++;
+                    }
+                }
+                for (let j = 0; j < stringID.length; j++) {
+                    let videos = youtube_videoDetails(stringID[j].toString(), 'snippet,statistics');
+                    videos.then(res => {
+                        res.map((video) => {
+                            this.setState({
+                                completeVideoList: [...this.state.completeVideoList, video]  //aggiunge il nuovo stato a video list
+                            });
+                        });
+                        this.setState({ isLoaded: true });
+                    });
+                }
+
+
+
             });
 
     }
@@ -105,6 +137,7 @@ class ListaVitali extends Component {
 
     eventoBottone = (event) => {
         let btn = event.currentTarget.dataset.btn_id;
+
         if (btn == "btnRock") {
             this.setState({
                 genereIDselected: this.state.videoIDRock
@@ -153,38 +186,45 @@ class ListaVitali extends Component {
     }
 
     render() {
+
+
+
         return (
-            <div id="listaVitali">
-                <button className="btn btngeneri" data-btn_id="btnRock" onClick={this.eventoBottone}>
-                    <i className="fas fa-drum"></i> ROCK </button>
-                <button className="btn btngeneri" data-btn_id="btnPop" onClick={this.eventoBottone}>
-                    <i className="fas fa-fire"></i> POP </button>
-                <button className="btn btngeneri" data-btn_id="btnJazz" onClick={this.eventoBottone}>
-                    <i className="fas fa-moon"></i> JAZZ </button>
-                <button className="btn btngeneri" data-btn_id="btnHh" onClick={this.eventoBottone}>
-                    <i className="fas fa-headphones"></i> HIPHOP </button>
-                <button className="btn btngeneri" data-btn_id="btnClassica" onClick={this.eventoBottone}>
-                    <i className="fas fa-music"></i> CLASSICA </button>
-                <button className="btn btngeneri" data-btn_id="btnCantautori" onClick={this.eventoBottone}>
-                    <i className="fas fa-microphone-alt"></i> CANTAUTORI </button>
-                <button className="btn btngeneri" data-btn_id="btnIndie" onClick={this.eventoBottone}>
-                    <i className="fas fa-guitar"></i> INDIE </button>
-                <button className="btn btngeneri" data-btn_id="btnElettro" onClick={this.eventoBottone}>
-                    <i className="fas fa-bolt"></i> ELETTRONICA </button>
-                <button className="btn btngeneri" data-btn_id="btnAltro" onClick={this.eventoBottone}>
-                    <i className="fas fa-random"></i> ALTRO </button>
-                <div>
-                    {this.state.isLoaded
-                        ?
-                        this.state.completeVideoList.map((obj, index) => {
-                            return (
-                                <div key={index} className="grid-container"><CardItem video={obj} /></div>
-                            )
-                        })
-                        :
-                        <div>Scegli un genere</div>
-                    }
-                </div>
+            <div>
+                <SubMenu tittle="Lista Vitali" checksearch />
+                <div id="listaVitali">
+
+                    <button className="btn btngeneri " data-btn_id="btnRock" onClick={this.eventoBottone}>
+                        <i className="fas fa-drum"></i> ROCK </button>
+                    <button className="btn btngeneri active" data-btn_id="btnPop" onClick={this.eventoBottone}>
+                        <i className="fas fa-fire "></i> POP </button>
+                    <button className="btn btngeneri" data-btn_id="btnJazz" onClick={this.eventoBottone}>
+                        <i className="fas fa-moon"></i> JAZZ </button>
+                    <button className="btn btngeneri" data-btn_id="btnHh" onClick={this.eventoBottone}>
+                        <i className="fas fa-headphones"></i> HIPHOP </button>
+                    <button className="btn btngeneri" data-btn_id="btnClassica" onClick={this.eventoBottone}>
+                        <i className="fas fa-music"></i> CLASSICA </button>
+                    <button className="btn btngeneri" data-btn_id="btnCantautori" onClick={this.eventoBottone}>
+                        <i className="fas fa-microphone-alt"></i> CANTAUTORI </button>
+                    <button className="btn btngeneri" data-btn_id="btnIndie" onClick={this.eventoBottone}>
+                        <i className="fas fa-guitar"></i> INDIE </button>
+                    <button className="btn btngeneri" data-btn_id="btnElettro" onClick={this.eventoBottone}>
+                        <i className="fas fa-bolt"></i> ELETTRONICA </button>
+                    <button className="btn btngeneri" data-btn_id="btnAltro" onClick={this.eventoBottone}>
+                        <i className="fas fa-random"></i> ALTRO </button>
+                    <div>
+                        {this.state.isLoaded
+                            ?
+                            this.state.completeVideoList.map((obj, index) => {
+                                return (
+                                    <div key={index} className="grid-container"><CardItem video={obj} /></div>
+                                )
+                            })
+                            :
+                            <div>Scegli un genere</div>
+                        }
+                    </div>
+                </div>ù
             </div>
         );
     }
