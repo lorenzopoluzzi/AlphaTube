@@ -20,9 +20,5 @@ export function ParseTitle (selectedVideo) {
 	console.log(videoTitle);
 
 	// ricerco una corrispondenza titolo-artista tramite una chiamata a LastFm
-	var trackInfo = getTrackInfo(videoTitle);
-	console.log(trackInfo);
-
-	return trackInfo;
-
+	return getTrackInfo(videoTitle);
 }

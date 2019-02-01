@@ -18,19 +18,19 @@ export function youtube_videoDetails(videosID, parts) {
             res.data.items.map((video) => {
                 videos.push(video)
             });
-            console.log(videos)
+            //console.log(videos)
             return videos;
         });
 }
 
-export function youtube_videoSearch(term, parts) {
+export function youtube_videoSearch(term, parts, results) {
     var videos = [];
     return axios.get(url_Youtube + 'search', {
         params: {
             'part': parts,
             'key': API_KEY,
             'q': term,
-            'maxResults': 10,
+            'maxResults': results,
             'videoEmbeddable': true,
             'videoCategoryId': 10,
             'type': 'video'
@@ -41,11 +41,16 @@ export function youtube_videoSearch(term, parts) {
             res.data.items.map((video) => {
                 videoIds = videoIds + video.id.videoId + ", ";
             });
-            console.log(videoIds);
+            //console.log(videoIds);
             return  youtube_videoDetails(videoIds, 'snippet,statistics')
             .then(res => {
                 videos = res;
-                return videos;
+                if (results == 1) {
+                    return videos.shift();
+                }
+                else {
+                    return videos;
+                }
             });
         })
 }

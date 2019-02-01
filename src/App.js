@@ -10,16 +10,13 @@ import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
-import ArtistSimilarity from "./components/ArtistSimilarity";
 import SubMenu from "./components/SubMenu";
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 // TODO: lift-up delle proprietà condivise dai vari recommender;
 //       passare la fun handleVideoSelection direttamente alla comp VideoItem: in questo modo
-//       si evita di passarla attraverso tutte le comp che le separano. Vedi https://reactjs.org/docs/context.html
-//       associare le key agli elementi dell'array video!!!
-//       fare in modo che la search non faccia una chiamata ad ogni carattere, ma solo quando l'utente smette di digitare!!
+//       si evita di passarla attraverso tutte le comp che le separano. Vedi https://reactjs.org/docs/context.html//       fare in modo che la search non faccia una chiamata ad ogni carattere, ma solo quando l'utente smette di digitare!!
 
 
 
@@ -73,14 +70,6 @@ class App extends Component {
                     <VisualizerInfo  />
                 </div>
                 
-                <div>
-                    <ArtistSimilarity
-                        ytApiKey = {API_KEY}
-                        selectedVideo = {this.state.selectedVideo}
-                        onVideoSelect = {this.handleVideoSelection}
-                    />
-                </div>
-
                 <div className="container" id="div-recommender">
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                     <nav id="spacing-nav-l2pt">
