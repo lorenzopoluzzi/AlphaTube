@@ -11,6 +11,7 @@ import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
 import ArtistSimilarity from "./components/ArtistSimilarity";
+import SubMenu from "./components/SubMenu";
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
@@ -23,9 +24,24 @@ const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 
 class App extends Component {
-    
+
+    sottMenu = [{
+        id: '#div-recommender',
+        name: 'Reccomender'
+    },
+    {
+        id: '#contact',
+        name: 'Info'
+    },
+    {
+        id: '#listaVitali',
+        name: 'Lista'
+    }
+    ];
+
     constructor(props){
         super(props);
+        console.log(props);
         this.state = {
             videos: [],
             selectedVideo : null,
@@ -49,14 +65,9 @@ class App extends Component {
 
         return (
             <div className="App">
-                
-                <header className="App-header">
 
-                    <h1 id="h1-l2pt">Alpha Tubo</h1>
-                </header>
-                
-                <Searchbar onSearchTermChange={videoSearch}/>
-                
+            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
+            
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />

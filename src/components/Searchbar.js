@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import '../style/searchbar.css';
 
 class Searchbar extends Component {
 
     
     constructor(props) {
+        console.log(props);
         super(props);
         this.state = { term: '' };
 
@@ -13,6 +15,10 @@ class Searchbar extends Component {
         this.searchToggleClose = this.searchToggleClose.bind(this);
     }
 
+    static contextTypes = {
+        router: PropTypes.object
+    }
+    
     searchToggle(evt) {
         var classContainer = this.container.classList;
         if (!classContainer.contains('active')) {
@@ -27,7 +33,10 @@ class Searchbar extends Component {
                 console.log(this.state.term);
                 classContainer.remove('active');
                 // clear input
+                let url = '/search/'+this.inputSearch.value;
                 this.inputSearch.value = '';
+                
+                this.context.router.history.push(url);
             }
         }
     }
@@ -49,15 +58,12 @@ class Searchbar extends Component {
                 if (classContainer.contains('active')) {
                     classContainer.remove('active');
                     // clear input
+                    let url = '/search/'+this.inputSearch.value;
                     this.inputSearch.value = '';
+                    this.context.router.history.push(url);
                 }
             }
         }
-    }
-
-    onInputChange(term) {
-        this.setState({term});
-        this.props.onSearchTermChange(term);
     }
 
     

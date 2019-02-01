@@ -28,7 +28,7 @@ class FVitali extends Component {
                     res.data.recommended.map((video) => {
                         this.videoItems = this.videoItems + video.videoID + ", ";
                     });
-                    let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics')
+                    let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
                         .then(res => {
                             this.porcodio = res.map((video) => {
                                 return (

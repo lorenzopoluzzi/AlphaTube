@@ -34,7 +34,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-l2pt">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img style="height: 50px;" src="img/l2pt_trasparente.png" />
+          <img style="height: 50px;" src="/img/l2pt_trasparente.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -78,9 +78,6 @@
         $(this).addClass('active');
       });
 
-      $("#navbar").css("padding","15px 15px");
-      $(".navbarA").css("font-size","18px");
-      $("#logo").css("font-size","35px");
       $('#nav-tab a').on('click', function (e) {
           e.preventDefault()
           $(this).tab('show')
@@ -92,9 +89,6 @@
 
       function scrollFunction() {
           if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-              $("#navbar").css("padding","10px 10px");
-              $(".navbarA").css("font-size","15px");
-              $("#logo").css("font-size","25px");
               $("#search-inputHolder").css("height","2.8vw");
               $("#search-inputHolder").css("width","2.8vw");
               $("#search-button").css("height","40px")
@@ -102,9 +96,6 @@
               $("#search-inputText").css("line-height","40px");
               $("#search-icon").addClass("small-icon-search");
           } else {
-              $("#navbar").css("padding","15px 15px");
-              $(".navbarA").css("font-size","18px");
-              $("#logo").css("font-size","35px");
               $("#search-inputHolder").css("height","3.2vw");
               $("#search-inputHolder").css("width","3.2vw");
               $("#search-button").css("height","50px")

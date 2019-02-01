@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
 import CardItem from './CardItem';
-import {youtube_videoDetails}  from "../Library/Api-Youtube";
-const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
+import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
 
 
 class RecommenderSearch extends Component {
@@ -13,33 +11,25 @@ class RecommenderSearch extends Component {
         this.state = {
 
             isLoaded: false,
-            video : []
+            video: []
         };
     }
 
     componentDidMount() {
+        let videos = youtube_videoSearch(this.props.term, 'snippet');
+        videos.then(res => {
+            console.log(res);
+            this.setState({ isLoaded: true, video: res });
+        })
+    }
 
-        axios.get('https://www.googleapis.com/youtube/v3/search', {
-            params: {
-                'part': 'snippet',
-                'key': API_KEY,
-                'q' : this.props.term,
-                'maxResults' : 10,
-                'videoEmbeddable' : true ,
-                'videoCategoryId' : 10,
-                'type' : 'video'
-            }
-        })
-            .then(res => {
-                this.videoIds = " ";
-                res.data.items.map((video) => {
-                    this.videoIds = this.videoIds + video.id.videoId + ", ";
-                });
-                let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
-                videos.then(res => {
-                this.setState({isLoaded : true, video: res});
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.term !== prevProps.term) {
+            let videos = youtube_videoSearch(this.props.term, 'snippet');
+            videos.then(res => {
+                this.setState({ isLoaded: true, video: res });
             })
-        })
+        };
     }
 
     render() {
