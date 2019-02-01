@@ -6,7 +6,6 @@ const url_Youtube = 'https://www.googleapis.com/youtube/v3/';
 //Funzione per ottenere i dettagli di uno/lista di video 
 export function youtube_videoDetails(videosID, parts){
     var videos = [];
-    console.log(videosID);
     return axios.get(url_Youtube+'videos', {
         params: {
             'id' : videosID,
@@ -18,7 +17,6 @@ export function youtube_videoDetails(videosID, parts){
         res.data.items.map((video) => {
             videos.push(video)
         });
-        console.log(videos)
         return videos;
     });
 }

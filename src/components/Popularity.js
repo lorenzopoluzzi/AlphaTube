@@ -118,7 +118,7 @@ class Popularity extends Component {
                     );
                 });
 
-                //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
+                //faccio il set state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
                 this.setState({ isLoaded: true, isLocal: false, isGlobal: true, video: res });
             });
         });

@@ -2,103 +2,27 @@
 // Usa l'API di LastFm (https://github.com/feross/last-fm)
 import React, {Component} from 'react';
 import axios from 'axios';
+import {getTrackInfo} from '../Library/Api-LastFm';
 
-// TODO: inserire il caso "Live at xxxxxyyyy"
-//		 caso ft
+// TODO: problema con OCEAN di john B.. lastfm ritorna una traccia sbagliata come top result. sarebbe meglio result.track[1]
+//		 rifiuti solidi urbani.. preferibile anche qui track[2]
 //		 caso parentesi contenenti informazioni inutili.. es. "Luce (tramonti a nord est)""
-// 		 caso Jimi Hendrix Experience, battiato la convenzione, SCLL lil disco.. il pocesso entra nell if!succ prima che termini la chiamata a lastfm!
 
 
-const ParseTitle = ({selectedVideo,lastFmKey}) =>  {
+export function ParseTitle (selectedVideo) {
 	
-	var success;
-	var trackInfo: null ;
-	var firstPart, secondPart;
-
-	var videoTitle = selectedVideo.snippet.title
+	var videoTitle = selectedVideo.snippet.title;
 	
 	// ripulisco la stringa titolo
-	videoTitle = videoTitle.replace(/official|original|music|video|version|live|acoustic|session|band|version|testo|lyrics|played by|HQ/gi,"")
-	videoTitle = videoTitle.match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-", 2);
+	videoTitle = videoTitle.replace(/official|original|music|video|version|acoustic|session|band|version|testo|lyrics|played by|HQ/gi,"")
+	videoTitle = videoTitle.match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-",2).join("");
 
-	firstPart = videoTitle[0].trim();
+	console.log(videoTitle);
 
-	if (videoTitle[1]) {		// se il titolo è in formato "part1 - part2"
-		
-		secondPart = videoTitle[1].trim();
-	    console.log(firstPart, secondPart);
-		
-		// adesso devo capire quale delle due parti contiene il nome dell'artista e quale il titolo della traccia;
-		const LASTFM = require('last-fm');
-		const lastfm = new LASTFM(lastFmKey); 
+	// ricerco una corrispondenza titolo-artista tramite una chiamata a LastFm
+	var trackInfo = getTrackInfo(videoTitle);
+	console.log(trackInfo);
 
-		lastfm.artistSearch({q: firstPart}, (err, dataA) => {	// cerco di determinare se la prima sottostringa è il nome dell'artista
-			if (err) {
-				console.error(err);
-			}
-			else if (dataA) {
-				const name = dataA.result[0].name;
-
-				lastfm.trackSearch({q: secondPart}, (err, dataT) => {
-					if (err) {
-						console.error(err);
-					}
-					else if (dataT){
-						if (dataT.result[0].artistName == name) {
-						const title = dataT.result[0].name;
-						console.log("nome:", name,", titolo:", title);
-						success = 1;
-						}
-						else {
-							success=0;
-						}
-					}
-			
-				})
-			}
-		})
-
-		if (!success) {		// cerco di determinare se invece la prima stringa è il titolo
-
-			lastfm.trackSearch({q: firstPart}, (err, dataT) => {
-				if (err) {
-					console.error(err);
-				}
-				else if (dataT){
-					const title = dataT.result[0].name;
-					const name = dataT.result[0].artistName;
-
-					lastfm.artistSearch({q: secondPart}, (err, dataA) => {
-						if (err) {
-							console.error(err);
-						}
-						else if (dataA) {
-							if (dataA.result[0].name == name) {
-							console.log("nome:", name,", titolo:", title);
-							success = 1;
-							}
-							else {
-								success=0;
-							}
-						}
-					})
-				}
-			})
-		}
-
-		else {
-			console.log("Impossibile determinare titolo e artista della canzone.")
-		}
-	
-	}
-
-	else {					// se il titolo non è in formato "xxxx - yyyy"
-		console.log("Maremma cane!! Il titolo è in formato esteso");
-		// potrebbe essere 'nome artista "titolo canzone"'
-	}
-
-	return null;
+	return trackInfo;
 
 }
-
-export default ParseTitle;

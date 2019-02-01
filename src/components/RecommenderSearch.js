@@ -35,7 +35,6 @@ class RecommenderSearch extends Component {
                 res.data.items.map((video) => {
                     this.videoIds = this.videoIds + video.id.videoId + ", ";
                 });
-                console.log(this.videoIds);
                 let videos = youtube_videoDetails(this.videoIds,'snippet,statistics');
                 videos.then(res => {
                 this.setState({isLoaded : true, video: res});

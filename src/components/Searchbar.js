@@ -7,6 +7,7 @@ class Searchbar extends Component {
     constructor(props) {
         super(props);
         this.state = { term: '' };
+
         this.searchToggle = this.searchToggle.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.searchToggleClose = this.searchToggleClose.bind(this);
@@ -44,9 +45,7 @@ class Searchbar extends Component {
         var classContainer = this.container.classList;
         if (e.key === 'Enter') {
             if (this.inputSearch.value != '') {
-                console.log(this.inputSearch.value);
                 this.setState({ term: this.inputSearch.value });
-                console.log(this.state.term);
                 if (classContainer.contains('active')) {
                     classContainer.remove('active');
                     // clear input

@@ -78,10 +78,8 @@ class WikiInfo extends Component {
         })
             .then(res => {
 
-                console.log(res);
                 let artista = res.data.results.bindings[0];
 
-                console.log(artista);
                 if (artista != null) {
                     this.setState({
                         artista: {
@@ -96,7 +94,6 @@ class WikiInfo extends Component {
                 this.setState({ isLoadedArtista: true, errorArtista: false });
             })
             .catch(error => {
-                console.log(error);
                 this.setState({ isLoadedArtista: true, errorArtista: true });
             });
     }
