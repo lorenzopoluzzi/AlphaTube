@@ -11,6 +11,8 @@ import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
+import ArtistSimilarity from "./components/ArtistSimilarity";
+import GenreSimilarity from "./components/GenreSimilarity"
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
@@ -71,6 +73,7 @@ class App extends Component {
                 </div>
                 
                 <div className="container" id="div-recommender">
+
                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                     <nav id="spacing-nav-l2pt">
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">

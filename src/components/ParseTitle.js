@@ -4,9 +4,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {getTrackInfo} from '../Library/Api-LastFm';
 
-// TODO: problema con OCEAN di john B.. lastfm ritorna una traccia sbagliata come top result. sarebbe meglio result.track[1]
-//		 rifiuti solidi urbani.. preferibile anche qui track[2]
-//		 caso parentesi contenenti informazioni inutili.. es. "Luce (tramonti a nord est)""
+// TODO: Queen live at.. come faccio ad associare una traccia?? non è una canzone
 
 
 export function ParseTitle (selectedVideo) {
@@ -15,7 +13,7 @@ export function ParseTitle (selectedVideo) {
 	
 	// ripulisco la stringa titolo
 	videoTitle = videoTitle.replace(/official|original|music|video|version|acoustic|session|band|version|testo|lyrics|played by|HQ/gi,"")
-	videoTitle = videoTitle.match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-",2).join("");
+	videoTitle = videoTitle.split("(",1).join("").match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-",2).join("");
 
 	console.log(videoTitle);
 
