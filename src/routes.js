@@ -7,7 +7,7 @@ import App from './App';
 import NotFound from './pages/NotFound';
 import ListaVitali from './pages/ListaVitali';
 import SearchList from './pages/SearchList';
-import Visualizer from './pages/Visualizzer';
+import Visualizer from './pages/Visualizer';
 
 const Routes = () => {
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/videoDetail.css'
+
 const VideoDetail = ({video}) => {
     
     if(!video) {

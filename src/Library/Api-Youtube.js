@@ -54,3 +54,17 @@ export function youtube_videoSearch(term, parts, results) {
             });
         })
 }
+
+export function youtube_getComments(videoID) {
+
+    axios.get(url_Youtube + 'commentThreads', {
+        params: {
+            'part': 'snippet,replies',
+            'videoId': videoID,
+            'key': API_KEY
+        }
+    })
+        .then(res =>{
+            return (res.data.items);
+        })
+}

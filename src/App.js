@@ -11,14 +11,11 @@ import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
-import ArtistSimilarity from "./components/ArtistSimilarity";
-import GenreSimilarity from "./components/GenreSimilarity"
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 // TODO: lift-up delle proprietà condivise dai vari recommender;
 //       passare la fun handleVideoSelection direttamente alla comp VideoItem: in questo modo
-//       si evita di passarla attraverso tutte le comp che le separano. Vedi https://reactjs.org/docs/context.html//       fare in modo che la search non faccia una chiamata ad ogni carattere, ma solo quando l'utente smette di digitare!!
 
 
 
@@ -26,7 +23,7 @@ class App extends Component {
 
     sottMenu = [{
         id: '#div-recommender',
-        name: 'Reccomender'
+        name: 'Recommender'
     },
     {
         id: '#contact',
@@ -65,7 +62,7 @@ class App extends Component {
         return (
             <div className="App">
 
-            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
+            <SubMenu title="Alfatube" checksearch submenu={this.sottMenu} />
             
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
