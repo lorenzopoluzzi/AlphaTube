@@ -9,6 +9,7 @@ import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
+import RecommenderRandom from "./components/RecommenderRandom";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
@@ -79,7 +80,7 @@ class App extends Component {
                             />
                         </div>
                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <RecommenderSearch />
+                            <RecommenderRandom />
                             <LocalPopularity 
                                 onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                                 videoSeleceted = {this.state.selectedVideo} />
