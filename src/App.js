@@ -11,19 +11,18 @@ import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
+import Comments from "./components/Comments";
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
 // TODO: lift-up delle proprietà condivise dai vari recommender;
-//       passare la fun handleVideoSelection direttamente alla comp VideoItem: in questo modo
-
 
 
 class App extends Component {
 
     sottMenu = [{
         id: '#div-recommender',
-        name: 'Recommender'
+        name: 'Reccomender'
     },
     {
         id: '#contact',
@@ -62,11 +61,12 @@ class App extends Component {
         return (
             <div className="App">
 
-            <SubMenu title="Alfatube" checksearch submenu={this.sottMenu} />
+            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
             
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />
+                    <Comments video={this.state.selectedVideo}  />
                 </div>
                 
                 <div className="container" id="div-recommender">

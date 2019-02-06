@@ -54,7 +54,7 @@ class SubMenu extends Component {
 
             <div id="navbar" ref={(node) => { this.navbar = node }} className={this.props.visibile}>
                 <div className="container">
-                    <a id="titleSubMenu" className="d-none d-md-block" ref={(node) => { this.tittle = node }}> {this.props.tittle} </a>
+                    <a id="tittleSubMenu" className="d-none d-md-block" ref={(node) => { this.tittle = node }}> {this.props.tittle} </a>
                     {((this.props.checksearch) ?
                         <Searchbar />
                         :
