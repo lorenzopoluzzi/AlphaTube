@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {youtube_getComments} from "../Library/Api-Youtube";
-import '../style/comments.css'
 
-// TODO: Rifiuti soliti urbani senza commenti
 
 class Comments extends Component {
 
@@ -14,44 +12,45 @@ class Comments extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps){
-		if (this.props.video != prevProps.video) {
-			console.log(this.props.video.id);
+	componentDidMount(){
+		if (this.props.video) {
 			let comments = youtube_getComments(this.props.video.id);
 			comments.then(res => {
 				this.setState({data : res});
-				console.log(this.state.data);
 			});
 		}
+	}
 
+	componentDidUpdate(prevProps){
+		if (this.props.video != prevProps.video) {
+			let comments = youtube_getComments(this.props.video.id);
+			comments.then(res => {
+				this.setState({data : res});
+			});
+		}
 	}
 
 	render(){
 		if (this.props.video) {
 			return(
-				<div className="comments col-8">
-					<table className="table">
-						<tbody>
-							{this.state.data.map(comment => {
-								var author = comment.snippet.topLevelComment.snippet.authorDisplayName;
-								var content = comment.snippet.topLevelComment.snippet.textOriginal;
-								return (
-									<tr key={comment.id}>
-										<td />
-										<td>{author}</td>
-										<td>{content}</td>
-									</tr>
-								);
-							})}
-						</tbody>
-					</table>
-				</div>
+				<table className="table">
+					<tbody>
+						{this.state.data.map(comment => {
+							return (
+								<tr key={comment.id}>
+									<td> <img src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} className="rounded-circle" alt="Author Profile Photo" /> </td>
+									<td>{comment.snippet.topLevelComment.snippet.authorDisplayName}</td>
+									<td>{comment.snippet.topLevelComment.snippet.textOriginal}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
 			);
 		}
 		else {
 			return(
 				<div className="comments col-xs-6">
-					<p> La tu mamma puttana </p>
 				</div>
 			);
 		}		

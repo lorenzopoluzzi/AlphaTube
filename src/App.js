@@ -66,7 +66,6 @@ class App extends Component {
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />
-                    <Comments video={this.state.selectedVideo}  />
                 </div>
                 
                 <div className="container" id="div-recommender">
