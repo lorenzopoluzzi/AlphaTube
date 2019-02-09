@@ -15,6 +15,8 @@ class SubMenu extends Component {
     componentDidMount() {
 
         this.navbar.setAttribute('style', 'padding : 15px 15px');
+        this.navbar.setAttribute('style', 'top : 0');
+        this.navbar.setAttribute('style', 'margin-top : 77px');
         this.tittle.setAttribute('style', 'font-size: 35px');
         if (this.subMenu) {
             this.subMenu.childNodes.forEach(item => {
@@ -31,6 +33,7 @@ class SubMenu extends Component {
     handleScroll() {
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
             this.navbar.setAttribute('style', 'padding: 10px 10px');
+            this.navbar.setAttribute('style', 'margin-top : 0px');
             this.tittle.setAttribute('style', 'font-size: 25px');
             if (this.subMenu) {
                 this.subMenu.childNodes.forEach(item => {
@@ -39,6 +42,8 @@ class SubMenu extends Component {
             }
         } else {
             this.navbar.setAttribute('style', 'padding : 15px 15px');
+            this.navbar.setAttribute('style', 'top : 0');
+            this.navbar.setAttribute('style', 'margin-top : 77px');
             this.tittle.setAttribute('style', 'font-size: 35px');
             if (this.subMenu) {
                 this.subMenu.childNodes.forEach(item => {

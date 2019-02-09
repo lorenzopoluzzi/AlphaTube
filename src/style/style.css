@@ -38,9 +38,14 @@ body {
     padding: 10px 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Luckiest Guy' !important;
-    margin-top: 77px;
+    top: 0;
 }
-
+.fixed-l2pt {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 #navbar a {
     color: white;
     text-align: center;
