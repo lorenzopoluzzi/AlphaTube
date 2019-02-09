@@ -51,7 +51,7 @@ class App extends Component {
 
                 <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
             
-                <div className="row justify-content-center">
+                <div className="row justify-content-center pt-12">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />
                 </div>
