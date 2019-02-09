@@ -15,8 +15,6 @@ export function ParseTitle (selectedVideo) {
 	videoTitle = videoTitle.replace(/official|original|music|video|version|acoustic|session|band|version|testo|lyrics|played by|HQ/gi,"")
 	videoTitle = videoTitle.split("(",1).join("").match(/\s|(è|é|ò|ç|à|ù|æ|ø|ð|ñ|å|\.)|[a-z]|[0-9]|-/gi).join("").split("-",2).join("");
 
-	console.log(videoTitle);
-
 	// ricerco una corrispondenza titolo-artista tramite una chiamata a LastFm
 	return getTrackInfo(videoTitle);
 }

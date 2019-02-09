@@ -12,6 +12,7 @@ import RecommenderSearch from "./components/RecommenderSearch";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
 import Comments from "./components/Comments";
+import Similarity from "./components/Similarity";
 
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
@@ -43,25 +44,12 @@ class App extends Component {
         };
     }
 
-    videoSearch(term) {
-        YTSearch({key: API_KEY, term:term}, (videos) => {
-            this.setState({ videos : videos , selectedVideo : videos[0]});
-            console.log(this.state);
-        });
-    }
-
-    handleVideoSelection(video){
-        this.setState({selectedVideo: video });
-    }
-
     render() {
         
-        const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
-
         return (
             <div className="App">
 
-            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
+                <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
             
                 <div className="row justify-content-center">
                     <VideoDetail video={this.state.selectedVideo} />
@@ -79,6 +67,8 @@ class App extends Component {
                                 className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
                             <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
                                 className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                            <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarity" role="tab" aria-controls="nav-similarity" aria-selected="false"><i
+                            className="fa fa-chain"></i><span id="text-l2pt-tab">Similarity</span></a>
                         </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">
@@ -99,6 +89,12 @@ class App extends Component {
                             <LocalPopularity 
                                 onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                                 videoSeleceted = {this.state.selectedVideo} />
+                        </div>
+                        <div className="tab-pane fade" id="nav-similarity" role="tabpanel" aria-labelledby="nav-similarity-tab">
+                            <Similarity
+                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                selectedVideo = {this.state.selectedVideo}
+                            />
                         </div>
                     </div>
                 </div>
