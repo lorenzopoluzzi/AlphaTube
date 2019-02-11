@@ -79,3 +79,19 @@
         background-image: url('https://image01.oneplus.net/shop/201901/13/586/871ad67ba0732f7eeee06c16fbc36d09.jpg');
     }
 }
+.search-mobile{
+    min-height: 50px;
+    margin-top: 75px;
+    position: relative;
+    display: none !important;
+}
+/* CSS per gli SMARTPHONE */
+
+@media only screen and (max-width: 768px) {
+    .search-mobile{
+        display: block;
+    }
+    #navbar #tittleSubMenu{
+        float:none;
+    }
+}

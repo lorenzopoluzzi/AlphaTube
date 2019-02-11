@@ -6,6 +6,7 @@ import Popularity from "../components/Popularity";
 import RecommenderSearch from "../components/RecommenderSearch";
 import RecommenderRelated from '../components/RecommenderRelated';
 import VisualizerInfo from "../components/VisualizerInfo";
+import Searchbar from "../components/Searchbar";
 import NotFound from "./NotFound";
 import SubMenu from "../components/SubMenu";
 import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
@@ -71,11 +72,12 @@ class Visualizer extends Component {
             <div>
 
                 <SubMenu visibile={this.state.classSotMenu} tittle="Visualizer" checksearch submenu={this.sottMenu} />
-
+                
                 {
                     ((this.state.isLoaded) ?
                         ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
+
                                 <div className="row justify-content-center">
                                     <VideoDetail video={this.state.selectedVideo} />
                                     <VisualizerInfo />

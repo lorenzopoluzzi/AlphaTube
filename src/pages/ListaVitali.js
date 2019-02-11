@@ -224,7 +224,7 @@ class ListaVitali extends Component {
                             <div>Scegli un genere</div>
                         }
                     </div>
-                </div>ù
+                </div>
             </div>
         );
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // import component associate to the url
-import Searchbar from "./components/Searchbar";
 import App from './App';
 import NotFound from './pages/NotFound';
 import ListaVitali from './pages/ListaVitali';
