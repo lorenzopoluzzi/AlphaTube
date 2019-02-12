@@ -9,7 +9,6 @@ import YTSearch from "youtube-api-search";
 import FVitali from "./components/FVitali";
 import Popularity from "./components/Popularity";
 import RecommenderSearch from "./components/RecommenderSearch";
-import RecommenderRandom from "./components/RecommenderRandom";
 import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
@@ -50,7 +49,7 @@ class App extends Component {
         return (
             <div className="App">
             <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
-                <div className="row justify-content-center">
+                <div className="row justify-content-center pt-6">
                     <VideoDetail video={this.state.selectedVideo} />
                     <VisualizerInfo  />
                 </div>
@@ -80,7 +79,7 @@ class App extends Component {
                             />
                         </div>
                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <RecommenderRandom />
+                            <RecommenderSearch />
                             <LocalPopularity 
                                 onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                                 videoSeleceted = {this.state.selectedVideo} />

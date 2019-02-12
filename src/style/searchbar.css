@@ -106,8 +106,6 @@ body {
     border-radius: 30px;
 }
 
-
-
 .search-wrapper .input-holder .search-icon i {
     font-size: 1.4vw;
     display: inline-block;
@@ -158,12 +156,52 @@ body {
     -moz-transition-delay: 0.5s;
     transition-delay: 0.5s;
 }
-.small-icon-search{
+
+.small-icon-search {
     font-size: 1vw !important;
 }
 
-@media screen and (max-width: 560px) {
+#navbar .container .search-wrapper {
+    display: block !important;
+}
+
+.search-mobile .search-wrapper {
+    display: none !important;
+}
+
+/* CSS per i TABLET */
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #navbar .container .search-wrapper {}
+}
+
+/* CSS per gli SMARTPHONE */
+
+@media only screen and (max-width: 768px) {
+    #navbar .container .search-wrapper {
+        display: none !important;
+    }
+    .search-mobile .search-wrapper {
+        display: block !important;
+        
+    }
+    .search-wrapper .input-holder .search-icon i {
+        font-size: 3.0vh;
+        cursor: pointer;
+    }
+    .search-wrapper .input-holder .search-icon{
+        background: #078b5e;
+        color: #FFF;
+    }
+    .search-wrapper .search-close{
+        color: #078b5e;
+        font-size: 3.0vh;
+        cursor: pointer;
+    }
     .search-wrapper.active .input-holder {
-        width: 200px;
+        background: #000000;
+    }
+    .search-wrapper.active {
+        width: 250px;
     }
 }

@@ -37,6 +37,13 @@ button.btngeneri {
 }
 
 #listaVitali {
-  padding-top: 140px;
+  padding-top: 80px;
   text-align: center;
+}
+/* CSS per gli SMARTPHONE */
+
+@media only screen and (max-width: 768px) {
+  #listaVitali {
+    padding-top: 30px !important;
+  }
 }

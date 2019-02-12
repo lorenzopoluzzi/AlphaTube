@@ -52,7 +52,7 @@ class VisualizerInfoItem extends Component {
         return (
             <article className={this.state.classArticle} onClick={this.open}>
                 <div className="strip__content">
-                    <h1 className="strip__title" data-name="Artista">{this.props.title}</h1>
+                    <h1 className="strip__title" data-name={this.props.title}>{this.props.title}</h1>
                     <div className={this.state.classContent}>
 
                         {this.state.content}

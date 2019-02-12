@@ -17,9 +17,8 @@ body {
 .row {
     padding: 30px;
 }
-
-.nav-l2pt {
-    border-bottom: 1px solid rgba(214,214,214,0.5);
+.imgLogo{
+    height: 51px;
 }
 .colore-l2pt-at {
     color: rgb(7,169,114);
@@ -38,9 +37,14 @@ body {
     padding: 10px 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Luckiest Guy' !important;
-    margin-top: 77px;
+    top: 0;
 }
-
+.fixed-l2pt {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 #navbar a {
     color: white;
     text-align: center;

@@ -4,14 +4,15 @@ body {
 
 .App {
   text-align: center;
-  padding-top: 40px;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+.pt-6 {
+  padding-top: 6rem !important;
+}
 .App-header {
   background: rgb(7, 169, 114);
   background: linear-gradient(90deg, rgba(7, 169, 114, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(7, 169, 114, 1) 100%);

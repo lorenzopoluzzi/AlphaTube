@@ -5,6 +5,7 @@ import '../style/VisualizerInfo.css';
 
 const VisualizerInfo = (props) => {
 
+    
     return (
         <div className="col col-4">
             <section className="strips">
