@@ -1,9 +1,11 @@
 body {
     text-align: center;
 }
+
 .search-bar {
     margin-top: 4rem !important;
 }
+
 .search-bar input {
     width: 75%
 }
@@ -11,25 +13,52 @@ body {
 .video-item img {
     max-width: 64px;
 }
+
 .search-bar {
     margin: 20px;
 }
+
 .row {
     padding: 30px;
 }
-.imgLogo{
+
+.imgLogo {
     height: 51px;
 }
+.tittleMenu{
+    font-size: 35PX;
+    font-family: Luckiest Guy;
+    color: #000;
+}
+.tittleMenu:hover {
+    font-size: 35PX;
+    font-family: Luckiest Guy;
+    color: #008456;
+    text-decoration: none;
+}
+.activeMenu {
+    color: #008456 !important;
+    font-size: 18px !important;
+}
+.item-list-menu{
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0px 10px;
+}
+
 .colore-l2pt-at {
-    color: rgb(7,169,114);
+    color: rgb(7, 169, 114);
 }
 
 /*stile per il sottomenu*/
-* {box-sizing: border-box;}
+
+* {
+    box-sizing: border-box;
+}
 
 #navbar {
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(7,169,114,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 75%, rgba(7,169,114,1) 100%);
+    background: linear-gradient(90deg, rgba(7, 169, 114, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(7, 169, 114, 1) 100%);
     transition: 0.7s;
     position: fixed;
     width: 100%;
@@ -39,12 +68,14 @@ body {
     font-family: 'Luckiest Guy' !important;
     top: 0;
 }
+
 .fixed-l2pt {
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
 }
+
 #navbar a {
     color: white;
     text-align: center;
@@ -54,9 +85,11 @@ body {
     padding-right: .5rem;
     padding-left: .5rem;
 }
+
 .navbarA {
     transition: 0.7s;
 }
+
 #navbar #tittleSubMenu {
     transition: 0.4s;
     float: left;
@@ -93,7 +126,8 @@ body {
     color: #aaa;
     font-weight: 400;
     font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-appearance: none; /* for box shadows to show on iOS */
+    -webkit-appearance: none;
+    /* for box shadows to show on iOS */
 }
 
 .input__field:focus {
@@ -138,6 +172,7 @@ body {
 }
 
 /* Makiko */
+
 .input--makiko {
     overflow: hidden;
     background: #CBCBCB;
@@ -168,22 +203,22 @@ body {
     left: 20px;
     background: url(search.svg) no-repeat center center;
     background-size: 100%;
-    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.7,0,0.3,1);
-    transition: transform 0.4s cubic-bezier(0.7,0,0.3,1);
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 .input__label-content--makiko {
     display: block;
     padding: 1.5em 0 0 2.75em;
-    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.7,0,0.3,1);
-    transition: transform 0.4s cubic-bezier(0.7,0,0.3,1);
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-.input__field--makiko:focus + .input__label--makiko::before,
-.input--filled .input__label--makiko::before {
+.input__field--makiko:focus+.input__label--makiko::before, .input--filled .input__label--makiko::before {
     -webkit-transform: scale3d(38, 38, 1);
     transform: scale3d(38, 38, 1);
 }
+
 .search-bar input {
     width: 75%
 }

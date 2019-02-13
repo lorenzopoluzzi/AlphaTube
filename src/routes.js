@@ -8,6 +8,7 @@ import ListaVitali from './pages/ListaVitali';
 import SearchList from './pages/SearchList';
 import Visualizer from './pages/Visualizzer';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const Routes = () => {
     return (
@@ -25,7 +26,7 @@ const Routes = () => {
                     <Route render={(props) => <NotFound {...props} message={"Probabilmente la pagina non è più disponibile o non esite."}
                         sottMessage={"Non siamo riusciti a trovare la pagina che cercavi. Controlla l'indirizzo e riprova"} />} />
                 </Switch>
-                
+                <Footer />
             </div>
         </BrowserRouter>
 
