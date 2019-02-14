@@ -46,7 +46,7 @@ const Footer = (props) => {
                         <ul class="list-unstyled mb-0">
                             <li className=" item-list-menu footer-list">
                                 <img id="logo-l2pt" src={require('../img/l2pt_trasparente.png')} />
-                                <button className="footer-buttTop" id="footer-goTop"><i className="fas fa-arrow-alt-circle-up"></i></button>
+                                
                             </li>
                         </ul>
                     </div>

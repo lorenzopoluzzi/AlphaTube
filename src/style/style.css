@@ -289,29 +289,13 @@ body {
     color: #00ad72;
     font-weight: bolder;
 }
-.footer-buttTop{
-    border: none;
-    background: transparent;
-    font-size: 50px;
-    color: #000;
-    outline: none;
-    margin-left: 8.5rem;
-}
-.footer-buttTop:hover,.footer-buttTop:focus,.footer-buttTop:active{
-    cursor: pointer;
-    color: #008456;
-    outline: none;
-}
+
 /* CSS per i TABLET */
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     #logo-l2pt {
-        width: 230px;
-    }
-    .footer-buttTop{
-        margin-top: 2rem;
-        margin-left: 6.5rem !important;
-    }
+        width: 100%;
+    } 
 }
 
 /* CSS per gli SMARTPHONE */
@@ -332,8 +316,7 @@ body {
     .footer-list a {
         width: auto;
     }
-    .footer-buttTop{
-        margin-top: 2rem;
-        margin-left: 2.5rem;
+    #logo-l2pt {
+        width: 100%;
     }
 }

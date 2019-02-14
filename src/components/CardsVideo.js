@@ -14,18 +14,20 @@ class CardVideo extends Component {
                     src={this.props.value.snippet.thumbnails.high.url}
                     style={{ width: "100%", height: "11em" }}
                 />
-                <Button
-                    floating
-                    tag="a"
-                    className="btn-floating ml-auto mr-4 lighten-3 mdb-coalor btn-card buttonabsolute"
+                <Link to={url} className="link-url" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                    <Button
+                        floating
+                        tag="a"
+                        className="btn-floating ml-auto mr-4 lighten-3 mdb-coalor btn-card buttonabsolute"
 
-                    action
+                        action
 
-                >
-                    <Link to={url} className="link-url">
+                    >
+
                         <Fa icon="chevron-right" />
-                    </Link>
-                </Button>
+
+                    </Button>
+                </Link>
                 <CardBody style={{ width: "100%" }} cascade>
                     <CardTitle  >{this.props.value.snippet.title} </CardTitle>
                 </CardBody>
@@ -54,7 +56,7 @@ class CardVideo extends Component {
                         </li>
                     </ul>
                 </div>
-            </Card>
+            </Card >
         )
     }
 }
