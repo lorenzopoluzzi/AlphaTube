@@ -25,22 +25,26 @@ body {
 .imgLogo {
     height: 51px;
 }
-.tittleMenu{
+
+.tittleMenu {
     font-size: 35PX;
     font-family: Luckiest Guy;
     color: #000;
 }
+
 .tittleMenu:hover {
     font-size: 35PX;
     font-family: Luckiest Guy;
     color: #008456;
     text-decoration: none;
 }
+
 .activeMenu {
     color: #008456 !important;
     font-size: 18px !important;
 }
-.item-list-menu{
+
+.item-list-menu {
     font-size: 17px;
     font-weight: 600;
     padding: 0px 10px;
@@ -233,4 +237,103 @@ body {
 
 .row {
     padding: 30px;
+}
+
+.imgAlfaFooter {
+    max-height: 200px;
+    float: left;
+}
+
+.citazione {
+    font-size: 20px;
+    font-style: italic;
+    padding: 60px 180px 0px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.citazione-autore {
+    font-size: 20px;
+    font-style: italic;
+    padding: 5px 180px;
+    text-align: right;
+    color: #aaa;
+}
+
+.spacingPadd {
+    padding-left: 20px;
+}
+
+.hr-footer {
+    border-color: #008456;
+    width: 60px;
+    margin-left: 20px;
+    margin-bottom: 14px !important;
+}
+
+.footer-list a {
+    width: fit-content;
+}
+
+.footer-copyright {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(7, 169, 114, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(7, 169, 114, 1) 100%);
+    padding: 10px;
+}
+
+.footer-copyright p {
+    margin-bottom: 0px;
+}
+
+.footer-copyright span {
+    color: #00ad72;
+    font-weight: bolder;
+}
+.footer-buttTop{
+    border: none;
+    background: transparent;
+    font-size: 50px;
+    color: #000;
+    outline: none;
+    margin-left: 8.5rem;
+}
+.footer-buttTop:hover,.footer-buttTop:focus,.footer-buttTop:active{
+    cursor: pointer;
+    color: #008456;
+    outline: none;
+}
+/* CSS per i TABLET */
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #logo-l2pt {
+        width: 230px;
+    }
+    .footer-buttTop{
+        margin-top: 2rem;
+        margin-left: 6.5rem !important;
+    }
+}
+
+/* CSS per gli SMARTPHONE */
+
+@media only screen and (max-width: 768px) {
+    .imgAlfaFooter {
+        float: none;
+    }
+    .citazione {
+        padding: 10px 0px;
+    }
+    .citazione-autore {
+        padding: 10px 0px;
+    }
+    .NotFound_BackLink {
+        font-size: 4.5vw !important;
+    }
+    .footer-list a {
+        width: auto;
+    }
+    .footer-buttTop{
+        margin-top: 2rem;
+        margin-left: 2.5rem;
+    }
 }
