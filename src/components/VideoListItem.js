@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/VideoListItem.css';
+import '../style/videoListItem.css';
 
 const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner }) => {
 

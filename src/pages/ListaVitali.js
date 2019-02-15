@@ -12,6 +12,7 @@ class ListaVitali extends Component {
         this.state = {
             lists: [],
             isLoaded: true,
+            buttonSelected : "btnPop",
             completeVideoList: [],
             genereIDselected: [],
         };
@@ -183,6 +184,9 @@ class ListaVitali extends Component {
                 genereIDselected: this.state.videoIDAltro
             })
         }
+        this.setState({
+            buttonSelected: event.currentTarget.dataset.btn_id
+        })
     }
 
     render() {
@@ -194,23 +198,23 @@ class ListaVitali extends Component {
                 <SubMenu tittle="Lista Vitali" checksearch />
                 <div id="listaVitali">
 
-                    <button className="btn btngeneri " data-btn_id="btnRock" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnRock"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnRock" onClick={this.eventoBottone}>
                         <i className="fas fa-drum"></i> ROCK </button>
-                    <button className="btn btngeneri active" data-btn_id="btnPop" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnPop"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnPop" onClick={this.eventoBottone}>
                         <i className="fas fa-fire "></i> POP </button>
-                    <button className="btn btngeneri" data-btn_id="btnJazz" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnJazz"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnJazz" onClick={this.eventoBottone}>
                         <i className="fas fa-moon"></i> JAZZ </button>
-                    <button className="btn btngeneri" data-btn_id="btnHh" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnHh"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnHh" onClick={this.eventoBottone}>
                         <i className="fas fa-headphones"></i> HIPHOP </button>
-                    <button className="btn btngeneri" data-btn_id="btnClassica" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnClassica"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnClassica" onClick={this.eventoBottone}>
                         <i className="fas fa-music"></i> CLASSICA </button>
-                    <button className="btn btngeneri" data-btn_id="btnCantautori" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnCantautori"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnCantautori" onClick={this.eventoBottone}>
                         <i className="fas fa-microphone-alt"></i> CANTAUTORI </button>
-                    <button className="btn btngeneri" data-btn_id="btnIndie" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnIndie"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnIndie" onClick={this.eventoBottone}>
                         <i className="fas fa-guitar"></i> INDIE </button>
-                    <button className="btn btngeneri" data-btn_id="btnElettro" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnElettro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnElettro" onClick={this.eventoBottone}>
                         <i className="fas fa-bolt"></i> ELETTRONICA </button>
-                    <button className="btn btngeneri" data-btn_id="btnAltro" onClick={this.eventoBottone}>
+                    <button className={this.state.buttonSelected === "btnAltro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnAltro" onClick={this.eventoBottone}>
                         <i className="fas fa-random"></i> ALTRO </button>
                     <div>
                         {this.state.isLoaded

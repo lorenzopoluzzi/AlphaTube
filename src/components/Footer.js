@@ -14,17 +14,17 @@ const Footer = (props) => {
         <footer className="page-footer font-small blue ">
             <div className="container-fluid text-center text-md-left bg-light">
                 <div className="row">
-                    <div class="col-md-5 mt-md-0 mt-3">
+                    <div className="col-md-5 mt-md-0 mt-3">
                         <img className="imgAlfaFooter" src={require('../img/LOGO_ALFATUBE.png')} />
                         <p className="citazione">"Ciò che non si può dire e ciò che non si può tacere, la musica lo esprime."</p>
                         <p className="citazione-autore">Victor Hugo</p>
                     </div>
-                    <hr class="clearfix w-100 d-md-none pb-3" />
-                    <div class="col-md-3 mb-md-0 mb-3">
-                        <h5 class="text-uppercase spacingPadd font-weight-bold">Pagine</h5>
-                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block  hr-footer" ></hr>
+                    <hr className="clearfix w-100 d-md-none pb-3" />
+                    <div className="col-md-3 mb-md-0 mb-3">
+                        <h5 className="text-uppercase spacingPadd font-weight-bold">Pagine</h5>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block  hr-footer" ></hr>
 
-                        <ul class="list-unstyled mb-0">
+                        <ul className="list-unstyled mb-0">
                             <li className=" item-list-menu footer-list">
                                 <NavLink exact to={"/"} className="link-url nav-link" activeClassName="activeMenu"><i className="fas fa-building"></i> Home</NavLink>
                             </li>
@@ -40,10 +40,10 @@ const Footer = (props) => {
                         </ul>
 
                     </div>
-                    <div class="col-md-4 mb-md-0 mb-3">
-                        <h5 class="text-uppercase spacingPadd font-weight-bold">Development Team</h5>
-                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block  hr-footer" ></hr>
-                        <ul class="list-unstyled mb-0">
+                    <div className="col-md-4 mb-md-0 mb-3">
+                        <h5 className="text-uppercase spacingPadd font-weight-bold">Development Team</h5>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block  hr-footer" ></hr>
+                        <ul className="list-unstyled mb-0">
                             <li className=" item-list-menu footer-list">
                                 <img id="logo-l2pt" src={require('../img/l2pt_trasparente.png')} />
                                 

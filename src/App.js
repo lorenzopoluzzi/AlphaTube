@@ -1,89 +1,65 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
-import Searchbar from "./components/Searchbar";
-import ListaVitali from "./pages/ListaVitali";
-import VideoDetail from "./components/VideoDetail";
-import LocalPopularity from "./components/LocalPopularity";
-import YTSearch from "youtube-api-search";
-import FVitali from "./components/FVitali";
-import Popularity from "./components/Popularity";
-import RecommenderSearch from "./components/RecommenderSearch";
-import VisualizerInfo from "./components/VisualizerInfo";
 import SubMenu from "./components/SubMenu";
-const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
+import { Link, NavLink } from 'react-router-dom';
+import Searchbar from './components/Searchbar';
 
 class App extends Component {
 
     sottMenu = [{
-        id: '#div-recommender',
-        name: 'Reccomender'
+        id: '#div-start',
+        name: 'Inizia'
     },
     {
-        id: '#contact',
-        name: 'Info'
-    },
-    {
-        id: '#listaVitali',
-        name: 'Lista'
+        id: '#team',
+        name: 'Team'
     }
     ];
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        console.log(props);
-        this.state = {
-            videos: [],
-            selectedVideo : null,
-        };
     }
 
-    videoSearch(term) {
-        YTSearch({key: API_KEY, term:term}, (videos) => {
-            this.setState({ videos : videos , selectedVideo : videos[0]});
-        });
-    }
     render() {
-        const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
 
         return (
             <div className="App">
-            <SubMenu tittle="Alfatube" checksearch submenu={this.sottMenu} />
-                <div className="row justify-content-center pt-6">
-                    <VideoDetail video={this.state.selectedVideo} />
-                    <VisualizerInfo  />
+                <SubMenu tittle="HOME" checksearch submenu={this.sottMenu} />
+                <div className="jumbotron jumbotron-fluid home_strip__content">
+                    <div className="container">
+                        <div className="row justify-content-center ">
+                            <div className="col-md-3">
+                                <img className="logo-home" src={require('./img/LOGO_ALFATUBE.png')} />
+                            </div>
+                            <div className="col-md-7 div-tittle">
+                                <h1 className="display-3 ">ALFATUBO</h1>
+                                <p className="lead">Il portale Musicale di raccomandazione basato su Youtube</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="container" id="div-recommender">
-                    <h3 id="h3-l2pt">RECOMMENDER</h3>
-                    <nav id="spacing-nav-l2pt">
-                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="true"><i
-                                className="fas fa-chalkboard-teacher"></i><span id="text-l2pt-tab">FVitali</span></a>
-                            <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="tab" aria-controls="nav-agpopularity" aria-selected="false"><i
-                                className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
-                            <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                <div className="container shadow p-3 mb-5 bg-white rounded" id="div-start">
+                    <h4 className="h1 text-uppercase font-weight-bold">Inzia Ad Ascoltare</h4>
+                    <p>Inzia il tuo ascolto scegliendo se ricercare una canzone o un artista, o se fidarti dei nostri esperti che hanno selezionato una lista di canzoni divisa per generi.
+                        Più utilizzerai il portale più sarà facile consigliarti e personalizzare la tua esperienza fino a quando non potrai farne a meno.
+                    </p>
+                    <div className="row justify-content-center home-button-div">
+                        <div className="col-md-6">
+                            <Link to={"/ListaVitali"} className="btn btn-primary button-listaVitali" ><i className="fas fa-list-alt"></i> Lista Vitali</Link>
                         </div>
-                    </nav>
-                    <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
-                            <FVitali
-                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-                                videoSeleceted = {this.state.selectedVideo}
-                            />
+                        <div className="col-md-6 content-search"> 
+                            <Searchbar />
                         </div>
-                        <div className="tab-pane fade" id="nav-agpopularity" role="tabpanel" aria-labelledby="nav-agpopularity-tab">
-                            <Popularity
-                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-                                videoSeleceted = {this.state.selectedVideo}
-                            />
-                        </div>
-                        <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <RecommenderSearch />
-                            <LocalPopularity 
-                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-                                videoSeleceted = {this.state.selectedVideo} />
-                        </div>
+                    </div>
+                </div>
+                <div className="container shadow p-3 mb-5 bg-white rounded" id="team" >
+                    <h4 className="h1 text-uppercase font-weight-bold">Conoscici</h4>
+                    <p> Il team di sviluppo è fiero del suo portale, così tanto fiero che ha deciso di non nascondersi e prendersi i meriti. 
+                        Andate a conoscerli non ve ne pentirete...
+                    </p>
+                    <div className="row justify-content-center">
+                            <Link to={"/Team"} className="btn btn-primary button-listaVitali" ><i className="fas fa-users"></i> Team</Link>
                     </div>
                 </div>
             </div>
