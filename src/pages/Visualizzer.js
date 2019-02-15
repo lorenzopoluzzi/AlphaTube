@@ -110,7 +110,6 @@ class Visualizer extends Component {
                                             />
                                         </div>
                                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <RecommenderSearch />
                                             <LocalPopularity
                                                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
                                                 videoSeleceted={this.state.selectedVideo} />
