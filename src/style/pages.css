@@ -10,6 +10,9 @@
 .show_sotMenu{
     display: block;
 }
+.pages-div{
+    overflow: hidden;
+}
 /* CSS per gli SMARTPHONE */
 
 @media only screen and (max-width: 768px) {

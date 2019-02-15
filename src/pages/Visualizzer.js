@@ -69,7 +69,7 @@ class Visualizer extends Component {
     render() {
         console.log(this.sottMenu);
         return (
-            <div>
+            <div className="pages-div">
 
                 <SubMenu visibile={this.state.classSotMenu} tittle="Visualizer" checksearch submenu={this.sottMenu} />
                 

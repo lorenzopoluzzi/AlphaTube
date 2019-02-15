@@ -168,7 +168,19 @@ body {
 .search-mobile .search-wrapper {
     display: none !important;
 }
-
+.content-search .search-wrapper .input-holder .search-icon{
+    background: #078b5e;
+    color: #FFF;
+}
+.content-search .search-wrapper .search-close{
+    color: #078b5e;
+}
+.content-search .search-wrapper.active .input-holder {
+    background: #0000002b;
+}
+.content-search .search-wrapper .input-holder .search-input{
+    color:#333;
+}
 /* CSS per i TABLET */
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -199,9 +211,12 @@ body {
         cursor: pointer;
     }
     .search-wrapper.active .input-holder {
-        background: #000000;
+        background: #0000002b;
     }
     .search-wrapper.active {
         width: 250px;
+    }
+    .search-wrapper .input-holder .search-input{
+        color:#333;
     }
 }

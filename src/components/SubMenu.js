@@ -78,7 +78,7 @@ class SubMenu extends Component {
                     </div>
                 </div>
                 {((this.props.checksearch) ?
-                    <div className={this.props.visibile + " search-mobile"}>
+                    <div className=" search-mobile">
                             <Searchbar />
                     </div>
                     :
