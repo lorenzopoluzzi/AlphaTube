@@ -194,7 +194,7 @@ class ListaVitali extends Component {
 
 
         return (
-            <div>
+            <div className="pages-div">
                 <SubMenu tittle="Lista Vitali" checksearch />
                 <div id="listaVitali">
 

@@ -8,7 +8,7 @@ const goTop = (evt) => {
 }
 
 const Footer = (props) => {
-    
+
     console.log(props);
     return (
         <footer className="page-footer font-small blue ">
@@ -26,13 +26,19 @@ const Footer = (props) => {
 
                         <ul className="list-unstyled mb-0">
                             <li className=" item-list-menu footer-list">
-                                <NavLink exact to={"/"} className="link-url nav-link" activeClassName="activeMenu"><i className="fas fa-building"></i> Home</NavLink>
+                                <NavLink exact to={"/"} className="link-url nav-link" activeClassName="activeMenu" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                                    <i className="fas fa-building"></i> Home
+                                </NavLink>
                             </li>
                             <li className=" item-list-menu" >
-                                <NavLink to={"/ListaVitali"} className="link-url nav-link" activeClassName="activeMenu" ><i className="fas fa-list-alt"></i> Lista Vitali</NavLink>
+                                <NavLink to={"/ListaVitali"} className="link-url nav-link" activeClassName="activeMenu" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                                    <i className="fas fa-list-alt"></i> Lista Vitali
+                                </NavLink>
                             </li>
                             <li className=" item-list-menu" >
-                                <NavLink to={"/team"} className="link-url nav-link" activeClassName="activeMenu"><i className="fas fa-users"></i> Team</NavLink>
+                                <NavLink to={"/team"} className="link-url nav-link" activeClassName="activeMenu" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                                    <i className="fas fa-users"></i> Team
+                                </NavLink>
                             </li>
                             <li className=" item-list-menu" >
                                 <a href="/globpop?id=YYYYY" className="link-url nav-link" ><i className="fas fa-cogs"></i> Api</a>
@@ -46,7 +52,7 @@ const Footer = (props) => {
                         <ul className="list-unstyled mb-0">
                             <li className=" item-list-menu footer-list">
                                 <img id="logo-l2pt" src={require('../img/l2pt_trasparente.png')} />
-                                
+
                             </li>
                         </ul>
                     </div>
