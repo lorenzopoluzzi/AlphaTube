@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import VideoListItem from "./VideoListItem";
 import {ParseTitle} from './ParseTitle';
 import {getSimilarArtistNames} from "../Library/Api-LastFm";
-import {youtube_videoDetails, youtube_videoSearch} from "../Library/Api-Youtube";
+import {youtube_videoDetails, youtube_videoSearch, youtube_multiVideoSearch} from "../Library/Api-Youtube";
 
-// TODO: gestire bene le promise nel caso genre similarity. Qual è il momento opportuno per fare SetState???
+
 
 class Similarity extends Component {
 
@@ -15,24 +14,25 @@ class Similarity extends Component {
 
  		this.state = {
             isLoaded : false,
- 			artistSimilarityVideos: [],
+            artistSimilarityVideos: [],
             genreSimilarityVideos: []
- 		}
- 	}
+        }
+    }
 
 
 
- 	componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps){
 
- 			if (this.props.selectedVideo !== prevProps.selectedVideo) {
+            if (this.props.selectedVideo !== prevProps.selectedVideo) {
 
                 var trackInfo = ParseTitle(this.props.selectedVideo);
                 trackInfo.then(res =>{
 
+
                     //Ricerco dei video dello stesso artista
                     var currVideoId = this.props.selectedVideo.id;
         
-                    let videos = youtube_videoSearch(res.artist, 'snippet', 20);
+                    let videos = youtube_videoSearch(res.artist, 'snippet');
                     videos.then(res => {
                         var simVideos = [];
                         res.map(video => {
@@ -41,26 +41,23 @@ class Similarity extends Component {
                             }
                         })
                         console.log("artistSimilarityVideos:", simVideos);
-                        this.setState({isLoaded:true, artistSimilarityVideos: simVideos});
+                        this.setState({isLoaded: true, artistSimilarityVideos: simVideos});
                     })  
 
-                    //Ricerco dei video di artisti simili a quello corrente
-                    var videoArray = [];
 
+                    //Ricerco dei video di artisti simili a quello corrente
                     let similarArtists = getSimilarArtistNames(res.artist);
-                    similarArtists.then(artistName => {
-                        artistName.map(name => {
-                            let video = youtube_videoSearch(name, 'snippet', 1);
-                            video.then(res => {
-                                videoArray.push(res);
-                            })
-                        })
+                    similarArtists.then(artistNames => {
+                        let videos = youtube_multiVideoSearch(artistNames, 'snippet');
+                        videos.then(res =>
+                            this.setState({genreSimilarityVideos: res})
+                        )
                     }) 
                 })
             }
- 	}
+    }
 
- 	render(){
+    render(){
 
         if (!this.state.isLoaded) {
             return (
@@ -70,18 +67,18 @@ class Similarity extends Component {
                     </div>
                 </div>
             );
- 		}
+        }
         else {
             return (                
                 <div className="row justify-content-center">
                     <div className="col-6">
                         <h3 id="h3-l2pt">Artist</h3>
                         <ul className="list-group">{                    
-                            this.state.artistSimilarityVideos.map((video, index) => {
+                            this.state.artistSimilarityVideos.map((video) => {
                                 return (
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect} 
-                                        key={index}
+                                        key={video.id}
                                         video={video} 
                                     />
                                 )
@@ -92,11 +89,11 @@ class Similarity extends Component {
                     <div className="col-6">
                         <h3 id="h3-l2pt">Genre</h3>
                         <ul className="list-group">{                    
-                            this.state.genreSimilarityVideos.map((video, index) => {
+                            this.state.genreSimilarityVideos.map((video) => {
                                 return (
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect} 
-                                        key={index}
+                                        key={video.id}
                                         video={video} 
                                     />
                                 )
@@ -107,7 +104,7 @@ class Similarity extends Component {
                 </div>
             );
         }
- 	}
+    }
  }
 
- export default Similarity;
+export default Similarity;
