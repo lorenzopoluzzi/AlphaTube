@@ -4,3 +4,12 @@
     border: 1px solid #ddd;
     border-radius: 6px;
 }
+
+.tab-content {
+	height: 150px;
+	overflow: auto;
+	display: block;
+	vertical-align: middle;
+	position: relative;
+	text-align: center;
+}

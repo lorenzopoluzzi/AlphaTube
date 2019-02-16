@@ -60,6 +60,7 @@ class Popularity extends Component {
                             }
                         }
                     });
+
                     //qui ho preso il valore del sito maggiore e lo vado a inserire dentro a delle hashmap
                     //dove tramite il videoID ti fanno tornare il valore associato che cercavi cosi da porterlo fare visualizzare dopo
                     //nel frontend
@@ -116,6 +117,7 @@ class Popularity extends Component {
                             siteWinner={this.myArraySite[video.id]} />
                     );
                 });
+
                 if (this.props.videoSeleceted !== null) {
                     this.videoItems = " ";
                     this.altriRecommender = [];
@@ -211,6 +213,7 @@ class Popularity extends Component {
             this.altriRecommender = [];
             if (this.props.videoSeleceted != null) {
                 this.videoId = this.props.videoSeleceted.id.videoId;
+
                 //questo controllo è perchè se videoId non esiste vuol dire che si chiama solo id (dipende sempre da come mi torna la risposta...)
                 if (!this.videoId) {
                     this.videoId = this.props.videoSeleceted.id;

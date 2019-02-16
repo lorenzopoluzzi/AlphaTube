@@ -18,7 +18,7 @@ class RecommenderSearch extends Component {
     componentDidMount() {
         let videos = youtube_videoSearch(this.props.term, 'snippet');
         videos.then(res => {
-            console.log(res);
+            //console.log(res);
             this.setState({ isLoaded: true, video: res });
         })
     }
@@ -29,7 +29,7 @@ class RecommenderSearch extends Component {
             videos.then(res => {
                 this.setState({ isLoaded: true, video: res });
             })
-        }
+        };
     }
 
     render() {
