@@ -3,9 +3,11 @@ import VideoDetail from "../components/VideoDetail";
 import LocalPopularity from "../components/LocalPopularity";
 import FVitali from "../components/FVitali";
 import Popularity from "../components/Popularity";
+import Similarity from "../components/Similarity";
 import RecommenderSearch from "../components/RecommenderSearch";
 import RecommenderRelated from '../components/RecommenderRelated';
 import VisualizerInfo from "../components/VisualizerInfo";
+import Searchbar from "../components/Searchbar";
 import NotFound from "./NotFound";
 import SubMenu from "../components/SubMenu";
 import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
@@ -68,20 +70,24 @@ class Visualizer extends Component {
     render() {
         console.log(this.sottMenu);
         return (
-            <div>
+            <div className="pages-div">
 
                 <SubMenu visibile={this.state.classSotMenu} tittle="Visualizer" checksearch submenu={this.sottMenu} />
-
+                
                 {
                     ((this.state.isLoaded) ?
                         ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
+
                                 <div className="row justify-content-center">
                                     <VideoDetail video={this.state.selectedVideo} />
                                     <VisualizerInfo />
                                 </div>
+
                                 <div className="container" id="div-recommender">
+                                    
                                     <h3 id="h3-l2pt">RECOMMENDER</h3>
+                                    
                                     <nav id="spacing-nav-l2pt">
                                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                             <a className="tab-l2pt active" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="true"><i
@@ -90,10 +96,13 @@ class Visualizer extends Component {
                                                 className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
                                             <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
                                                 className="fas fa-igloo"></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                                            <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarity" role="tab" aria-controls="nav-similarity" aria-selected="false"><i
+                                                className="fa fa-chain"></i><span id="text-l2pt-tab">Similarity</span></a>
                                             <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-related" role="tab" aria-controls="nav-contact" aria-selected="false"><i
                                                 className="fab fa-youtube"></i><span id="text-l2pt-tab">Related </span></a>
                                         </div>
                                     </nav>
+
                                     <div className="tab-content" id="nav-tabContent">
                                         <div className="tab-pane fade show active" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
                                             <FVitali
@@ -108,10 +117,15 @@ class Visualizer extends Component {
                                             />
                                         </div>
                                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <RecommenderSearch />
                                             <LocalPopularity
                                                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
                                                 videoSeleceted={this.state.selectedVideo} />
+                                        </div>
+                                        <div className="tab-pane fade" id="nav-similarity" role="tabpanel" aria-labelledby="nav-similarity-tab">
+                                            <Similarity
+                                                onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                                selectedVideo = {this.state.selectedVideo}
+                                            />
                                         </div>
                                         <div className="tab-pane fade" id="nav-related" role="tabpanel" aria-labelledby="nav-contact-tab">
                                             <RecommenderRelated

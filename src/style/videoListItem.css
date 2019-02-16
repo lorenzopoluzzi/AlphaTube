@@ -12,3 +12,10 @@ img.media-object {
 .badge-l2pt .fas {
     color: rgb(7,169,114);
 }
+.link-url{
+    color: black;
+}
+.link-url:hover{
+    color: black;
+    text-decoration: none;
+}

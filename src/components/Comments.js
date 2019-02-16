@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {youtube_getComments} from "../Library/Api-Youtube";
 
 
+//TODO: gestire il caso di commenti assenti/disabilitati
+
 class Comments extends Component {
 
 	constructor(props){

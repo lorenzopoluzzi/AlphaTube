@@ -20,6 +20,41 @@ class Similarity extends Component {
     }
 
 
+    componentDidMount(){
+
+        if (this.props.selectedVideo !== null) {
+
+            var trackInfo = ParseTitle(this.props.selectedVideo);
+            trackInfo.then(res =>{
+
+                //Ricerco dei video dello stesso artista
+                var currVideoId = this.props.selectedVideo.id;
+    
+                let videos = youtube_videoSearch(res.artist, 'snippet');
+                videos.then(res => {
+                    var simVideos = [];
+                    res.map(video => {
+                        if(video.id != currVideoId) {
+                            simVideos.push(video);
+                        }
+                    })
+                    console.log("artistSimilarityVideos:", simVideos);
+                    this.setState({isLoaded: true, artistSimilarityVideos: simVideos});
+                })  
+
+
+                //Ricerco dei video di artisti simili a quello corrente
+                let similarArtists = getSimilarArtistNames(res.artist);
+                similarArtists.then(artistNames => {
+                    let videos = youtube_multiVideoSearch(artistNames, 'snippet');
+                    videos.then(res =>
+                        this.setState({genreSimilarityVideos: res})
+                    )
+                }) 
+            })
+        }
+    }
+
 
     componentDidUpdate(prevProps){
 

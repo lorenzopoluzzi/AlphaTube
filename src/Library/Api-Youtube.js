@@ -3,6 +3,27 @@ import axios from 'axios';
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 const url_Youtube = 'https://www.googleapis.com/youtube/v3/';
 
+// Funzione che ritorna una lista di commenti associati al video identificato da videoID
+export function youtube_getComments(videoID) {
+
+    var videoComments = [];
+
+    return axios.get(url_Youtube + 'commentThreads', {
+        params: {
+            'part': 'snippet,replies',
+            'videoId': videoID,
+            'key': API_KEY,
+            'order': 'relevance'
+        }
+    })
+        .then(res =>{
+            res.data.items.map((el) =>{
+                videoComments.push(el);
+            });
+            return videoComments;
+        })
+}
+
 //Funzione per ottenere i dettagli di uno/lista di video 
 export function youtube_videoDetails(videosID, parts) {
     var videos = [];
@@ -177,26 +198,5 @@ export function youtube_multiVideoSearch(terms, parts) {
                 videos = res;
                 return videos;
             });
-        })
-}
-
-// Funzione che ritorna una lista di commenti associati al video identificato da videoID
-export function youtube_getComments(videoID) {
-
-    var videoComments = [];
-
-    return axios.get(url_Youtube + 'commentThreads', {
-        params: {
-            'part': 'snippet,replies',
-            'videoId': videoID,
-            'key': API_KEY,
-            'order': 'relevance'
-        }
-    })
-        .then(res =>{
-            res.data.items.map((el) =>{
-                videoComments.push(el);
-            });
-            return videoComments;
         })
 }

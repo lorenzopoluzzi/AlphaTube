@@ -8,7 +8,7 @@ const SearchList = (props) => {
     console.log(props);
 
     return (
-        <div>
+        <div className="pages-div">
             <SubMenu tittle="Youtube Search" checksearch  />
             <div className="searchList" >
                 <RecommenderSearch term={props.match.params.search} />
