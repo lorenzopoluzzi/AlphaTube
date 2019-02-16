@@ -1,0 +1,492 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"INCL",
+				"INCL_P2"
+			],
+			[
+				"IN",
+				"INCL_P2"
+			],
+			[
+				"FLA",
+				"FLAG_UL"
+			],
+			[
+				"p",
+				"p2test"
+			],
+			[
+				"O",
+				"OBJECTS_P2"
+			],
+			[
+				"INCL_P",
+				"INCL_PST"
+			],
+			[
+				"INCL_IN",
+				"INCL_INTR"
+			],
+			[
+				"INCL_I",
+				"INCL_INIT"
+			],
+			[
+				"SRC_",
+				"SRC_P2"
+			],
+			[
+				"FL",
+				"FLAG_CC_P2"
+			],
+			[
+				"SRC",
+				"SRC_P2"
+			],
+			[
+				"FLAG",
+				"FLAG_CC"
+			],
+			[
+				"INC",
+				"INCL_P2"
+			],
+			[
+				"comm",
+				"comm_device_register"
+			],
+			[
+				"new",
+				"newP"
+			],
+			[
+				"p_",
+				"p_s"
+			],
+			[
+				"get",
+				"getTODLO"
+			],
+			[
+				"inser",
+				"insertBlocked"
+			],
+			[
+				"kernel",
+				"kernel_time"
+			],
+			[
+				"termi",
+				"terminateRec"
+			],
+			[
+				"read",
+				"readyQueue"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"val",
+				"val2"
+			],
+			[
+				"va",
+				"val1"
+			],
+			[
+				"pa",
+				"parseInt"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"spa",
+				"space-between"
+			],
+			[
+				"flex",
+				"flex-direction"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"sapce",
+				"space-between"
+			],
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"column",
+				"column-gap"
+			],
+			[
+				"col",
+				"column-rule"
+			],
+			[
+				"c",
+				"column-count"
+			],
+			[
+				"flex-",
+				"flex-wrap"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"colum",
+				"column-count"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ICN",
+				"INCL_P1"
+			],
+			[
+				"test",
+				"test-pcb"
+			],
+			[
+				"INCL_",
+				"INCL_TST"
+			],
+			[
+				"pcb",
+				"pcbfree_h"
+			],
+			[
+				"ini",
+				"init_state_t"
+			],
+			[
+				"pri",
+				"p_priority"
+			],
+			[
+				"p_p",
+				"p_parent"
+			],
+			[
+				"remo",
+				"removeProcQ"
+			],
+			[
+				"he",
+				"headProcQ"
+			],
+			[
+				"pcbFre",
+				"pcbFree_table"
+			],
+			[
+				"arm",
+				"arm7tdmi"
+			],
+			[
+				"arm-none-",
+				"arm-none-eabi-gcc"
+			],
+			[
+				"I",
+				"INCL_UARM"
+			],
+			[
+				"e",
+				"extern"
+			],
+			[
+				"paren",
+				"p_parent"
+			],
+			[
+				"ins",
+				"insertSibling"
+			],
+			[
+				"tcp",
+				"tcpCliSock"
+			],
+			[
+				"connection",
+				"connectionSocket"
+			],
+			[
+				"conn",
+				"connectionSocket"
+			],
+			[
+				"ser",
+				"serverSocket"
+			],
+			[
+				"cl",
+				"clientAddress"
+			],
+			[
+				"s",
+				"serverSocket"
+			],
+			[
+				"serv",
+				"serverName"
+			],
+			[
+				"se",
+				"serverSocket"
+			],
+			[
+				"Ser",
+				"serverName"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/melania/Documents/UNI-BOH/TW/AlphaTube/alphatube/README.md",
+		"/home/melania/Documents/UNI-BOH/TW/AlphaTube-master/README.md",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/interrupts.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/syscall.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/include/const.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/p2test.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/include/types.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/include/init.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/exception.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/include/syscall.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/init.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/include/pseudoTimer.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/pseudoTimer.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/source/scheduler.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/makefile",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/source/pcb.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/syscall.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/asht.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/pcb.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/h/syscall.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/h/const.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/h/asht.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/h/exception.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase2/exception.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/h/pcb.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/h/types.h",
+		"/home/melania/Documents/UNI-BOH/TW/Prove esame/tw-08062016-es2.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 2/es4.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 2/es5.html",
+		"/home/melania/Desktop/es2Bedogni2.c",
+		"/tmp/mozilla_melania0/exercise4.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 2/es3.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 2/es2.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 2/es1.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/es4.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/es2.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/es1.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/es3.html",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/esHTML.pdf",
+		"/home/melania/Documents/UNI-BOH/TW/Esercitazione 1/doc.html",
+		"/home/melania/Desktop/hello.html",
+		"/home/melania/Documents/UNI-BOH/SO/lez2802/lez2802",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/test-pcb.c",
+		"/home/melania/YaeOS/README.md",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/README.md",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/AUTHORS",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/phase1/p1test.0.1.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/test-c.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/h/string.h",
+		"/home/melania/uARM/test/test-pcb.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/YaeOS/phase1/PCB.c",
+		"/home/melania/Documents/UNI-BOH/RETI/TCPclient.py",
+		"/home/melania/Documents/UNI-BOH/RETI/ProxyServer1.py",
+		"/home/melania/Documents/UNI-BOH/RETI/ProxyServer2.py",
+		"/home/melania/Documents/UNI-BOH/RETI/HTTPserver.py",
+		"/home/melania/Documents/UNI-BOH/RETI/TCPserver.py",
+		"/home/melania/Documents/UNI-BOH/RETI/HelloWorld.html",
+		"/home/melania/Documents/UNI-BOH/RETI/simpleHTTPserver.py",
+		"/home/melania/Documents/UNI-BOH/RETI/UDPserver.py",
+		"/home/melania/Documents/UNI-BOH/RETI/UDPclient.py",
+		"/home/melania/Documents/UNI-BOH/RETI/UDPclient1.py",
+		"/home/melania/Documents/UNI-BOH/RETI/UDPserver1.py",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/yaeOS/h/types.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/yaeOS/phase1/PCB.c",
+		"/home/melania/Documents/UNI-BOH/I ANNO/ARCHITETTURA DEGLI ELABORATORI/progetto5/svolti/consegna5ste/parse.c",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/yaeOS/h/const.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/yaeOS/const.h",
+		"/home/melania/Documents/UNI-BOH/SO/progetto/yaeOS/PCB.c"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "serviceWorker.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 205.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

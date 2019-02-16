@@ -1,47 +1,35 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import VideoListItem from "./VideoListItem";
-const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
+import React, { Component } from 'react';
+import CardItem from './CardItem';
+import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
+
 
 class RecommenderSearch extends Component {
 
-    raccomandatiyt;
 
     constructor(props) {
         super(props);
         this.state = {
 
             isLoaded: false,
-            video : []
+            video: []
         };
     }
 
     componentDidMount() {
-
-        axios.get('https://www.googleapis.com/youtube/v3/search', {
-            params: {
-                'part': 'snippet',
-                'key': API_KEY,
-                'q' : 'mhscio',
-                'maxResults' : 10,
-                'videoEmbeddable' : true ,
-                'videoCategoryId' : 10,
-                'type' : 'video'
-            }
+        let videos = youtube_videoSearch(this.props.term, 'snippet');
+        videos.then(res => {
+            console.log(res);
+            this.setState({ isLoaded: true, video: res });
         })
-            .then(res => {
-                this.raccomandatiyt = res.data.items.map((video) => {
-                    return (
-                        <VideoListItem
-                            onVideoSelect = {this.props.onVideoSelect}
-                            key={video.etag}
-                            video={video}
-                        />
+    }
 
-                    );
-                });
-                this.setState({isLoaded : true, video: res.data.items});
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.term !== prevProps.term) {
+            let videos = youtube_videoSearch(this.props.term, 'snippet');
+            videos.then(res => {
+                this.setState({ isLoaded: true, video: res });
             })
+        }
     }
 
     render() {
@@ -53,10 +41,14 @@ class RecommenderSearch extends Component {
             </div>;
         } else {
             return (
-                <div className="col-6 offset-md-3">
-                    <ul className="list-group">
-                        {this.raccomandatiyt}
-                    </ul>
+                <div>
+                    {
+                        this.state.video.map((obj, index) => {
+                            return (
+                                <div key={index} className="grid-container"><CardItem video={obj} /></div>
+                            )
+                        })
+                    }
                 </div>
 
             );
