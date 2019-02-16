@@ -126,3 +126,13 @@ body {
     color: #a5a5a5;
     letter-spacing: 1px;
 }
+
+.conteam {
+    margin-bottom: 100px !important;
+}
+
+.cardina:hover, .cardina:active, .cardina:focus {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    outline: 0;
+}
+

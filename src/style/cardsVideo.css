@@ -22,7 +22,7 @@ a.btn-card{
 a.btn-card:hover{
     background-color: rgba(7, 139, 94) !important;
 }
-div.card {
+.cardVideo div.card {
     height: 340px !important;
     background-color: whitesmoke !important;
     -webkit-box-shadow: 0px 2px 20px 1px rgba(147,147,147,1);
@@ -32,7 +32,7 @@ div.card {
 h4.card-title{
     margin-bottom: 2px;
 }
-div.card {
+.cardVideo div.card {
     width: 22rem; 
     height: 22em;
 }

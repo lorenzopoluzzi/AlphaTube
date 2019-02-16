@@ -1,0 +1,25 @@
+.searchList{
+    padding-top: 45px; 
+}
+.contet-visualizzer{
+    padding-top: 45px; 
+}
+.hide_sotMenu{
+    display: none;
+}
+.show_sotMenu{
+    display: block;
+}
+.pages-div{
+    overflow: hidden;
+}
+/* CSS per gli SMARTPHONE */
+
+@media only screen and (max-width: 768px) {
+    .contet-visualizzer{
+        padding-top: 0px; 
+    }
+    .searchList{
+        padding-top: 0px; 
+    }
+}
