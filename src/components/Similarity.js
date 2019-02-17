@@ -38,7 +38,6 @@ class Similarity extends Component {
                             simVideos.push(video);
                         }
                     })
-                    console.log("artistSimilarityVideos:", simVideos);
                     this.setState({isLoaded: true, artistSimilarityVideos: simVideos});
                 })  
 

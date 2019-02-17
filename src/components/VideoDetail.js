@@ -1,5 +1,6 @@
 import React from 'react';
 import Comments from './Comments';
+import InfoVideo from './InfoVideo';
 import '../style/videoDetail.css'
 
 const VideoDetail = ({video}) => {
@@ -21,9 +22,9 @@ let videoId = video.id.videoId;
     const url = 'https://www.youtube.com/embed/' + videoId;
 
     return (
-        <div className="video-detail col-md-8">
+        <div className="video-detail col-md-6">
             <div className="embed-responsive embed-responsive-16by9">
-                <iframe title="iframe-yt" className="embed-responsive-item" src={url}></iframe>
+                <iframe title="iframe-yt" className="embed-responsive-item" src={url} ></iframe>
             </div>
             <div className="details">
                 <ul className="nav nav-tabs">
@@ -34,7 +35,7 @@ let videoId = video.id.videoId;
                         <a className="nav-link" data-toggle="tab" href="#commenti">Commenti</a>
                     </li>
                     <li>
-                        <a className="nav-link" data-toggle="tab" href="#wikipedia">Wikipedia</a>
+                        <a className="nav-link" data-toggle="tab" href="#info">Info</a>
                     </li>
                 </ul>
 
@@ -46,8 +47,8 @@ let videoId = video.id.videoId;
                     <div className="tab-pane container fade" id="commenti">
                         <Comments video={video}/>
                     </div>
-                    <div className="tab-pane container fade" id="wikipedia">
-
+                    <div className="tab-pane container fade" id="info">
+                        
                     </div>
                 </div>
             </div>
