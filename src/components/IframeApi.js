@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CountDown, {CountdownContext} from 'react-countdown-component';
+import axios from 'axios';
 import '../style/cardsVideo.css';
 class IframeApi extends Component {
     videoItems = " ";
@@ -19,6 +20,25 @@ class IframeApi extends Component {
             videoId = this.props.video.id;
         }
         if(videoId){
+            var videoVisto = sessionStorage.getItem("idVisto");
+            if(videoVisto || videoVisto != ""){
+                var jsonPerDB = new Object();
+                jsonPerDB.video2 = videoVisto;
+                jsonPerDB.recommender  = sessionStorage.getItem("recUsato");
+                jsonPerDB.video1 = videoId;
+                var jsonString= JSON.stringify(jsonPerDB);
+                console.log("weeeee ti stampo il json frate");
+                console.log(jsonString);
+                axios.post('/api', jsonString, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                sessionStorage.setItem("idVisto","");
+            } else {
+                sessionStorage.setItem("idVisto","");
+            }
+
             var YouTubeIframeLoader = require('youtube-iframe');
             var player;
             var isPaused = true;
@@ -35,7 +55,7 @@ class IframeApi extends Component {
                         var tmp;
                         if(sessionStorage.getItem("idProva")){
                             movies2 = JSON.parse(sessionStorage.getItem("idProva"));
-
+                            sessionStorage.setItem("idVisto",videoId);
                             var temp = [];
                             var i;
                             for(i = movies2.length-1; i >= 0; i--){
@@ -56,6 +76,7 @@ class IframeApi extends Component {
                         } else {
                             var movies = [videoId];
                             sessionStorage.setItem("idProva",JSON.stringify(movies));
+                            sessionStorage.setItem("idVisto",videoId);
                             haivisto = true;
                         }
                     }
@@ -96,7 +117,6 @@ class IframeApi extends Component {
                     this.videoId = this.props.videoSeleceted.id;
                 }
             }
-            YouTubeIframeLoader.done();
             var isPaused = true;
             var haivisto = false;
             var movies2;

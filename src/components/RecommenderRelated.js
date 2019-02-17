@@ -17,6 +17,32 @@ class RecommenderRelated extends Component {
         };
     }
 
+    componentDidMount(){
+        axios.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+                'relatedToVideoId': this.props.videoSeleceted.id,
+                'part': 'snippet',
+                'key': API_KEY,
+                'maxResults': 10,
+                'videoEmbeddable': true,
+                'videoCategoryId': 10,
+                'type': 'video',
+            }
+        })
+            .then(res => {
+                this.videoIds = " ";
+                res.data.items.map((video) => {
+                    this.videoIds = this.videoIds + video.id.videoId + ", ";
+                });
+                console.log(this.videoIds);
+                let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
+                videos.then(res => {
+                    this.setState({isLoaded: true, video: res});
+                })
+            })
+
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
 
         console.log(this.props);

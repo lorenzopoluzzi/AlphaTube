@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/videoListItem.css';
 
-const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner }) => {
+const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner, recommenderUsato}) => {
 
     const imageUrl = video.snippet.thumbnails.default.url;
     const url = "/video/" + video.id;
