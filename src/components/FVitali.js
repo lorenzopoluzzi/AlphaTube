@@ -36,7 +36,9 @@ class FVitali extends Component {
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect}
                                         key={video.etag}
-                                        video={video} />
+                                        video={video} 
+                                        recommenderUsato="FVitali"
+                                        />
                                 );
                             });
                             this.setState({ isLoaded: true, video: res });
@@ -66,7 +68,9 @@ class FVitali extends Component {
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect}
                                         key={video.etag}
-                                        video={video} />
+                                        video={video} 
+                                        recommenderUsato="FVitali"
+                                        />
                                 );
                             });
                             this.setState({ isLoaded: true, video: res });

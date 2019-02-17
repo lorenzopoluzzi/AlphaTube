@@ -40,7 +40,7 @@ function databaseInitialize() {
 /*
 * uso, come parte statica, quanto prodotto dalla compilazione di angular
 */
-app.use(express.static(__dirname + '/dist/alfatube'));
+app.use(express.static(__dirname + '/build'));
 
 /*
  * bodyParser.urlencoded(options)
@@ -67,7 +67,7 @@ app.post('/api', (req, res) => {
   var recent = db.getCollection("recent");
   var relation = db.getCollection("relation");
 
-  var videoId = req.body.video1.videoID;
+  var videoId = req.body.video1;
 
   /*
   * cerco il video corrente, se lo trovo incremento il count, se non lo trovo credo un "record" nuovo
@@ -82,13 +82,13 @@ app.post('/api', (req, res) => {
       lastWatched: new Date()
     });
 
-    console.log('video inserted: ' + req.body.video1.titoloYouTube);
+    console.log('video inserted: ' + req.body.video1);
   } else {
     itm[0].count++;
     itm[0].lastWatched = new Date();
     recent.update(itm[0]);
 
-    console.log('video updated: ' + req.body.video1.titoloYouTube);
+    console.log('video updated: ' + req.body.video1);
   }
 
   /*
@@ -102,7 +102,7 @@ app.post('/api', (req, res) => {
       recommender: req.body.recommender
     });
 
-    console.log('video: ' + req.body.video1.titoloYouTube + ' is related to: ' + req.body.video2.titoloYouTube + ' by: ' + req.body.recommender);
+    console.log('video: ' + req.body.video1 + ' is related to: ' + req.body.video2 + ' by: ' + req.body.recommender);
   }
 
   //var results = recent.find({ 'videoId': videoId });
@@ -230,7 +230,7 @@ per evitare che un link diretto a un url gestito da angular client side fallisca
 es: /videoList/xxxxx 
 */
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname + '/dist/alfatube/index.html'));
+  res.sendFile(path.resolve(__dirname + '/build/index.html'));
 });
 
 /*
