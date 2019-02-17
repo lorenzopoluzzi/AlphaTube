@@ -29,7 +29,7 @@ class LocalPopularity extends Component {
         this.myArrayTimesNonCicl = new Array();
         this.myArraySite = new Array();
         //eseguo la chiamata a tutti i recommender pubblicati senza dare un id cosi chiamo il globale
-        axios.get('http://site1825.tw.cs.unibo.it/TW/globpop').then(res => {
+        axios.get('http://site1847.tw.cs.unibo.it/globpop').then(res => {
             this.videoIds = " ";
             this.videoIdTemp = null;
             this.timesWhatchedTemp = 0;
@@ -125,7 +125,7 @@ class LocalPopularity extends Component {
                     this.myArrayTimesNonCicl = new Array();
                     this.myArraySite = new Array();
                     //eseguo la chiamata a tutti i recommender pubblicati passando l'id del video corrente cosi chiamo il globale relativo
-                    axios.get('http://site1827.tw.cs.unibo.it/globpop?id=' + this.videoId + '').then(res => {
+                    axios.get('http://site1847.tw.cs.unibo.it/globpop?id=' + this.videoId + '').then(res => {
                         this.videoIds = " ";
                         this.videoIdTemp = null;
                         this.timesWhatchedTemp = 0;
@@ -217,7 +217,7 @@ class LocalPopularity extends Component {
             this.myArrayTimesNonCicl = new Array();
             this.myArraySite = new Array();
             //eseguo la chiamata a tutti i recommender pubblicati passando l'id del video corrente cosi chiamo il globale relativo
-            axios.get('http://site1827.tw.cs.unibo.it/globpop?id=' + this.videoId + '').then(res => {
+            axios.get('http://site1847.tw.cs.unibo.it/globpop?id=' + this.videoId + '').then(res => {
                 this.videoIds = " ";
                 this.videoIdTemp = null;
                 this.timesWhatchedTemp = 0;

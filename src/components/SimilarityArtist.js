@@ -6,7 +6,7 @@ import {youtube_videoDetails, youtube_videoSearch, youtube_multiVideoSearch} fro
 
 
 
-class Similarity extends Component {
+class SimilarityArtist extends Component {
 
 	constructor(props){
 
@@ -14,8 +14,7 @@ class Similarity extends Component {
 
  		this.state = {
             isLoaded : false,
-            artistSimilarityVideos: [],
-            genreSimilarityVideos: []
+            artistSimilarityVideos: []
         }
     }
 
@@ -30,7 +29,7 @@ class Similarity extends Component {
                 //Ricerco dei video dello stesso artista
                 var currVideoId = this.props.selectedVideo.id;
     
-                let videos = youtube_videoSearch(res.artist, 'snippet');
+                let videos = youtube_videoSearch(res.artist, 'snippet', 11);
                 videos.then(res => {
                     var simVideos = [];
                     res.map(video => {
@@ -40,16 +39,6 @@ class Similarity extends Component {
                     })
                     this.setState({isLoaded: true, artistSimilarityVideos: simVideos});
                 })  
-
-
-                //Ricerco dei video di artisti simili a quello corrente
-                let similarArtists = getSimilarArtistNames(res.artist);
-                similarArtists.then(artistNames => {
-                    let videos = youtube_multiVideoSearch(artistNames, 'snippet');
-                    videos.then(res =>
-                        this.setState({genreSimilarityVideos: res})
-                    )
-                }) 
             })
         }
     }
@@ -77,16 +66,6 @@ class Similarity extends Component {
                         console.log("artistSimilarityVideos:", simVideos);
                         this.setState({isLoaded: true, artistSimilarityVideos: simVideos});
                     })  
-
-
-                    //Ricerco dei video di artisti simili a quello corrente
-                    let similarArtists = getSimilarArtistNames(res.artist);
-                    similarArtists.then(artistNames => {
-                        let videos = youtube_multiVideoSearch(artistNames, 'snippet');
-                        videos.then(res =>
-                            this.setState({genreSimilarityVideos: res})
-                        )
-                    }) 
                 })
             }
     }
@@ -104,9 +83,7 @@ class Similarity extends Component {
         }
         else {
             return (                
-                <div className="row justify-content-center">
-                    <div className="col-6">
-                        <h3 id="h3-l2pt">Artist</h3>
+                <div className="col-6 offset-md-3">
                         <ul className="list-group">{                    
                             this.state.artistSimilarityVideos.map((video) => {
                                 return (
@@ -120,25 +97,9 @@ class Similarity extends Component {
                         }
                         </ul>
                     </div>
-                    <div className="col-6">
-                        <h3 id="h3-l2pt">Genre</h3>
-                        <ul className="list-group">{                    
-                            this.state.genreSimilarityVideos.map((video) => {
-                                return (
-                                    <VideoListItem
-                                        onVideoSelect={this.props.onVideoSelect} 
-                                        key={video.id}
-                                        video={video} 
-                                    />
-                                )
-                            })
-                        }
-                        </ul>
-                    </div>    
-                </div>
             );
         }
     }
  }
 
-export default Similarity;
+export default SimilarityArtist;

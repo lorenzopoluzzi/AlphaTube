@@ -1,10 +1,6 @@
 // Funzione che ricava il nome dell'artista e il titolo della canzone a partire dal video youtube. 
 // Usa l'API di LastFm (https://github.com/feross/last-fm)
-import React, {Component} from 'react';
-import axios from 'axios';
 import {getTrackInfo} from '../Library/Api-LastFm';
-
-// TODO: Queen live at.. come faccio ad associare una traccia?? non è una canzone
 
 
 export function ParseTitle (selectedVideo) {

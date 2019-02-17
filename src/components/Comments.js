@@ -1,61 +1,65 @@
-import React, {Component} from 'react';
-import {youtube_getComments} from "../Library/Api-Youtube";
+import React, { Component } from 'react';
+import { youtube_getComments } from "../Library/Api-Youtube";
 
+import VisualizerInfoItem from './VisualizerInfoItem';
 
 //TODO: gestire il caso di commenti assenti/disabilitati
 
 class Comments extends Component {
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 
 		this.state = {
-			data : []
+			data: [],
+			isLoaded: false
 		}
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		if (this.props.video) {
 			let comments = youtube_getComments(this.props.video.id);
 			comments.then(res => {
-				this.setState({data : res});
+				this.setState({ data: res, isLoaded: true });
 			});
 		}
 	}
 
-	componentDidUpdate(prevProps){
+	componentDidUpdate(prevProps) {
 		if (this.props.video != prevProps.video) {
 			let comments = youtube_getComments(this.props.video.id);
 			comments.then(res => {
-				this.setState({data : res});
+				this.setState({ data: res, isLoaded: true });
 			});
 		}
 	}
 
-	render(){
+	render() {
 		if (this.props.video) {
-			return(
-				<table className="table">
-					<tbody>
-						{this.state.data.map(comment => {
-							return (
-								<tr key={comment.id}>
-									<td> <img src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} className="rounded-circle" alt="Author Profile Photo" /> </td>
-									<td>{comment.snippet.topLevelComment.snippet.authorDisplayName}</td>
-									<td>{comment.snippet.topLevelComment.snippet.textOriginal}</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+			return (
+					<VisualizerInfoItem loaded={this.state.isLoaded} title="Commenti" content={
+						<table className="table">
+							<tbody>
+								{this.state.data.map(comment => {
+									return (
+										<tr key={comment.id}>
+											<td> <img src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} className="rounded-circle" alt="Author Profile Photo" /> </td>
+											<td>{comment.snippet.topLevelComment.snippet.authorDisplayName}</td>
+											<td>{comment.snippet.topLevelComment.snippet.textOriginal}</td>
+										</tr>
+									);
+								})}
+							</tbody>
+						</table>
+					} />
 			);
 		}
 		else {
-			return(
+			return (
 				<div className="comments col-xs-6">
 				</div>
 			);
-		}		
+		}
 
 	}
 }

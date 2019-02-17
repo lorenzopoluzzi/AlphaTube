@@ -16,20 +16,20 @@ class RecommenderSearch extends Component {
     }
 
     componentDidMount() {
-        let videos = youtube_videoSearch(this.props.term, 'snippet');
+        let videos = youtube_videoSearch(this.props.term, 'snippet',10);
         videos.then(res => {
-            //console.log(res);
+            console.log(res);
             this.setState({ isLoaded: true, video: res });
         })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.term !== prevProps.term) {
-            let videos = youtube_videoSearch(this.props.term, 'snippet');
+            let videos = youtube_videoSearch(this.props.term, 'snippet',10);
             videos.then(res => {
                 this.setState({ isLoaded: true, video: res });
             })
-        };
+        }
     }
 
     render() {

@@ -2,22 +2,12 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import './App.css';
 import SubMenu from "./components/SubMenu";
-import Comments from "./components/Comments";
 import { Link, NavLink } from 'react-router-dom';
 import Searchbar from './components/Searchbar';
 
-
 class App extends Component {
 
-    sottMenu = [{
-        id: '#div-start',
-        name: 'Inizia'
-    },
-    {
-        id: '#team',
-        name: 'Team'
-    }
-    ];
+   
 
     constructor(props) {
         super(props);
@@ -27,9 +17,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                
-                <SubMenu tittle="HOME" checksearch submenu={this.sottMenu} />
-                
+                <SubMenu tittle="HOME" checksearch  />
                 <div className="jumbotron jumbotron-fluid home_strip__content">
                     <div className="container">
                         <div className="row justify-content-center ">
@@ -43,7 +31,6 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
-
                 <div className="container shadow p-3 mb-5 bg-white rounded" id="div-start">
                     <h4 className="h1 text-uppercase font-weight-bold">Inzia Ad Ascoltare</h4>
                     <p>Inzia il tuo ascolto scegliendo se ricercare una canzone o un artista, o se fidarti dei nostri esperti che hanno selezionato una lista di canzoni divisa per generi.

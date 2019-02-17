@@ -15,6 +15,7 @@ class VisualizerInfoItem extends Component {
         this.close = this.close.bind(this);
     }
     open(e) {
+        console.log(this.props.loaded);
         e.preventDefault();
         if (!this.state.expanded) {
             this.setState({
@@ -40,6 +41,7 @@ class VisualizerInfoItem extends Component {
         }
     }
     componentWillReceiveProps(nextProps){
+        console.log(nextProps.content);
         if(nextProps.content !== this.state.content){
             this.setState({ content: nextProps.content });
         }

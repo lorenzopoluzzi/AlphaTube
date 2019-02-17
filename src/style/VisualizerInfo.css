@@ -12,7 +12,7 @@
   will-change: width, left, z-index, height;
   position: absolute;
   width: 33%;
-  min-height: 33vh;
+  min-height: 20vh;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -23,12 +23,14 @@
   width: 100%;
 }
 .strips__strip:nth-child(2) {
-  top: 33vh;
+  top: 20vh;
   left: 0;
   width: 100%;
 }
 .strips__strip:nth-child(3) {
-  left: 40vw;
+  top: 40vh;
+  left: 0;
+  width: 100%;
 }
 .strips__strip:nth-child(4) {
   left: 60vw;
@@ -37,13 +39,13 @@
   left: 80vw;
 }
 .strips__strip:nth-child(1) .strip__content {
-  background: #244f75;
+  background: #078b5e;
   transform: translate3d(-100%, 0, 0);
   animation-name: strip1;
   animation-delay: 0.1s;
 }
 .strips__strip:nth-child(2) .strip__content {
-  background: #60bfbf;
+  background: #065238;
   transform: translate3d(0, 100%, 0);
   animation-name: strip2;
   animation-delay: 0.2s;
