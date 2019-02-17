@@ -115,31 +115,7 @@ class Visualizer extends Component {
                                                             className="fas fa-chalkboard-teacher"></i><span id="text-l2pt-tab">FVitali</span></a>
 
                                                     </div>
-                                                </nav>
-
-                                                <div className="tab-content" id="nav-tabContent">
-                                                    
-                                                    <div className="tab-pane fade show active" id="nav-agpopularity" role="tabpanel" aria-labelledby="nav-agpopularity-tab">
-                                                        <Popularity
-                                                            onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                                                            videoSeleceted={this.state.selectedVideo}
-                                                        />
-                                                    </div>
-                                                    
-                                                    <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                        <LocalPopularity
-                                                            onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                                                            videoSeleceted={this.state.selectedVideo} />
-                                                    </div>
-
-                                                    <div className="tab-pane fade" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
-                                                        <FVitali
-                                                            onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                                                            videoSeleceted={this.state.selectedVideo}
-                                                        />
-                                                    </div>
-
-                                                </div>
+                                                </nav> 
 
                                             </div>
 
@@ -148,7 +124,7 @@ class Visualizer extends Component {
                                                 <nav id="spacing-nav-l2pt">
                                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
 
-                                                        <a className="tab-l2pt active" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarity" role="tab" aria-controls="nav-similarity" aria-selected="true"><i
+                                                        <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarity" role="tab" aria-controls="nav-similarity" aria-selected="false"><i
                                                             className="fa fa-chain"></i><span id="text-l2pt-tab">Similarity</span></a>
 
                                                         <a className="tab-l2pt" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="false"><i
@@ -160,35 +136,57 @@ class Visualizer extends Component {
                                                     </div>
                                                 </nav>
 
-                                                <div className="tab-content" id="nav-tabContent">
-                                                    
-                                                    <div className="tab-pane fade show active" id="nav-similarity" role="tabpanel" aria-labelledby="nav-similarity-tab">
-                                                        <Similarity
-                                                            onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-                                                            selectedVideo = {this.state.selectedVideo}
-                                                        />
-                                                    </div>
-
-                                                    <div className="tab-pane fade" id="nav-random" role="tabpanel" aria-labelledby="nav-random-tab">
-                                                        <RecommenderRandom
-                                                            onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                                                            videoSeleceted={this.state.selectedVideo}
-                                                        />
-                                                    </div>
-
-                                                    <div className="tab-pane fade" id="nav-related" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                        <RecommenderRelated
-                                                            onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
-                                                            videoSeleceted={this.state.selectedVideo} />
-
-                                                    </div>
-                                                </div>
-
                                             </div>
 
                                         </div>
 
                                     </div>
+
+                                    <div className="tab-content" id="nav-tabContent">
+
+                                            <div className="tab-pane fade show active" id="nav-agpopularity" role="tabpanel" aria-labelledby="nav-agpopularity-tab">
+                                                <Popularity
+                                                    onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                    videoSeleceted={this.state.selectedVideo}
+                                                />
+                                            </div>
+                                            
+                                            <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <LocalPopularity
+                                                    onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                    videoSeleceted={this.state.selectedVideo} />
+                                            </div>
+
+                                            <div className="tab-pane fade" id="nav-fvitali" role="tabpanel" aria-labelledby="nav-fvitali-tab">
+                                                <FVitali
+                                                    onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                    videoSeleceted={this.state.selectedVideo}
+                                                />
+                                            </div>
+
+                                            <div className="tab-pane fade" id="nav-similarity" role="tabpanel" aria-labelledby="nav-similarity-tab">
+                                                <Similarity
+                                                    onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+                                                    selectedVideo = {this.state.selectedVideo}
+                                                />
+                                            </div>
+
+                                            <div className="tab-pane fade" id="nav-random" role="tabpanel" aria-labelledby="nav-random-tab">
+                                                <RecommenderRandom
+                                                    onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                    videoSeleceted={this.state.selectedVideo}
+                                                />
+                                            </div>
+
+                                            <div className="tab-pane fade" id="nav-related" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <RecommenderRelated
+                                                    onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                    videoSeleceted={this.state.selectedVideo} />
+
+                                            </div>
+
+                                    </div>
+
                                 </div>
                             </div>
                             :
