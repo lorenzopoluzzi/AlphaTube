@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../style/videoListItem.css';
 
 const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner }) => {
@@ -7,7 +6,7 @@ const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner }) => {
     const imageUrl = video.snippet.thumbnails.default.url;
     const url = "/video/" + video.id;
     return (
-        <Link to={url} className="link-url" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+        <a href={url} className="link-url">
             <li className="list-group-item">
                 <div className="video-list media">
                     <div className="media-left">
@@ -25,7 +24,7 @@ const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner }) => {
                     )}
                 </div>
             </li>
-        </Link>
+        </a>
     );
 };
 

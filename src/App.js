@@ -7,15 +7,7 @@ import Searchbar from './components/Searchbar';
 
 class App extends Component {
 
-    sottMenu = [{
-        id: '#div-start',
-        name: 'Inizia'
-    },
-    {
-        id: '#team',
-        name: 'Team'
-    }
-    ];
+   
 
     constructor(props) {
         super(props);
@@ -25,7 +17,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <SubMenu tittle="HOME" checksearch submenu={this.sottMenu} />
+                <SubMenu tittle="HOME" checksearch  />
                 <div className="jumbotron jumbotron-fluid home_strip__content">
                     <div className="container">
                         <div className="row justify-content-center ">

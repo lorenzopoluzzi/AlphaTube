@@ -9,6 +9,8 @@ import VisualizerInfo from "../components/VisualizerInfo";
 import Searchbar from "../components/Searchbar";
 import NotFound from "./NotFound";
 import SubMenu from "../components/SubMenu";
+import RecommenderRecent from "../components/RecommenderRecent";
+import IframeApi from "../components/IframeApi";
 import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
 import '../style/pages.css';
 
@@ -27,7 +29,6 @@ class Visualizer extends Component {
         name: 'Lista'
     }
     ];
-
 
     constructor(props) {
         super(props);
@@ -77,9 +78,8 @@ class Visualizer extends Component {
                     ((this.state.isLoaded) ?
                         ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
-
                                 <div className="row justify-content-center">
-                                    <VideoDetail video={this.state.selectedVideo} />
+                                    <IframeApi video={this.state.selectedVideo}/>
                                     <VisualizerInfo />
                                 </div>
                                 <div className="container" id="div-recommender">
@@ -110,7 +110,8 @@ class Visualizer extends Component {
                                             />
                                         </div>
                                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <RecommenderSearch />
+                                            <RecommenderRecent onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+                                                videoSeleceted={this.state.selectedVideo} />
                                             <LocalPopularity
                                                 onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
                                                 videoSeleceted={this.state.selectedVideo} />
@@ -144,3 +145,4 @@ class Visualizer extends Component {
     }
 }
 export default Visualizer;
+

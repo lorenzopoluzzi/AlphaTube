@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Card, CardBody, CardImage, CardTitle, Fa } from 'mdbreact';
 import '../style/cardsVideo.css';
 import Formatter from "./Formatter";
-import { Link, NavLink } from 'react-router-dom';
 class CardVideo extends Component {
     render() {
         var url = "/video/" + this.props.value.id;
@@ -14,7 +13,7 @@ class CardVideo extends Component {
                     src={this.props.value.snippet.thumbnails.high.url}
                     style={{ width: "100%", height: "11em" }}
                 />
-                <Link to={url} className="link-url" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                <a href={url} className="link-url">
                     <Button
                         floating
                         tag="a"
@@ -27,7 +26,7 @@ class CardVideo extends Component {
                         <Fa icon="chevron-right" />
 
                     </Button>
-                </Link>
+                </a>
                 <CardBody style={{ width: "100%" }} cascade>
                     <CardTitle  >{this.props.value.snippet.title} </CardTitle>
                 </CardBody>
