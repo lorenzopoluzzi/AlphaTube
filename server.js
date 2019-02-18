@@ -97,7 +97,7 @@ app.post('/api', (req, res) => {
   if (null != req.body.video2) {
     relation.insert({
       video1Id: videoId,
-      video2Id: req.body.video2.videoID,
+      video2Id: req.body.video2,
       video2: req.body.video2,
       recommender: req.body.recommender
     });
