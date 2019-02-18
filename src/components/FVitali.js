@@ -14,6 +14,39 @@ class FVitali extends Component {
             video: []
         };
     }
+
+    componentDidMount() {
+        if (this.props.videoSeleceted !== null) {
+            this.videoItems = " ";
+            if (this.props.videoSeleceted != null) {
+                this.videoId = this.props.videoSeleceted.id.videoId;
+                if (!this.videoId) {
+                    this.videoId = this.props.videoSeleceted.id;
+                }
+            }
+            axios.get('http://site1825.tw.cs.unibo.it/TW/globpop?id=' + this.videoId + '')
+                .then(res => {
+                    res.data.recommended.map((video) => {
+                        this.videoItems = this.videoItems + video.videoID + ", ";
+                    });
+                    let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
+                        .then(res => {
+                            this.porcodio = res.map((video) => {
+                                return (
+                                    <VideoListItem
+                                        onVideoSelect={this.props.onVideoSelect}
+                                        key={video.etag}
+                                        video={video} 
+                                        recommenderUsato="FVitali"
+                                        />
+                                );
+                            });
+                            this.setState({ isLoaded: true, video: res });
+                        });
+                });
+        }
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
             this.videoItems = " ";
@@ -35,7 +68,9 @@ class FVitali extends Component {
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect}
                                         key={video.etag}
-                                        video={video} />
+                                        video={video} 
+                                        recommenderUsato="FVitali"
+                                        />
                                 );
                             });
                             this.setState({ isLoaded: true, video: res });

@@ -1,5 +1,7 @@
 import React from 'react';
-import WikiInfo from './wikiInfo';
+import WikiInfoArtista from './wikiInfoArtista';
+import WikiInfoCanzone from './wikiInfoCanzone';
+import Comments from './Comments';
 
 import '../style/VisualizerInfo.css';
 
@@ -7,9 +9,11 @@ const VisualizerInfo = (props) => {
 
     
     return (
-        <div className="col col-4">
+        <div className="col col-md-4">
             <section className="strips">
-                <WikiInfo artista="Francesca Michielin" canzone="Nessun grado di separazione"/>
+                <WikiInfoArtista artista={props.artista}  />
+                <WikiInfoCanzone canzone={props.canzone} />
+                <Comments video={props.video} />
             </section>
         </div>
     );

@@ -6,9 +6,10 @@ import '../style/pages.css';
 
 const SearchList = (props) => {
     console.log(props);
+    sessionStorage.setItem('recUsato', 'recSearch');
 
     return (
-        <div>
+        <div className="pages-div">
             <SubMenu tittle="Youtube Search" checksearch  />
             <div className="searchList" >
                 <RecommenderSearch term={props.match.params.search} />

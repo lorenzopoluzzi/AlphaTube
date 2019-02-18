@@ -7,15 +7,7 @@ import Searchbar from './components/Searchbar';
 
 class App extends Component {
 
-    sottMenu = [{
-        id: '#div-start',
-        name: 'Inizia'
-    },
-    {
-        id: '#team',
-        name: 'Team'
-    }
-    ];
+   
 
     constructor(props) {
         super(props);
@@ -25,7 +17,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <SubMenu tittle="HOME" checksearch submenu={this.sottMenu} />
+                <SubMenu tittle="HOME" checksearch  />
                 <div className="jumbotron jumbotron-fluid home_strip__content">
                     <div className="container">
                         <div className="row justify-content-center ">
@@ -46,20 +38,24 @@ class App extends Component {
                     </p>
                     <div className="row justify-content-center home-button-div">
                         <div className="col-md-6">
-                            <Link to={"/ListaVitali"} className="btn btn-primary button-listaVitali" ><i className="fas fa-list-alt"></i> Lista Vitali</Link>
+                            <Link to={"/ListaVitali"} className="btn btn-primary button-listaVitali" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)} >
+                                <i className="fas fa-list-alt"></i> Lista Vitali
+                            </Link>
                         </div>
-                        <div className="col-md-6 content-search"> 
+                        <div className="col-md-6 content-search">
                             <Searchbar />
                         </div>
                     </div>
                 </div>
                 <div className="container shadow p-3 mb-5 bg-white rounded" id="team" >
                     <h4 className="h1 text-uppercase font-weight-bold">Conoscici</h4>
-                    <p> Il team di sviluppo è fiero del suo portale, così tanto fiero che ha deciso di non nascondersi e prendersi i meriti. 
+                    <p> Il team di sviluppo è fiero del suo portale, così tanto fiero che ha deciso di non nascondersi e prendersi i meriti.
                         Andate a conoscerli non ve ne pentirete...
                     </p>
                     <div className="row justify-content-center">
-                            <Link to={"/Team"} className="btn btn-primary button-listaVitali" ><i className="fas fa-users"></i> Team</Link>
+                        <Link to={"/Team"} className="btn btn-primary button-listaVitali" onClick={() => setTimeout(() => window.scrollTo(0, 0), 1000)}>
+                            <i className="fas fa-users"></i> Team
+                        </Link>
                     </div>
                 </div>
             </div>

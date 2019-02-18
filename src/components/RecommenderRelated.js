@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {youtube_videoDetails}  from "../Library/Api-Youtube";
+import { youtube_videoDetails } from "../Library/Api-Youtube";
 import VideoListItem from "./VideoListItem";
 const API_KEY = 'AIzaSyD6ttgMqt8e59sUloLq2F9LYPdOCB7uwyI';
 
@@ -13,10 +13,36 @@ class RecommenderRelated extends Component {
         this.state = {
 
             isLoaded: false,
-            video : []
+            video: []
         };
     }
 
+    componentDidMount() {
+        axios.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+                'relatedToVideoId': this.props.videoSeleceted.id,
+                'part': 'snippet',
+                'key': API_KEY,
+                'maxResults': 10,
+                'videoEmbeddable': true,
+                'videoCategoryId': 10,
+                'type': 'video',
+
+
+            }
+        })
+            .then(res => {
+                this.videoIds = " ";
+                res.data.items.map((video) => {
+                    this.videoIds = this.videoIds + video.id.videoId + ", ";
+                });
+                console.log(this.videoIds);
+                let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
+                videos.then(res => {
+                    this.setState({ isLoaded: true, video: res });
+                })
+            })
+    }
     componentDidUpdate(prevProps, prevState, snapshot) {
 
         console.log(this.props);
@@ -43,7 +69,7 @@ class RecommenderRelated extends Component {
                     console.log(this.videoIds);
                     let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
                     videos.then(res => {
-                        this.setState({isLoaded: true, video: res});
+                        this.setState({ isLoaded: true, video: res });
                     })
                 })
         }
@@ -60,16 +86,16 @@ class RecommenderRelated extends Component {
             return (
                 <div className="col-6 offset-md-3">
                     <ul className="list-group">
-                    {
-                        this.state.video.map((obj, index) => {
-                            return (
+                        {
+                            this.state.video.map((obj, index) => {
+                                return (
 
-                                <VideoListItem key={index} video={obj} />
+                                    <VideoListItem key={index} video={obj} />
 
 
-                            )
-                        })
-                    }
+                                )
+                            })
+                        }
                     </ul>
                 </div>
 
