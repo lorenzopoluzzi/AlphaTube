@@ -130,17 +130,17 @@ class Visualizer extends Component {
                                                 <nav id="spacing-nav-l2pt" >
                                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
 
-                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-related" role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                                            className="fab fa-youtube" onClick = { () => this.handleClick('Related')}></i><span id="text-l2pt-tab">Related </span></a>
+                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-related" role="tab" aria-controls="nav-contact" aria-selected="false" onClick = { (e) => this.handleClick(e,'Related')}><i
+                                                            className="fab fa-youtube" ></i><span id="text-l2pt-tab">Related </span></a>
 
-                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-recent" role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                                            className="far fa-clock" onClick = { () => this.handleClick('Recent')}></i><span id="text-l2pt-tab">Recent </span></a>
+                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-recent" role="tab" aria-controls="nav-contact" aria-selected="false" onClick = { (e) => this.handleClick(e,'Recent')}><i
+                                                            className="far fa-clock" ></i><span id="text-l2pt-tab">Recent </span></a>
 
-                                                        <a className="tab-l2pt" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="false"><i
-                                                            className="fas fa-random" onClick = { () => this.handleClick('Random')} ></i><span id="text-l2pt-tab">Random</span></a>
+                                                        <a className="tab-l2pt" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="false" onClick = { (e) => this.handleClick(e,'Random')}><i
+                                                            className="fas fa-random"  ></i><span id="text-l2pt-tab">Random</span></a>
 
-                                                        <a className="tab-l2pt" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="false"><i
-                                                            className="fas fa-chalkboard-teacher" onClick = { () => this.handleClick('FVitali')}></i><span id="text-l2pt-tab">FVitali</span></a>
+                                                        <a className="tab-l2pt" id="nav-home-tab" data-toggle="tab" href="#nav-fvitali" role="tab" aria-controls="nav-home" aria-selected="false" onClick = { (e) => this.handleClick(e,'FVitali')}><i
+                                                            className="fas fa-chalkboard-teacher" ></i><span id="text-l2pt-tab">FVitali</span></a>
 
                                                     </div>
                                                 </nav>
@@ -153,17 +153,17 @@ class Visualizer extends Component {
                                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
 
 
-                                                        <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="tab" aria-controls="nav-agpopularity" aria-selected="true"><i
-                                                            className="fas fa-globe" onClick = { () => this.handleClick('GlobalPopu')}></i><span id="text-l2pt-tab">Global Popularity</span> </a>
+                                                        <a className="tab-l2pt" id="nav-agpopularity-tab" data-toggle="tab" href="#nav-agpopularity" role="tab" aria-controls="nav-agpopularity" aria-selected="true" onClick = { (e) => this.handleClick(e,'GlobalPopu')}><i
+                                                            className="fas fa-globe"></i><span id="text-l2pt-tab">Global Popularity</span> </a>
 
-                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                                            className="fas fa-igloo" onClick = { () => this.handleClick('LocalPopu')}></i><span id="text-l2pt-tab">Local Popularity</span></a>
+                                                        <a className="tab-l2pt" id="nav-contact-tab" data-toggle="tab" href="#nav-lpopularity" role="tab" aria-controls="nav-contact" aria-selected="false" onClick = { (e) => this.handleClick(e,'LocalPopu')}><i
+                                                            className="fas fa-igloo" ></i><span id="text-l2pt-tab">Local Popularity</span></a>
 
-                                                        <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarityArtist" role="tab" aria-controls="nav-similarity" aria-selected="false"><i
-                                                            className="fa fa-link" onClick = { () => this.handleClick('ArtistSimily')}></i><span id="text-l2pt-tab">Similarity Artist</span></a>
+                                                        <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarityArtist" role="tab" aria-controls="nav-similarity" aria-selected="false" onClick = { (e) => this.handleClick(e,'ArtistSimily')}><i
+                                                            className="fa fa-link" ></i><span id="text-l2pt-tab">Similarity Artist</span></a>
 
-                                                        <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarityGenere" role="tab" aria-controls="nav-similarity" aria-selected="false"><i
-                                                            className="fa fa-link" onClick = { () => this.handleClick('GenereSimily')}></i><span id="text-l2pt-tab">Similarity Genere</span></a>
+                                                        <a className="tab-l2pt" id="nav-similarity-tab" data-toggle="tab" href="#nav-similarityGenere" role="tab" aria-controls="nav-similarity" aria-selected="false" onClick = { (e) => this.handleClick(e,'GenereSimily')}><i
+                                                            className="fas fa-headphones" ></i><span id="text-l2pt-tab">Similarity Genere</span></a>
                                                     </div>
                                                 </nav>
 
