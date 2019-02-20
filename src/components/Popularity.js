@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
 import {youtube_videoDetails}  from "../Library/Api-Youtube";
+import '../style/popularity.css';
 
 class Popularity extends Component {
     videoItems = " ";
@@ -296,13 +297,13 @@ class Popularity extends Component {
         } else if (!this.state.isLocal) {
             return (
                 <div className="row justify-content-center">
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <h3 id="h3-l2pt">Relative</h3>
                         <div className="spinner-grow colore-l2pt-at" role="status">
                             <span className="sr-only">Loading...</span>
                         </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <h3 id="h3-l2pt">Absolute</h3>
                         <ul className="list-group">
                             {this.globalPopularity}
@@ -313,13 +314,13 @@ class Popularity extends Component {
         } else {
             return (
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6">
                         <h3 id="h3-l2pt">Relative</h3>
                         <ul className="list-group">
                             {this.porcodio}
                         </ul>
                     </div>
-                    <div className="col-6">
+                    <div className="col-xs-12 col-sm-12 col-md-6 mt-sm-l2pt-30">
                         <h3 id="h3-l2pt">Absolute</h3>
                         <ul className="list-group">
                             {this.globalPopularity}

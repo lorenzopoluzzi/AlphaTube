@@ -8,13 +8,13 @@ const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner, recommend
     return (
         <a href={url} className="link-url">
             <li className="list-group-item">
-                <div className="video-list media">
+                <div className="video-list media mb-sm-l2pt-20">
                     <div className="media-left">
                         <img className="media-object" src={imageUrl} alt="{imageUrl}" />
                     </div>
                     {(timeWinner ?
                         <div className="media-body">
-                            <h5 className="media-heading">{video.snippet.title}</h5>
+                            <h5 className="media-heading font-size-l2pt-1">{video.snippet.title}</h5>
                             <span className="badge badge-l2pt"><i className="fas fa-globe"></i> {siteWinner}&nbsp;&nbsp;&nbsp;&nbsp; <i className="fas fa-eye"></i>  {timeWinner}</span>
                         </div>
                         :

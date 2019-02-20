@@ -83,7 +83,7 @@ class SimilarityArtist extends Component {
         }
         else {
             return (                
-                <div className="col-6 offset-md-3">
+                <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
                         <ul className="list-group">{                    
                             this.state.artistSimilarityVideos.map((video) => {
                                 return (
