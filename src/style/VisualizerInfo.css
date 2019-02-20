@@ -129,6 +129,8 @@
   transform: translate(-50%, -50%) scale(0.5);
   opacity: 0;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: auto;
+  height: 50vh;
 }
 .strips__strip--expanded {
   width: 100%;
