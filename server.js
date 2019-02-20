@@ -31,10 +31,6 @@ function databaseInitialize() {
     db.addCollection("relation");
     console.log("relation collection created");
   }
-  if(!db.getCollection("user")){
-    db.addCollection("user")
-    console.log("user collection created");
-  }
 }
 
 /*

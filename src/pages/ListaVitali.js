@@ -20,6 +20,7 @@ class ListaVitali extends Component {
 
     componentDidMount() {
         var postTemp = [];
+        sessionStorage.setItem("recUsato", "ListaVitali");
         axios.get('http://site1825.tw.cs.unibo.it/video.json')
             .then(res => {
                 postTemp = res.data;

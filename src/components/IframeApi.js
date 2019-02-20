@@ -25,9 +25,6 @@ class IframeApi extends Component {
                 var jsonPerDB = new Object();
                 jsonPerDB.video2 = videoVisto;
                 var recUsato = sessionStorage.getItem("recUsato");
-                if(!recusato){
-                    recUsato = null;
-                }
                 jsonPerDB.recommender  = recUsato;
                 jsonPerDB.video1 = videoId;
                 var jsonString= JSON.stringify(jsonPerDB);
@@ -43,9 +40,6 @@ class IframeApi extends Component {
                 var jsonPerDB = new Object();
                 jsonPerDB.video2 = "null";
                 var recUsato = sessionStorage.getItem("recUsato");
-                if(!recusato){
-                    recUsato = null;
-                }
                 jsonPerDB.recommender  = recUsato;
                 jsonPerDB.video1 = videoId;
                 var jsonString= JSON.stringify(jsonPerDB);
