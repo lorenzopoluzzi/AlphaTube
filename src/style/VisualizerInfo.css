@@ -256,10 +256,10 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #e8e8e86b;; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #e8e8e8; 
 }
