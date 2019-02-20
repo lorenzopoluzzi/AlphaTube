@@ -22,11 +22,7 @@ class Visualizer extends Component {
         name: 'Reccomender'
     },
     {
-        id: '#contact',
-        name: 'Info'
-    },
-    {
-        id: '#listaVitali',
+        id: '/ListaVitali',
         name: 'Lista'
     }
     ];
