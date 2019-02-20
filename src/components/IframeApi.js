@@ -20,37 +20,6 @@ class IframeApi extends Component {
             videoId = this.props.video.id;
         }
         if(videoId){
-            var videoVisto = sessionStorage.getItem("idVisto");
-            if(videoVisto || videoVisto != ""){
-                var jsonPerDB = new Object();
-                jsonPerDB.video2 = videoVisto;
-                var recUsato = sessionStorage.getItem("recUsato");
-                jsonPerDB.recommender  = recUsato;
-                jsonPerDB.video1 = videoId;
-                var jsonString= JSON.stringify(jsonPerDB);
-                console.log("weeeee ti stampo il json frate");
-                console.log(jsonString);
-                axios.post('/api', jsonString, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-            } else {
-                sessionStorage.setItem("idVisto","null");
-                var jsonPerDB = new Object();
-                jsonPerDB.video2 = "null";
-                var recUsato = sessionStorage.getItem("recUsato");
-                jsonPerDB.recommender  = recUsato;
-                jsonPerDB.video1 = videoId;
-                var jsonString= JSON.stringify(jsonPerDB);
-                console.log("weeeee ti stampo il json frate nell'else");
-                console.log(jsonString);
-                axios.post('/api', jsonString, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-            }
 
             var YouTubeIframeLoader = require('youtube-iframe');
             var player;
@@ -65,6 +34,37 @@ class IframeApi extends Component {
                         console.log(time);
                     }
                     if(time >= 15) {
+                        var videoVisto = sessionStorage.getItem("idVisto");
+                        if(videoVisto || videoVisto != ""){
+                            var jsonPerDB = new Object();
+                            jsonPerDB.video2 = videoVisto;
+                            var recUsato = sessionStorage.getItem("recUsato");
+                            jsonPerDB.recommender  = recUsato;
+                            jsonPerDB.video1 = videoId;
+                            var jsonString= JSON.stringify(jsonPerDB);
+                            console.log("weeeee ti stampo il json frate");
+                            console.log(jsonString);
+                            axios.post('/api', jsonString, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                }
+                            });
+                        } else {
+                            sessionStorage.setItem("idVisto","null");
+                            var jsonPerDB = new Object();
+                            jsonPerDB.video2 = "null";
+                            var recUsato = sessionStorage.getItem("recUsato");
+                            jsonPerDB.recommender  = recUsato;
+                            jsonPerDB.video1 = videoId;
+                            var jsonString= JSON.stringify(jsonPerDB);
+                            console.log("weeeee ti stampo il json frate nell'else");
+                            console.log(jsonString);
+                            axios.post('/api', jsonString, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                }
+                            });
+                        }
                         var tmp;
                         if(sessionStorage.getItem("idProva")){
                             movies2 = JSON.parse(sessionStorage.getItem("idProva"));
@@ -76,7 +76,7 @@ class IframeApi extends Component {
                                     temp.unshift(movies2[i]);
                                 }
                             }
-                            if(temp.length == 3){
+                            if(temp.length == 10){
                                 temp.pop();
                                 temp.unshift(videoId);
                                 sessionStorage.setItem("idProva",JSON.stringify(temp));

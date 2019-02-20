@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 .strips {
-  min-height: 100vh;
+  min-height: 60vh;
   text-align: center;
   overflow: hidden;
   color: white;
@@ -136,7 +136,7 @@
   left: 0 !important;
   z-index: 3;
   cursor: default;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 .strips__strip--expanded .strip__content:hover:before {
