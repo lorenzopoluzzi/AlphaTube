@@ -34,9 +34,20 @@ class IframeApi extends Component {
                         'Content-Type': 'application/json',
                     }
                 });
-                sessionStorage.setItem("idVisto","");
             } else {
-                sessionStorage.setItem("idVisto","");
+                sessionStorage.setItem("idVisto","null");
+                var jsonPerDB = new Object();
+                jsonPerDB.video2 = "null";
+                jsonPerDB.recommender  = sessionStorage.getItem("recUsato");
+                jsonPerDB.video1 = videoId;
+                var jsonString= JSON.stringify(jsonPerDB);
+                console.log("weeeee ti stampo il json frate nell'else");
+                console.log(jsonString);
+                axios.post('/api', jsonString, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
             }
 
             var YouTubeIframeLoader = require('youtube-iframe');
