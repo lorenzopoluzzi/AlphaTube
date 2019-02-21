@@ -9,10 +9,10 @@ const VisualizerInfo = (props) => {
 
     
     return (
-        <div className="col col-md-4">
+        <div className="col col-md-4 div-buttonInfo">
             <section className="strips">
                 <WikiInfoArtista artista={props.artista}  />
-                <WikiInfoCanzone canzone={props.canzone} />
+                <WikiInfoCanzone artista={props.artista} canzone={props.canzone} />
                 <Comments video={props.video} />
             </section>
         </div>

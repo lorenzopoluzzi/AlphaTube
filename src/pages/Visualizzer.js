@@ -17,13 +17,14 @@ import '../style/pages.css';
 
 class Visualizer extends Component {
 
-    sottMenu = [{
+    sottMenu = [
+    {
+        id:'#div-info',
+        name:"Informazioni"
+    },    
+    {
         id: '#div-recommender',
         name: 'Reccomender'
-    },
-    {
-        id: '/ListaVitali',
-        name: 'Lista'
     }
     ];
 
@@ -43,6 +44,23 @@ class Visualizer extends Component {
 
     handleClick(evt,recUsato) {
         evt.preventDefault();
+        var carosel_widowsLink;
+        var child_carosel = this.carosel_content.children;
+        var i;
+        for(i = 0; i < child_carosel.length; i++){
+            if(!child_carosel[i].classList.contains('active')){
+                carosel_widowsLink = child_carosel[i].children[0].children[0].children;
+                for(i = 0; i < carosel_widowsLink.length; i++){
+                    var linkClass  = carosel_widowsLink[i].classList;
+                    
+                    if(linkClass.contains('active')){
+                        linkClass.remove('active');
+                        linkClass.remove('show');
+                    }   
+                }
+            }
+        }
+        
         sessionStorage.setItem('recUsato', recUsato);
     }
 
@@ -101,7 +119,7 @@ class Visualizer extends Component {
                     ((this.state.isLoaded) ?
                         ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
-                                <div className="row justify-content-center">
+                                <div className="row justify-content-center" id="div-info">
                                     <IframeApi
                                         video={this.state.selectedVideo}
                                         recommenderUsato={this.state.recommenderUsato}
@@ -110,7 +128,7 @@ class Visualizer extends Component {
                                 </div>
                                 <div className="container" id="div-recommender">
                                     <h3 id="h3-l2pt">RECOMMENDER</h3>
-                                    <div className="carousel slide" id="recommender-carousel" data-interval="false">
+                                    <div ref={(node) => { this.carosel = node }} className="carousel slide" id="recommender-carousel" data-interval="false">
 
                                         <a className="carousel-control-prev" href="#recommender-carousel" data-slide="prev">
                                             <span className="carousel-control-prev-icon"></span>
@@ -120,7 +138,7 @@ class Visualizer extends Component {
                                             <span className="carousel-control-next-icon"></span>
                                         </a>
 
-                                        <div className="carousel-inner">
+                                        <div ref={(node) => { this.carosel_content = node }} className="carousel-inner">
 
                                             <div className="carousel-item active" data-interval="false">
 

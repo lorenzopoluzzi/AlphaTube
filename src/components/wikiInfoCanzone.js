@@ -108,7 +108,7 @@ class WikiInfoCanzone extends Component {
                 ((this.state.isLoadedCanzone) ?
                     ((!this.state.errorCanzone) ?
                         ((this.state.canzone.wikiDescrizione) ?
-                            <div>
+                            <div className="content-button">
                                 <i className="fas fa-music wikiInfo__Icon"></i>
                                 <h2 className="contetTitle">{this.state.canzone.nomeCanzone}</h2>
                                 <p>{this.state.canzone.wikiDescrizione}</p>

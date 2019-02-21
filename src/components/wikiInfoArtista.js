@@ -95,7 +95,7 @@ class WikiInfoArtista extends Component {
                     ((this.state.isLoadedArtista) ?
                         ((!this.state.errorArtista) ?
                             ((this.state.artista.wikiDescrizione) ?
-                                <div>
+                                <div className="content-button">
                                     <img className="wikiInfo__Image" src={this.state.artista.urlImmagine} />
                                     <h2 className="contetTitle">{this.state.artista.nomeArtista}</h2>
                                     <p>{this.state.artista.wikiDescrizione}</p>

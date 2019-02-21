@@ -37,7 +37,8 @@ class Comments extends Component {
 	render() {
 		if (this.props.video) {
 			return (
-					<VisualizerInfoItem loaded={this.state.isLoaded} title="Commenti" content={
+				<VisualizerInfoItem loaded={this.state.isLoaded} title="Commenti" content={
+					<div className="content-button">
 						<table className="table">
 							<tbody>
 								{this.state.data.map(comment => {
@@ -51,7 +52,8 @@ class Comments extends Component {
 								})}
 							</tbody>
 						</table>
-					} />
+					</div>
+				} />
 			);
 		}
 		else {
