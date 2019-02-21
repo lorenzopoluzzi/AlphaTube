@@ -91,7 +91,7 @@ class Visualizer extends Component {
     }
 
     render() {
-        console.log(this.sottMenu);
+        //console.log(this.sottMenu);
         return (
             <div className="pages-div">
 

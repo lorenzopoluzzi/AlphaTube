@@ -19,7 +19,7 @@ class RecommenderRandom extends Component {
             var text = generateString(2);
             let videos = youtube_videoSearch(text, 'snippet', 2);
             videos.then(res => {
-                console.log(res);
+                //console.log(res);
                 res.map((video) => {
                     this.setState({
                         video: [...this.state.video, video]  //aggiunge il nuovo stato a video list
@@ -36,7 +36,7 @@ class RecommenderRandom extends Component {
                 var text = generateString(2);
                 let videos = youtube_videoSearch(text, 'snippet', 2);
                 videos.then(res => {
-                    console.log(res);
+                    //console.log(res);
                     res.map((video) => {
                         this.setState({
                             video: [...this.state.video, video]  //aggiunge il nuovo stato a video list

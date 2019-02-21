@@ -31,7 +31,7 @@ class IframeApi extends Component {
                 if(!haivisto){
                     if(!isPaused) {
                         time++;
-                        console.log(time);
+                        //console.log(time);
                     }
                     if(time >= 15) {
                         var videoVisto = sessionStorage.getItem("idVisto");
@@ -42,8 +42,8 @@ class IframeApi extends Component {
                             jsonPerDB.recommender  = recUsato;
                             jsonPerDB.video1 = videoId;
                             var jsonString= JSON.stringify(jsonPerDB);
-                            console.log("weeeee ti stampo il json frate");
-                            console.log(jsonString);
+                            //console.log("weeeee ti stampo il json frate");
+                            //console.log(jsonString);
                             axios.post('/api', jsonString, {
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -57,8 +57,8 @@ class IframeApi extends Component {
                             jsonPerDB.recommender  = recUsato;
                             jsonPerDB.video1 = videoId;
                             var jsonString= JSON.stringify(jsonPerDB);
-                            console.log("weeeee ti stampo il json frate nell'else");
-                            console.log(jsonString);
+                            //console.log("weeeee ti stampo il json frate nell'else");
+                            //console.log(jsonString);
                             axios.post('/api', jsonString, {
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ class IframeApi extends Component {
                 if(!haivisto){
                     if(!isPaused) {
                         time++;
-                        console.log(time);
+                        //console.log(time);
                     }
                     if(time >= 15) {
                         if(sessionStorage.getItem("idProva")){

@@ -41,7 +41,7 @@ class VisualizerInfoItem extends Component {
         }
     }
     componentWillReceiveProps(nextProps){
-        console.log(nextProps.content);
+        //console.log(nextProps.content);
         if(nextProps.content !== this.state.content){
             this.setState({ content: nextProps.content });
         }

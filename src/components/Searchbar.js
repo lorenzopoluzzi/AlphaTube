@@ -4,7 +4,7 @@ import '../style/searchbar.css';
 
 class Searchbar extends Component {
     constructor(props) {
-        console.log(props);
+        //console.log(props);
         super(props);
         this.state = { term: '' };
         this.searchToggle = this.searchToggle.bind(this);
@@ -24,10 +24,10 @@ class Searchbar extends Component {
         }
         else if (classContainer.contains('active')) {
             
-            console.log(this.inputSearch.value);
+            //console.log(this.inputSearch.value);
             if (this.inputSearch.value != '') {
                 this.setState({ term: this.inputSearch.value });
-                console.log(this.state.term);
+                //console.log(this.state.term);
                 classContainer.remove('active');
                 // clear input
                 let url = '/search/'+this.inputSearch.value;
@@ -51,9 +51,9 @@ class Searchbar extends Component {
         var classContainer = this.container.classList;
         if (e.key === 'Enter') {
             if (this.inputSearch.value != '') {
-                console.log(this.inputSearch.value);
+                //console.log(this.inputSearch.value);
                 this.setState({ term: this.inputSearch.value });
-                console.log(this.state.term);
+                //console.log(this.state.term);
                 if (classContainer.contains('active')) {
                     classContainer.remove('active');
                     // clear input

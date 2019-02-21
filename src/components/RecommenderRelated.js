@@ -36,7 +36,7 @@ class RecommenderRelated extends Component {
                 res.data.items.map((video) => {
                     this.videoIds = this.videoIds + video.id.videoId + ", ";
                 });
-                console.log(this.videoIds);
+                //console.log(this.videoIds);
                 let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
                 videos.then(res => {
                     this.setState({ isLoaded: true, video: res });
@@ -45,7 +45,7 @@ class RecommenderRelated extends Component {
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        console.log(this.props);
+        //console.log(this.props);
 
         if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
             axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -66,7 +66,7 @@ class RecommenderRelated extends Component {
                     res.data.items.map((video) => {
                         this.videoIds = this.videoIds + video.id.videoId + ", ";
                     });
-                    console.log(this.videoIds);
+                    //console.log(this.videoIds);
                     let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
                     videos.then(res => {
                         this.setState({ isLoaded: true, video: res });
