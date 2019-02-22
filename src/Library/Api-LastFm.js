@@ -73,8 +73,6 @@ export function getTrackInfo(term){
 				trackInfo.artist = tracksArray[0].artist;
 			};
 			
-			console.log("track:", trackInfo);
-
 			return trackInfo;
 		});
 }

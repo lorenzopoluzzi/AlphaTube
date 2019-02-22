@@ -51,7 +51,7 @@
   animation-delay: 0.2s;
 }
 .strips__strip:nth-child(3) .strip__content {
-  background: #8c4b7e;
+  background: #1d3c24;
   transform: translate3d(0, -100%, 0);
   animation-name: strip3;
   animation-delay: 0.3s;
@@ -129,6 +129,8 @@
   transform: translate(-50%, -50%) scale(0.5);
   opacity: 0;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.content-button{
   overflow: auto;
   height: 50vh;
 }
@@ -167,6 +169,17 @@
   .strip__title {
     font-size: 28px;
   }
+  .div-buttonInfo{
+    margin-top: 15px;
+  }
+  .wikiInfo__Icon {
+    font-size: 2.5rem !important;
+  }
+  .strip__close {
+    padding: 10px;
+    font-size: 1.5rem !important;
+  }
+
 }
 .strip__close {
   position: absolute;
@@ -177,7 +190,7 @@
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   transition-delay: 0.5s;
-  font-size: 2vw;
+  font-size: 2rem;
 }
 .strip__close--show {
   opacity: 1;
@@ -238,10 +251,11 @@
   font-weight: bold;
 }
 .wikiInfo__Icon{
-  font-size: 3.5vw;
+  font-size: 3.5rem;
 }
 .wikiInfo__Image{
   border-radius: 10px;
+  max-width: 100%;
 }
 
 /* width */

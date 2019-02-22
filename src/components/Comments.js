@@ -3,7 +3,6 @@ import { youtube_getComments } from "../Library/Api-Youtube";
 
 import VisualizerInfoItem from './VisualizerInfoItem';
 
-//TODO: gestire il caso di commenti assenti/disabilitati
 
 class Comments extends Component {
 
@@ -37,21 +36,21 @@ class Comments extends Component {
 	render() {
 		if (this.props.video) {
 			return (
-					<VisualizerInfoItem loaded={this.state.isLoaded} title="Commenti" content={
-						<table className="table">
-							<tbody>
-								{this.state.data.map(comment => {
-									return (
-										<tr key={comment.id}>
-											<td> <img src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} className="rounded-circle" alt="Author Profile Photo" /> </td>
-											<td>{comment.snippet.topLevelComment.snippet.authorDisplayName}</td>
-											<td>{comment.snippet.topLevelComment.snippet.textOriginal}</td>
-										</tr>
-									);
-								})}
-							</tbody>
-						</table>
-					} />
+				<VisualizerInfoItem loaded={this.state.isLoaded} title="Commenti" content={
+					<div className="content-button">
+						
+						{this.state.data.map(comment => {
+							return (
+								<div className="comment" id={comment.id}>
+									<img src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} className="rounded-circle" alt="Author Profile Photo" />
+									<h5>{comment.snippet.topLevelComment.snippet.authorDisplayName}</h5>
+									<p>{comment.snippet.topLevelComment.snippet.textOriginal}</p>
+								</div>
+							);
+						})}
+
+					</div>
+				} />
 			);
 		}
 		else {

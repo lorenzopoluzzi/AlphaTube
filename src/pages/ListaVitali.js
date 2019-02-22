@@ -11,7 +11,7 @@ class ListaVitali extends Component {
         super(props);
         this.state = {
             lists: [],
-            isLoaded: true,
+            isLoaded: false,
             buttonSelected : "btnPop",
             completeVideoList: [],
             genereIDselected: [],
@@ -100,11 +100,11 @@ class ListaVitali extends Component {
                                 completeVideoList: [...this.state.completeVideoList, video]  //aggiunge il nuovo stato a video list
                             });
                         });
-                        this.setState({ isLoaded: true });
+                        
                     });
                 }
 
-
+                this.setState({ isLoaded: true });
 
             });
 
@@ -192,46 +192,50 @@ class ListaVitali extends Component {
 
     render() {
 
+        if(this.state.isLoaded){
 
+            return (
+                <div className="pages-div">
+                    <SubMenu tittle="Lista Vitali" checksearch />
 
-        return (
-            <div className="pages-div">
-                <SubMenu tittle="Lista Vitali" checksearch />
-                <div id="listaVitali">
-
-                    <button className={this.state.buttonSelected === "btnRock"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnRock" onClick={this.eventoBottone}>
+                        <div id="listaVitali">
+                        <button className={this.state.buttonSelected === "btnRock"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnRock" onClick={this.eventoBottone}>
                         <i className="fas fa-drum"></i> ROCK </button>
-                    <button className={this.state.buttonSelected === "btnPop"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnPop" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnPop"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnPop" onClick={this.eventoBottone}>
                         <i className="fas fa-fire "></i> POP </button>
-                    <button className={this.state.buttonSelected === "btnJazz"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnJazz" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnJazz"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnJazz" onClick={this.eventoBottone}>
                         <i className="fas fa-moon"></i> JAZZ </button>
-                    <button className={this.state.buttonSelected === "btnHh"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnHh" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnHh"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnHh" onClick={this.eventoBottone}>
                         <i className="fas fa-headphones"></i> HIPHOP </button>
-                    <button className={this.state.buttonSelected === "btnClassica"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnClassica" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnClassica"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnClassica" onClick={this.eventoBottone}>
                         <i className="fas fa-music"></i> CLASSICA </button>
-                    <button className={this.state.buttonSelected === "btnCantautori"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnCantautori" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnCantautori"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnCantautori" onClick={this.eventoBottone}>
                         <i className="fas fa-microphone-alt"></i> CANTAUTORI </button>
-                    <button className={this.state.buttonSelected === "btnIndie"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnIndie" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnIndie"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnIndie" onClick={this.eventoBottone}>
                         <i className="fas fa-guitar"></i> INDIE </button>
-                    <button className={this.state.buttonSelected === "btnElettro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnElettro" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnElettro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnElettro" onClick={this.eventoBottone}>
                         <i className="fas fa-bolt"></i> ELETTRONICA </button>
-                    <button className={this.state.buttonSelected === "btnAltro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnAltro" onClick={this.eventoBottone}>
+                        <button className={this.state.buttonSelected === "btnAltro"? "btn btngeneri active" : "btn btngeneri"} data-btn_id="btnAltro" onClick={this.eventoBottone}>
                         <i className="fas fa-random"></i> ALTRO </button>
-                    <div>
-                        {this.state.isLoaded
-                            ?
-                            this.state.completeVideoList.map((obj, index) => {
-                                return (
-                                    <div key={index} className="grid-container"><CardItem video={obj} /></div>
-                                )
-                            })
-                            :
-                            <div>Scegli un genere</div>
-                        }
-                    </div>
+                        </div>
+
+                    {this.state.completeVideoList.map((obj, index) => {
+                            return (
+                                <div key={index} className="grid-container"><CardItem video={obj} /></div>
+                            )
+                        })}
+
                 </div>
-            </div>
-        );
+            );
+        }
+    else {
+            return <div className="d-flex justify-content-center m-5">
+                <div className="spinner-grow colore-l2pt-at" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>;
+        }}
+
     }
-}
+
 export default ListaVitali;
