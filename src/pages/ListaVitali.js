@@ -11,7 +11,7 @@ class ListaVitali extends Component {
         super(props);
         this.state = {
             lists: [],
-            isLoaded: true,
+            isLoaded: false,
             buttonSelected : "btnPop",
             completeVideoList: [],
             genereIDselected: [],
@@ -100,11 +100,11 @@ class ListaVitali extends Component {
                                 completeVideoList: [...this.state.completeVideoList, video]  //aggiunge il nuovo stato a video list
                             });
                         });
-                        this.setState({ isLoaded: true });
+                        
                     });
                 }
 
-
+                this.setState({ isLoaded: true });
 
             });
 
