@@ -36,7 +36,15 @@ class Popularity extends Component {
             axios.get('http://site1839.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1846.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1847.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1827.tw.cs.unibo.it/globpop/')
+            axios.get('http://site1827.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1840.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1864.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1905.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1862.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1901.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1906.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1904.tw.cs.unibo.it/globpop/')
+            
         ]).then(res => {
             this.videoIds = " ";
             res.map((siti) => {
@@ -137,7 +145,14 @@ class Popularity extends Component {
                         axios.get('http://site1839.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
                         axios.get('http://site1846.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
                         axios.get('http://site1847.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
-                        axios.get('http://site1827.tw.cs.unibo.it/globpop?id=' + this.videoId + '')
+                        axios.get('http://site1827.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
+                        axios.get('http://site1840.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
+                        axios.get('http://site1864.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
+                        axios.get('http://site1905.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
+                        axios.get('http://site1862.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
+                        axios.get('http://site1901.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
+                        axios.get('http://site1906.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
+                        axios.get('http://site1904.tw.cs.unibo.it/globpop/?id=' + this.videoId + '')
                     ]).then(res => {
                         this.videoIds = " ";
                         res.map((siti) => {
