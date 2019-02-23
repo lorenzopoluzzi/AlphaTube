@@ -27,7 +27,7 @@ class LocalPopularity extends Component {
                 var i = 0;
                 res.data.recommended.map((video) => {
                     if(i <= 10){
-                        this.videoItems = this.videoItems + video.videoID + ", ";
+                        this.videoItems = this.videoItems + video.videoId + ", ";
                     }
                     i++;
                 });
@@ -56,7 +56,7 @@ class LocalPopularity extends Component {
                         var i = 0;
                         res.data.recommended.map((video) => {
                             if(i <= 10){
-                                this.videoItems = this.videoItems + video.videoID + ", ";
+                                this.videoItems = this.videoItems + video.videoId + ", ";
                             }
                             i++;
                         });

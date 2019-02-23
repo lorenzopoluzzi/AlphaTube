@@ -40,10 +40,10 @@ class Popularity extends Component {
             axios.get('http://site1840.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1864.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1905.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1862.tw.cs.unibo.it/globpop/'),
+            axios.get('http://site1823.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1901.tw.cs.unibo.it/globpop/'),
             axios.get('http://site1906.tw.cs.unibo.it/globpop/'),
-            axios.get('http://site1904.tw.cs.unibo.it/globpop/')
+            axios.get('http://site1851.tw.cs.unibo.it/globpop/')
             
         ]).then(res => {
             this.videoIds = " ";
@@ -149,10 +149,10 @@ class Popularity extends Component {
                         axios.get('http://site1840.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
                         axios.get('http://site1864.tw.cs.unibo.it/globpop?id=' + this.videoId + ''),
                         axios.get('http://site1905.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
-                        axios.get('http://site1862.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
+                        axios.get('http://site1823.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
                         axios.get('http://site1901.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
                         axios.get('http://site1906.tw.cs.unibo.it/globpop/?id=' + this.videoId + ''),
-                        axios.get('http://site1904.tw.cs.unibo.it/globpop/?id=' + this.videoId + '')
+                        axios.get('http://site1851.tw.cs.unibo.it/globpop/?id=' + this.videoId + '')
                     ]).then(res => {
                         this.videoIds = " ";
                         res.map((siti) => {
