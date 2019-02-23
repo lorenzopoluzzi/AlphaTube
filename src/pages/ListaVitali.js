@@ -80,31 +80,7 @@ class ListaVitali extends Component {
                 this.setState({
                     genereIDselected: this.state.videoIDPop
                 });
-                this.setState({ completeVideoList: [] });
-                let stringID = [];
-                let i = this.state.genereIDselected.length / 22;
-                let inizioArray = 0;
-                if (i == 0) {
-                    stringID.push(this.state.genereIDselected.toString());
-                } else {
-                    for (var j = 0; j < i; j++) {
-                        stringID.push(this.state.genereIDselected.slice(inizioArray * 22, ((inizioArray * 22) + 22)));
-                        inizioArray++;
-                    }
-                }
-                for (let j = 0; j < stringID.length; j++) {
-                    let videos = youtube_videoDetails(stringID[j].toString(), 'snippet,statistics');
-                    videos.then(res => {
-                        res.map((video) => {
-                            this.setState({
-                                completeVideoList: [...this.state.completeVideoList, video]  //aggiunge il nuovo stato a video list
-                            });
-                        });
-                        
-                    });
-                }
 
-                this.setState({ isLoaded: true });
 
             });
 
