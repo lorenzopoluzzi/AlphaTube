@@ -1,64 +1,66 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import VideoListItem from "./VideoListItem";
-import {ParseTitle} from './ParseTitle';
-import {getSimilarArtistNames} from "../Library/Api-LastFm";
-import {youtube_videoDetails, youtube_videoSearch, youtube_multiVideoSearch} from "../Library/Api-Youtube";
+import { ParseTitle } from './ParseTitle';
+import { getSimilarArtistNames } from "../Library/Api-LastFm";
+import { youtube_videoDetails, youtube_videoSearch, youtube_multiVideoSearch } from "../Library/Api-Youtube";
 
 
 
 class SimilarityGenere extends Component {
 
-	constructor(props){
+    constructor(props) {
 
- 		super(props);
+        super(props);
 
- 		this.state = {
-            isLoaded : false,
+        this.state = {
+            isLoaded: false,
             genreSimilarityVideos: []
         }
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
 
         if (this.props.selectedVideo !== null) {
 
             var trackInfo = ParseTitle(this.props.selectedVideo);
-            trackInfo.then(res =>{
+            trackInfo.then(res => {
+
+                //Ricerco dei video di artisti simili a quello corrente
+                let similarArtists = getSimilarArtistNames(res.artist);
+                if (similarArtists != null) {
+                    similarArtists.then(artistNames => {
+                        let videos = youtube_multiVideoSearch(artistNames, 'snippet');
+                        videos.then(res =>
+                            this.setState({ isLoaded: true, genreSimilarityVideos: res })
+                        )
+                    })
+                }
+            })
+        }
+    }
+
+
+    componentDidUpdate(prevProps) {
+
+        if (this.props.selectedVideo !== prevProps.selectedVideo) {
+
+            var trackInfo = ParseTitle(this.props.selectedVideo);
+            trackInfo.then(res => {
 
                 //Ricerco dei video di artisti simili a quello corrente
                 let similarArtists = getSimilarArtistNames(res.artist);
                 similarArtists.then(artistNames => {
                     let videos = youtube_multiVideoSearch(artistNames, 'snippet');
                     videos.then(res =>
-                        this.setState({isLoaded: true,genreSimilarityVideos: res})
+                        this.setState({ isLoaded: true, genreSimilarityVideos: res })
                     )
-                }) 
+                })
             })
         }
     }
 
-
-    componentDidUpdate(prevProps){
-
-            if (this.props.selectedVideo !== prevProps.selectedVideo) {
-
-                var trackInfo = ParseTitle(this.props.selectedVideo);
-                trackInfo.then(res =>{
-
-                    //Ricerco dei video di artisti simili a quello corrente
-                    let similarArtists = getSimilarArtistNames(res.artist);
-                    similarArtists.then(artistNames => {
-                        let videos = youtube_multiVideoSearch(artistNames, 'snippet');
-                        videos.then(res =>
-                            this.setState({isLoaded: true,genreSimilarityVideos: res})
-                        )
-                    }) 
-                })
-            }
-    }
-
-    render(){
+    render() {
 
         if (!this.state.isLoaded) {
             return (
@@ -70,24 +72,24 @@ class SimilarityGenere extends Component {
             );
         }
         else {
-            return (                
+            return (
                 <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
-                    <ul className="list-group">{                    
-                            this.state.genreSimilarityVideos.map((video) => {
-                                return (
-                                    <VideoListItem
-                                        onVideoSelect={this.props.onVideoSelect} 
-                                        key={video.id}
-                                        video={video} 
-                                    />
-                                )
-                            })
-                        }
-                        </ul>    
+                    <ul className="list-group">{
+                        this.state.genreSimilarityVideos.map((video) => {
+                            return (
+                                <VideoListItem
+                                    onVideoSelect={this.props.onVideoSelect}
+                                    key={video.id}
+                                    video={video}
+                                />
+                            )
+                        })
+                    }
+                    </ul>
                 </div>
             );
         }
     }
- }
+}
 
 export default SimilarityGenere;

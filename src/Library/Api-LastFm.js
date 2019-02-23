@@ -26,34 +26,37 @@ function matches(str, array) {
 export function getSimilarArtistNames(term) {
 
 	var names = [];
+	if (term != null) {
 	var artistName = term.split();
-
-	return axios.get(base_URL + '?method=artist.getsimilar', {
-		params: {
-			'limit': 20,
-			'artist': term,
-			'api_key': API_KEY,
-			'format': 'json',
-		}
-	})
-		.then(res => {
-			res.data.similarartists.artist.map(artist =>{
-				if (!matches(artist.name,artistName)){
-					names.push(artist.name);
-				}
-			});
-			//console.log("names:", names);
-			return names;
+		return axios.get(base_URL + '?method=artist.getsimilar', {
+			params: {
+				'limit': 20,
+				'artist': term,
+				'api_key': API_KEY,
+				'format': 'json',
+			}
 		})
+			.then(res => {
+				res.data.similarartists.artist.map(artist => {
+					if (!matches(artist.name, artistName)) {
+						names.push(artist.name);
+					}
+				});
+				//console.log("names:", names);
+				return names;
+			})
+	}else{
+		return null;
+	}
 }
 
 // Restituisce un oggetto {titolo canzone, artista}.
 // In caso non trovi nessuna corrispondenza, l'oggetto ritornato è {null, null}
-export function getTrackInfo(term){
+export function getTrackInfo(term) {
 
 	var trackInfo = {
-		title : null,
-		artist : null
+		title: null,
+		artist: null
 	};
 
 	return axios.get(base_URL + '?method=track.search', {
@@ -72,7 +75,7 @@ export function getTrackInfo(term){
 				trackInfo.title = tracksArray[0].name;
 				trackInfo.artist = tracksArray[0].artist;
 			};
-			
+
 			return trackInfo;
 		});
 }
