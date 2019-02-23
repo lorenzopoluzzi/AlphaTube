@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CountDown, {CountdownContext} from 'react-countdown-component';
 import axios from 'axios';
 import '../style/cardsVideo.css';
+import '../style/IframeApi.css';
 class IframeApi extends Component {
     videoItems = " ";
     porcodio;
@@ -204,9 +205,19 @@ class IframeApi extends Component {
                     <div id="player">
                     </div>
                 </div>
-                <div className="details">
-                    <div>{this.props.video.snippet.title}</div>
-                    <div>{this.props.video.snippet.description}</div>
+                <div className="descrizione">
+                    <h5><b>{this.props.video.snippet.title}</b></h5>
+                    <p>
+                        <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
+                                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <i className="fas fa-pencil-alt"></i><span> Descrizione</span>
+                        </button>
+                    </p>
+                    <div className="collapse" id="collapseExample">
+                        <div className="card card-body">
+                            {this.props.video.snippet.description}.
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -214,3 +225,8 @@ class IframeApi extends Component {
 }
 
 export default IframeApi;
+
+
+
+
+
