@@ -3,7 +3,6 @@ import '../style/notFound.css';
 
 
 const NotFound = (props) => {
-    console.log(props);
     return (
         <div id="NotFound" className="NotFound_strip">
             <div className="NotFound_strip__content">

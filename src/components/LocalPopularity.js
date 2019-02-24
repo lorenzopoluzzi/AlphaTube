@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import VideoListItem from "./VideoListItem";
-import {youtube_videoDetails}  from "../Library/Api-Youtube";
+import { youtube_videoDetails } from "../Library/Api-Youtube";
 
 class LocalPopularity extends Component {
     videoItems = " ";
@@ -25,9 +25,12 @@ class LocalPopularity extends Component {
         axios.get('/globpop')
             .then(res => {
                 var i = 0;
+                var nomeSite = res.data.site;
+                var countViem = new Array();
                 res.data.recommended.map((video) => {
-                    if(i <= 10){
+                    if (i <= 10) {
                         this.videoItems = this.videoItems + video.videoId + ", ";
+                        countViem[video.videoId] = video.timesWatched;
                     }
                     i++;
                 });
@@ -39,50 +42,57 @@ class LocalPopularity extends Component {
                                     onVideoSelect={this.props.onVideoSelect}
                                     key={video.etag}
                                     video={video}
-                                    />
+                                    timeWinner={countViem[video.id]}
+                                    siteWinner={nomeSite}
+                                />
                             );
                         });
                     });
-            if (this.props.videoSeleceted !== null) {
-                this.videoItems = " ";
-                if (this.props.videoSeleceted != null) {
-                    this.videoId = this.props.videoSeleceted.id.videoId;
-                    if (!this.videoId) {
-                        this.videoId = this.props.videoSeleceted.id;
+                if (this.props.videoSeleceted !== null) {
+                    this.videoItems = " ";
+                    if (this.props.videoSeleceted != null) {
+                        this.videoId = this.props.videoSeleceted.id.videoId;
+                        if (!this.videoId) {
+                            this.videoId = this.props.videoSeleceted.id;
+                        }
                     }
-                }
-                axios.get('/globpop?id=' + this.videoId + '')
-                    .then(res => {
-                        var i = 0;
-                        res.data.recommended.map((video) => {
-                            if(i <= 10){
-                                this.videoItems = this.videoItems + video.videoId + ", ";
-                            }
-                            i++;
-                        });
-                        let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
-                            .then(res => {
-                                this.porcodio = res.map((video) => {
-                                    return (
-                                        <VideoListItem
-                                            onVideoSelect={this.props.onVideoSelect}
-                                            key={video.etag}
-                                            video={video}
-                                            />
-                                    );
-                                });
-                                this.setState({ isLoaded: true, isLocal: true, isGlobal: true, video: res });
+                    axios.get('/globpop?id=' + this.videoId + '')
+                        .then(res => {
+                            var i = 0;
+                            var nomeSite = res.data.site;
+                            var countViem = new Array();
+                            res.data.recommended.map((video) => {
+                                if (i <= 10) {
+                                    this.videoItems = this.videoItems + video.videoId + ", ";
+                                    countViem[video.videoId] = video.timesWatched;
+                                }
+                                i++;
                             });
-                    });
-            } else {
-                console.log("eseguo anche l'else, minchia che fenomeno");
-                //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
-                this.setState({ isLoaded: true, isLocal: false, isGlobal: true, video: res});
-            }
-        });
+                            let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
+                                .then(res => {
+                                    this.porcodio = res.map((video) => {
+                                        return (
+                                            <VideoListItem
+                                                onVideoSelect={this.props.onVideoSelect}
+                                                key={video.etag}
+                                                video={video}
+                                                timeWinner={countViem[video.id]}
+                                                siteWinner={nomeSite}
+                                            />
+                                        );
+                                    });
+                                    this.setState({ isLoaded: true, isLocal: true, isGlobal: true, video: res });
+                                });
+                        });
+                } else {
+                    console.log("eseguo anche l'else, minchia che fenomeno");
+                    //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
+                    this.setState({ isLoaded: true, isLocal: false, isGlobal: true, video: res });
+                }
+            });
     }
 
-    
+
 
     render() {
         if (!this.state.isLoaded) {

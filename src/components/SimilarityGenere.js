@@ -25,7 +25,6 @@ class SimilarityGenere extends Component {
 
             var trackInfo = ParseTitle(this.props.selectedVideo);
             trackInfo.then(res => {
-
                 //Ricerco dei video di artisti simili a quello corrente
                 let similarArtists = getSimilarArtistNames(res.artist);
                 if (similarArtists != null) {
@@ -35,6 +34,8 @@ class SimilarityGenere extends Component {
                             this.setState({ isLoaded: true, genreSimilarityVideos: res })
                         )
                     })
+                } else {
+                    this.setState({ isLoaded: true});
                 }
             })
         }
@@ -72,22 +73,31 @@ class SimilarityGenere extends Component {
             );
         }
         else {
-            return (
-                <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
-                    <ul className="list-group">{
-                        this.state.genreSimilarityVideos.map((video) => {
-                            return (
-                                <VideoListItem
-                                    onVideoSelect={this.props.onVideoSelect}
-                                    key={video.id}
-                                    video={video}
-                                />
-                            )
-                        })
-                    }
-                    </ul>
-                </div>
-            );
+            if (this.state.genreSimilarityVideos.length > 1) {
+                return (
+                    <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
+                        <ul className="list-group">{
+                            this.state.genreSimilarityVideos.map((video) => {
+                                return (
+                                    <VideoListItem
+                                        onVideoSelect={this.props.onVideoSelect}
+                                        key={video.id}
+                                        video={video}
+                                    />
+                                )
+                            })
+                        }
+                        </ul>
+                    </div>
+                );
+            }else{
+                return (
+                    <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6 mt-5">
+                        <i className="fas fa-exclamation-circle reccomender-emptyIcon" />
+                        <h5> Non sono stati trovati video simili per genere</h5>
+                    </div>
+                );
+            }
         }
     }
 }

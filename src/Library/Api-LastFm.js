@@ -68,9 +68,7 @@ export function getTrackInfo(term) {
 		}
 	})
 		.then(res => {
-
 			let tracksArray = res.data.results.trackmatches.track;
-
 			if (tracksArray.length > 0) {
 				trackInfo.title = tracksArray[0].name;
 				trackInfo.artist = tracksArray[0].artist;

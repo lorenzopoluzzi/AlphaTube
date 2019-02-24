@@ -5,7 +5,6 @@ import '../style/pages.css';
 
 
 const SearchList = (props) => {
-    console.log(props);
     sessionStorage.setItem('recUsato', 'recSearch');
 
     return (

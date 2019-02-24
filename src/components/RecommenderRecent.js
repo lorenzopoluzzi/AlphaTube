@@ -25,24 +25,26 @@ class RecommenderRecent extends Component {
                     this.videoId = this.props.videoSeleceted.id;
                 }
             }
-            
-                var recent = JSON.parse(sessionStorage.getItem("idProva"));
-                if(recent){ 
-                        recent.map((video) => {
-                            this.videoItems = this.videoItems + video + ", ";
+
+            var recent = JSON.parse(sessionStorage.getItem("idProva"));
+            if (recent) {
+                recent.map((video) => {
+                    this.videoItems = this.videoItems + video + ", ";
+                });
+                let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
+                    .then(res => {
+                        this.porcodio = res.map((video) => {
+                            return (
+                                <VideoListItem
+                                    onVideoSelect={this.props.onVideoSelect}
+                                    key={video.etag}
+                                    video={video} />
+                            );
                         });
-                        let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
-                            .then(res => {
-                                this.porcodio = res.map((video) => {
-                                    return (
-                                        <VideoListItem
-                                            onVideoSelect={this.props.onVideoSelect}
-                                            key={video.etag}
-                                            video={video} />
-                                    );
-                                });
-                                this.setState({ isLoaded: true, video: res });
-                            });
+                        this.setState({ isLoaded: true, video: res });
+                    });
+            } else {
+                this.setState({ isLoaded: true });
             }
         }
     }
@@ -57,7 +59,7 @@ class RecommenderRecent extends Component {
                 }
             }
             var recent = JSON.parse(sessionStorage.getItem("idProva"));
-            if(recent){    
+            if (recent) {
                 recent.map((video) => {
                     this.videoItems = this.videoItems + video + ", ";
                 });
@@ -84,14 +86,24 @@ class RecommenderRecent extends Component {
                 </div>
             </div>;
         } else {
-            return (
-                <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
-                    <ul className="list-group">
-                        {this.porcodio}
-                    </ul>
-                </div>
+            if (this.state.video.length > 0) {
+                return (
+                    <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
+                        <ul className="list-group">
+                            {this.porcodio}
+                        </ul>
+                    </div>
 
-            );
+                );
+            } else {
+                return (
+                    <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6 mt-5">
+                        <i className="fas fa-exclamation-circle reccomender-emptyIcon" />
+                        <h5> Non hai ancora visto nessun video</h5>
+                    </div>
+                );
+            }
+
         }
     }
 }

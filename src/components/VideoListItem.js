@@ -16,7 +16,7 @@ const VideoListItem = ({ video, onVideoSelect, timeWinner, siteWinner, recommend
                         <div className="media-body">
                             <h5 className="media-heading font-size-l2pt-1">{video.snippet.title}</h5>
                             <span className="badge badge-l2pt badge-xs-font-l2pt"><i className="fas fa-globe"></i> {siteWinner}&nbsp;&nbsp;&nbsp;&nbsp; 
-                            <div class="d-md-none d-lg-none d-xl-none">
+                            <div className="d-md-none d-lg-none d-xl-none">
                             </div>
                             <i className="fas fa-eye"></i>  {timeWinner}</span>
                         </div>

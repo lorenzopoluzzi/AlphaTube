@@ -9,7 +9,6 @@ const goTop = (evt) => {
 
 const Footer = (props) => {
 
-    //console.log(props);
     return (
         <footer className="page-footer font-small blue ">
             <div className="container-fluid text-center text-md-left bg-light">
