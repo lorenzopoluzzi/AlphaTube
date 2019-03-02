@@ -5,7 +5,7 @@ import { youtube_videoDetails } from "../Library/Api-Youtube";
 
 class LocalPopularity extends Component {
     videoItems = " ";
-    porcodio;
+    listaVideoReturn;
     myArrayTimes;
     myArraySite;
     globalPopularity;
@@ -28,8 +28,10 @@ class LocalPopularity extends Component {
                 var nomeSite = res.data.site;
                 var countViem = new Array();
                 res.data.recommended.map((video) => {
+                    //setto il limite di video da prendere in considerazione
                     if (i <= 10) {
                         this.videoItems = this.videoItems + video.videoId + ", ";
+                        //mi salvo i timesWatched per ogni video
                         countViem[video.videoId] = video.timesWatched;
                     }
                     i++;
@@ -62,15 +64,17 @@ class LocalPopularity extends Component {
                             var nomeSite = res.data.site;
                             var countViem = new Array();
                             res.data.recommended.map((video) => {
+                                //setto il limite di video da prendere in considerazione
                                 if (i <= 10) {
                                     this.videoItems = this.videoItems + video.videoId + ", ";
+                                    //mi salvo i timesWatched per ogni video
                                     countViem[video.videoId] = video.timesWatched;
                                 }
                                 i++;
                             });
                             let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
                                 .then(res => {
-                                    this.porcodio = res.map((video) => {
+                                    this.listaVideoReturn = res.map((video) => {
                                         return (
                                             <VideoListItem
                                                 onVideoSelect={this.props.onVideoSelect}
@@ -81,11 +85,11 @@ class LocalPopularity extends Component {
                                             />
                                         );
                                     });
+                                    //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto e relativo
                                     this.setState({ isLoaded: true, isLocal: true, isGlobal: true, video: res });
                                 });
                         });
                 } else {
-                    console.log("eseguo anche l'else, minchia che fenomeno");
                     //faccio il ser state per confermare il completamento della chiamata e di tutta la logica del globale assoluto
                     this.setState({ isLoaded: true, isLocal: false, isGlobal: true, video: res });
                 }
@@ -122,7 +126,7 @@ class LocalPopularity extends Component {
                     <div className="col-6">
                         <h3 id="h3-l2pt">Relative</h3>
                         <ul className="list-group">
-                            {this.porcodio}
+                            {this.listaVideoReturn}
                         </ul>
                     </div>
                     <div className="col-6">

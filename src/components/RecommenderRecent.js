@@ -5,7 +5,7 @@ import { youtube_videoDetails } from "../Library/Api-Youtube";
 
 class RecommenderRecent extends Component {
     videoItems = " ";
-    porcodio;
+    listaVideoReturn;
     videoId = null;
     constructor(props) {
         super(props);
@@ -33,7 +33,7 @@ class RecommenderRecent extends Component {
                 });
                 let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
                     .then(res => {
-                        this.porcodio = res.map((video) => {
+                        this.listaVideoReturn = res.map((video) => {
                             return (
                                 <VideoListItem
                                     onVideoSelect={this.props.onVideoSelect}
@@ -49,35 +49,6 @@ class RecommenderRecent extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.videoSeleceted !== prevProps.videoSeleceted) {
-            this.videoItems = " ";
-            if (this.props.videoSeleceted != null) {
-                this.videoId = this.props.videoSeleceted.id.videoId;
-                if (!this.videoId) {
-                    this.videoId = this.props.videoSeleceted.id;
-                }
-            }
-            var recent = JSON.parse(sessionStorage.getItem("idProva"));
-            if (recent) {
-                recent.map((video) => {
-                    this.videoItems = this.videoItems + video + ", ";
-                });
-                let videos = youtube_videoDetails(this.videoItems, 'snippet,statistics')
-                    .then(res => {
-                        this.porcodio = res.map((video) => {
-                            return (
-                                <VideoListItem
-                                    onVideoSelect={this.props.onVideoSelect}
-                                    key={video.etag}
-                                    video={video} />
-                            );
-                        });
-                        this.setState({ isLoaded: true, video: res });
-                    });
-            }
-        }
-    }
     render() {
         if (!this.state.isLoaded) {
             return <div className="d-flex justify-content-center m-5">
@@ -90,7 +61,7 @@ class RecommenderRecent extends Component {
                 return (
                     <div className="offset-md-3 col-xs-12 col-sm-12 col-md-6">
                         <ul className="list-group">
-                            {this.porcodio}
+                            {this.listaVideoReturn}
                         </ul>
                     </div>
 

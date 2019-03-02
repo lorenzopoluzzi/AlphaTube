@@ -6,7 +6,7 @@ import '../style/popularity.css';
 
 class Popularity extends Component {
     videoItems = " ";
-    porcodio;
+    listaVideoReturn;
     myArrayTimes;
     myArraySite;
     globalPopularity;
@@ -197,7 +197,7 @@ class Popularity extends Component {
                         //qui ho la stringa ordinata di video id quindi la passo a youtube che mi ritorna le informazioni per i video che mi servono
                         let videos = youtube_videoDetails(this.videoIds, 'snippet,statistics');
                         videos.then(res => {
-                            this.porcodio = res.map((video) => {
+                            this.listaVideoReturn = res.map((video) => {
                                 return (
                                     <VideoListItem
                                         onVideoSelect={this.props.onVideoSelect}
@@ -247,7 +247,7 @@ class Popularity extends Component {
                     <div className="col-xs-12 col-sm-12 col-md-6">
                         <h3 id="h3-l2pt">Relative</h3>
                         <ul className="list-group">
-                            {this.porcodio}
+                            {this.listaVideoReturn}
                         </ul>
                     </div>
                     <div className="col-xs-12 col-sm-12 col-md-6 mt-sm-l2pt-30">
