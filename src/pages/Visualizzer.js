@@ -11,6 +11,7 @@ import RecommenderRecent from "../components/RecommenderRecent";
 import IframeApi from "../components/IframeApi";
 import SimilarityArtist from "../components/SimilarityArtist";
 import SimilarityGenere from "../components/SimilarityGenere";
+import InfoVideo from "../components/InfoVideo";
 import { youtube_videoDetails, youtube_videoSearch } from "../Library/Api-Youtube";
 import { ParseTitle } from '../components/ParseTitle';
 import '../style/pages.css';
@@ -109,7 +110,6 @@ class Visualizer extends Component {
     }
 
     render() {
-        console.log(this.state.selectedVideo);
         return (
             <div className="pages-div">
 
@@ -119,14 +119,22 @@ class Visualizer extends Component {
                     ((this.state.isLoaded) ?
                         ((this.state.selectedVideo !== null) ?
                             <div className="contet-visualizzer">
-                                <div className="row justify-content-center" id="div-info">
+                                <div className="row justify-content-center">
                                     <IframeApi
-                                        artista={this.state.artista}
-                                        canzone={this.state.canzone}
                                         video={this.state.selectedVideo}
                                         recommenderUsato={this.state.recommenderUsato}
                                     />
                                     <VisualizerInfo artista={this.state.artista} canzone={this.state.canzone} video={this.state.selectedVideo} />
+                                </div>
+                                <div className="row justify-content-center" id="div-info">
+                                    <div className="col col-md-5" id="info-box">
+                                        <InfoVideo artista={this.state.artista} canzone={this.state.canzone} video={this.state.selectedVideo}/>
+                                    </div>
+                                    <div className="col col-md-5" id="descr-box">
+                                        <div className="card card-body">
+                                            {this.state.selectedVideo.snippet.description}.
+                                        </div>                                    
+                                    </div>
                                 </div>
                                 <div className="container" id="div-recommender">
                                     <h3 id="h3-l2pt">RECOMMENDER</h3>

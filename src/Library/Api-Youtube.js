@@ -49,6 +49,7 @@ export function youtube_videoSearch(term, parts, maxResult) {
             });
         })
 }
+
 // Funzione per ottenere una lista di video che fanno match con un array di termini di ricerca.
 // terms.lenght() > 10
 export function youtube_multiVideoSearch(terms, parts) {

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const base_URL = "https://ws.audioscrobbler.com/2.0/";
 const API_KEY = 'dd7d675dfbbe4e2938f9a89ca3d1da42';
-//const SECRET_KEY = 'e9f9658e7c75f492bd7e7d647cfc613e';
 
 const LASTFM = require('last-fm');
 const lastfm = new LASTFM(API_KEY);
