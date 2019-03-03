@@ -109,7 +109,7 @@ class Visualizer extends Component {
     }
 
     render() {
-        //console.log(this.sottMenu);
+        console.log(this.state.selectedVideo);
         return (
             <div className="pages-div">
 
@@ -121,6 +121,8 @@ class Visualizer extends Component {
                             <div className="contet-visualizzer">
                                 <div className="row justify-content-center" id="div-info">
                                     <IframeApi
+                                        artista={this.state.artista}
+                                        canzone={this.state.canzone}
                                         video={this.state.selectedVideo}
                                         recommenderUsato={this.state.recommenderUsato}
                                     />
