@@ -166,10 +166,37 @@ class IframeApi extends Component {
                     <div id="player">
                     </div>
                 </div>
-                
+                <div className="descrizione">
+                    
+                    <h5><b>{this.props.artista} - {this.props.canzone}</b></h5>
+                    
+                    <p>
+                        <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
+                            data-target="#infoArea" aria-expanded="false" aria-controls="infoArea">
+                            <i className="fa fa-info"></i><span> Info</span>
+                        </button>
+
+                        <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
+                            data-target="#descrArea" aria-expanded="false" aria-controls="descrArea">
+                            <i className="fas fa-pencil-alt"></i><span> Descrizione</span>
+                        </button>
+
+                        <div className="collapse" id="infoArea">
+                            <InfoVideo video={this.props.video}/>
+                        </div>
+                    </p>
+
+                    <div className="collapse" id="descrArea">
+                        <div className="card card-body">
+                            {this.props.video.snippet.description}.
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
 export default IframeApi;
+                   
+                        

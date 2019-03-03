@@ -121,21 +121,14 @@ class Visualizer extends Component {
                             <div className="contet-visualizzer">
                                 <div className="row justify-content-center">
                                     <IframeApi
+                                        artista={this.state.artista}
+                                        canzone={this.state.canzone}
                                         video={this.state.selectedVideo}
                                         recommenderUsato={this.state.recommenderUsato}
                                     />
                                     <VisualizerInfo artista={this.state.artista} canzone={this.state.canzone} video={this.state.selectedVideo} />
                                 </div>
-                                <div className="row justify-content-center" id="div-info">
-                                    <div className="col col-md-5" id="info-box">
-                                        <InfoVideo artista={this.state.artista} canzone={this.state.canzone} video={this.state.selectedVideo}/>
-                                    </div>
-                                    <div className="col col-md-5" id="descr-box">
-                                        <div className="card card-body">
-                                            {this.state.selectedVideo.snippet.description}.
-                                        </div>                                    
-                                    </div>
-                                </div>
+
                                 <div className="container" id="div-recommender">
                                     <h3 id="h3-l2pt">RECOMMENDER</h3>
                                     <div ref={(node) => { this.carosel = node }} className="carousel slide" id="recommender-carousel" data-interval="false">
