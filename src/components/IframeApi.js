@@ -167,8 +167,13 @@ class IframeApi extends Component {
                     </div>
                 </div>
                 <div className="descrizione">
-                    
-                    <h5><b>{this.props.artista} - {this.props.canzone}</b></h5>
+                    {
+                        (this.props.artista !== null && this.props.canzone !== null) ?
+                            <h5><b>{this.props.artista} - {this.props.canzone}</b></h5>
+                            :
+                            <h5><b>{this.props.video.snippet.title}</b></h5>
+
+                    }
                     
                     <p>
                         <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
