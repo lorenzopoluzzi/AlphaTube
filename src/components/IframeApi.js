@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import CountDown, {CountdownContext} from 'react-countdown-component';
+import InfoVideo from './InfoVideo';
 import axios from 'axios';
 import '../style/cardsVideo.css';
 import '../style/IframeApi.css';
+
 class IframeApi extends Component {
     videoItems = " ";
     videoId = null;
@@ -159,19 +161,32 @@ class IframeApi extends Component {
     render() {
         return (
             <div className="video-detail col-md-6">
+                
                 <div className="embed-responsive embed-responsive-16by9">
                     <div id="player">
                     </div>
                 </div>
                 <div className="descrizione">
-                    <h5><b>{this.props.video.snippet.title}</b></h5>
+                    
+                    <h5><b>{this.props.artista} - {this.props.canzone}</b></h5>
+                    
                     <p>
                         <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
-                                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            data-target="#infoArea" aria-expanded="false" aria-controls="infoArea">
+                            <i className="fa fa-info"></i><span> Info</span>
+                        </button>
+
+                        <button className="btn btn-primary descrizione" type="button" data-toggle="collapse"
+                            data-target="#descrArea" aria-expanded="false" aria-controls="descrArea">
                             <i className="fas fa-pencil-alt"></i><span> Descrizione</span>
                         </button>
+
+                        <div className="collapse" id="infoArea">
+                            <InfoVideo video={this.props.video}/>
+                        </div>
                     </p>
-                    <div className="collapse" id="collapseExample">
+
+                    <div className="collapse" id="descrArea">
                         <div className="card card-body">
                             {this.props.video.snippet.description}.
                         </div>
@@ -183,3 +198,5 @@ class IframeApi extends Component {
 }
 
 export default IframeApi;
+                   
+                        
